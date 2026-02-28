@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Collection Awakening | BINAEL</title>
+    <meta name="description" content="Découvrez notre collection complète de t-shirts ésotériques. Éditions limitées, coton bio, designs exclusifs inspirés des hiérarchies angéliques.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Shopify Buy Button SDK (optional - for embedded buy buttons) -->
+    <script src="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"></script>
+</head>
+<body>
+    <!-- Discount Banner -->
+    <div class="discount-banner" id="discount-banner">
+        <div class="discount-content">
+            <span class="discount-icon">✨</span>
+            <span class="discount-text">OFFRE SPÉCIALE : 2 T-SHIRTS ACHETÉS = -15% • CODE : AWAKENING15</span>
+            <button class="banner-close" aria-label="Fermer">&times;</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <span class="logo-text">BINAEL</span>
+                </a>
+            </div>
+            
+            <button class="burger-menu" id="burger-menu" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="shop.html" class="active">Shop</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="dropdown-toggle">Univers <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="hierarchies.html">Les Hiérarchies</a></li>
+                        <li><a href="maisons-anges.html">Les Maisons d'Anges</a></li>
+                        <li><a href="ange-gardien.html">Qu'est-ce qu'un Ange Gardien?</a></li>
+                        <li><a href="evolution.html">Origine & Évolution</a></li>
+                    </ul>
+                </li>
+                <li><a href="quiz.html">Quel Ange Êtes-Vous?</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="qualite.html">Qualité & Entretien</a></li>
+                <li><a href="legal.html">Legal</a></li>
+                <li class="lang-switch">
+                    <a href="shop.html" class="active-lang">FR</a>
+                    <span class="lang-separator">/</span>
+                    <a href="en/shop.html">EN</a>
+                </li>
+            </ul>
+            
+            <div class="nav-cart">
+                <a href="#" id="shopify-cart-link" class="cart-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"/>
+                        <circle cx="20" cy="21" r="1"/>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                    <span class="cart-count" id="shopify-cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Particles Background -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Shop Header -->
+    <section class="shop-header">
+        <div class="container">
+            <h1>COLLECTION AWAKENING</h1>
+            <p class="shop-subtitle">Streetwear Ésotérique • Éditions Limitées • 100 pièces par design</p>
+            <p class="shop-tagline">Porter • Partager • Profiter</p>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="shop-filters">
+        <div class="container">
+            <div class="filters-bar">
+                <div class="filter-group">
+                    <label>Collection :</label>
+                    <select id="filter-collection" class="filter-select">
+                        <option value="all">Toutes</option>
+                        <option value="hierarchies">Hiérarchies Angéliques</option>
+                        <option value="symboles">Symboles Hermétiques</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Prix :</label>
+                    <select id="filter-price" class="filter-select">
+                        <option value="all">Tous</option>
+                        <option value="35">35€</option>
+                        <option value="39">39€ (Premium)</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Disponibilité :</label>
+                    <select id="filter-stock" class="filter-select">
+                        <option value="all">Tous</option>
+                        <option value="available">En stock</option>
+                        <option value="limited">Stock limité</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Trier par :</label>
+                    <select id="filter-sort" class="filter-select">
+                        <option value="popular">Popularité</option>
+                        <option value="new">Nouveautés</option>
+                        <option value="price-low">Prix croissant</option>
+                        <option value="price-high">Prix décroissant</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="shop-products">
+        <div class="container">
+            <div class="products-grid" id="products-grid">
+                
+                <!-- Product 1 - L'Ange Doré -->
+                <article class="product-card" data-collection="hierarchies" data-price="35" data-stock="available">
+                    <div class="product-badge best-seller">BEST-SELLER</div>
+                    <div class="product-image">
+                        <img src="images/products/ange-dore.jpg" alt="T-shirt L'Ange Doré - BINAEL" loading="lazy">
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product="ange-dore">VOIR DÉTAILS</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>L'ANGE DORÉ</h3>
+                        <p class="product-desc">Le gardien bienveillant, la lumière dans l'obscurité</p>
+                        <div class="product-footer">
+                            <span class="price">35€</span>
+                            <a href="https://votre-boutique.myshopify.com/products/ange-dore" 
+                               class="btn-shopify" 
+                               target="_blank">
+                               ACHETER
+                            </a>
+                        </div>
+                        <div class="product-meta">
+                            <span class="stock-info">✓ En stock</span>
+                            <span class="rating">⭐⭐⭐⭐⭐ (87 avis)</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 2 - Fallen Light -->
+                <article class="product-card" data-collection="hierarchies" data-price="35" data-stock="available">
+                    <div class="product-badge new">NEW</div>
+                    <div class="product-image">
+                        <img src="images/products/fallen-light.jpg" alt="T-shirt Fallen Light - BINAEL" loading="lazy">
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product="fallen-light">VOIR DÉTAILS</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>FALLEN LIGHT</h3>
+                        <p class="product-desc">Entre deux mondes, la quête de rédemption</p>
+                        <div class="product-footer">
+                            <span class="price">35€</span>
+                            <a href="https://votre-boutique.myshopify.com/products/fallen-light" 
+                               class="btn-shopify" 
+                               target="_blank">
+                               ACHETER
+                            </a>
+                        </div>
+                        <div class="product-meta">
+                            <span class="stock-info">🔥 Très demandé</span>
+                            <span class="rating">⭐⭐⭐⭐⭐ (42 avis)</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 3 - Sacred Geometry -->
+                <article class="product-card" data-collection="symboles" data-price="39" data-stock="limited">
+                    <div class="product-badge premium">PREMIUM</div>
+                    <div class="product-image">
+                        <img src="images/products/sacred-geometry.jpg" alt="T-shirt Sacred Geometry - BINAEL" loading="lazy">
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product="sacred-geometry">VOIR DÉTAILS</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>SACRED GEOMETRY</h3>
+                        <p class="product-desc">Les clés de l'univers, le langage sacré</p>
+                        <div class="product-footer">
+                            <span class="price">39€</span>
+                            <a href="https://votre-boutique.myshopify.com/products/sacred-geometry" 
+                               class="btn-shopify" 
+                               target="_blank">
+                               ACHETER
+                            </a>
+                        </div>
+                        <div class="product-meta">
+                            <span class="stock-info">⚠️ Stock limité (12 restants)</span>
+                            <span class="rating">⭐⭐⭐⭐⭐ (134 avis)</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 4 - Seraphim Fire -->
+                <article class="product-card" data-collection="hierarchies" data-price="35" data-stock="available">
+                    <div class="product-badge new">NEW</div>
+                    <div class="product-image">
+                        <img src="images/products/seraphim-fire.jpg" alt="T-shirt Seraphim Fire - BINAEL" loading="lazy">
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product="seraphim-fire">VOIR DÉTAILS</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>SERAPHIM FIRE</h3>
+                        <p class="product-desc">Le séraphin à six ailes, le feu purificateur</p>
+                        <div class="product-footer">
+                            <span class="price">35€</span>
+                            <a href="https://votre-boutique.myshopify.com/products/seraphim-fire" 
+                               class="btn-shopify" 
+                               target="_blank">
+                               ACHETER
+                            </a>
+                        </div>
+                        <div class="product-meta">
+                            <span class="stock-info">✓ En stock</span>
+                            <span class="rating">⭐⭐⭐⭐⭐ (56 avis)</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 5 - The Watcher -->
+                <article class="product-card" data-collection="hierarchies" data-price="35" data-stock="available">
+                    <div class="product-image">
+                        <img src="images/products/the-watcher.jpg" alt="T-shirt The Watcher - BINAEL" loading="lazy">
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product="the-watcher">VOIR DÉTAILS</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>THE WATCHER</h3>
+                        <p class="product-desc">L'œil qui voit tout, le gardien vigilant</p>
+                        <div class="product-footer">
+                            <span class="price">35€</span>
+                            <a href="https://votre-boutique.myshopify.com/products/the-watcher" 
+                               class="btn-shopify" 
+                               target="_blank">
+                               ACHETER
+                            </a>
+                        </div>
+                        <div class="product-meta">
+                            <span class="stock-info">✓ En stock</span>
+                            <span class="rating">⭐⭐⭐⭐⭐ (78 avis)</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 6 - Throne of Light -->
+                <article class="product-card" data-collection="hierarchies" data-price="39" data-stock="available">
+                    <div class="product-badge premium">PREMIUM</div>
+                    <div class="product-image">
+                        <img src="images/products/throne-light.jpg" alt="T-shirt Throne of Light - BINAEL" loading="lazy">
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product="throne-light">VOIR DÉTAILS</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>THRONE OF LIGHT</h3>
+                        <p class="product-desc">Le trône céleste, justice divine</p>
+                        <div class="product-footer">
+                            <span class="price">39€</span>
+                            <a href="https://votre-boutique.myshopify.com/products/throne-light" 
+                               class="btn-shopify" 
+                               target="_blank">
+                               ACHETER
+                            </a>
+                        </div>
+                        <div class="product-meta">
+                            <span class="stock-info">✓ En stock</span>
+                            <span class="rating">⭐⭐⭐⭐⭐ (91 avis)</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 7 - Vesica Piscis -->
+                <article class="product-card" data-collection="symboles" data-price="35" data-stock="available">
+                    <div class="product-image">
+                        <img src="images/products/vesica-piscis.jpg" alt="T-shirt Vesica Piscis - BINAEL" loading="lazy">
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product="vesica-piscis">VOIR DÉTAILS</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>VESICA PISCIS</h3>
+                        <p class="product-desc">L'union du ciel et de la terre, matrice sacrée</p>
+                        <div class="product-footer">
+                            <span class="price">35€</span>
+                            <a href="https://votre-boutique.myshopify.com/products/vesica-piscis" 
+                               class="btn-shopify" 
+                               target="_blank">
+                               ACHETER
+                            </a>
+                        </div>
+                        <div class="product-meta">
+                            <span class="stock-info">✓ En stock</span>
+                            <span class="rating">⭐⭐⭐⭐⭐ (63 avis)</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 8 - As Above So Below -->
+                <article class="product-card" data-collection="symboles" data-price="35" data-stock="limited">
+                    <div class="product-image">
+                        <img src="images/products/as-above-below.jpg" alt="T-shirt As Above So Below - BINAEL" loading="lazy">
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product="as-above-below">VOIR DÉTAILS</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>AS ABOVE SO BELOW</h3>
+                        <p class="product-desc">Maxime hermétique, correspondance universelle</p>
+                        <div class="product-footer">
+                            <span class="price">35€</span>
+                            <a href="https://votre-boutique.myshopify.com/products/as-above-below" 
+                               class="btn-shopify" 
+                               target="_blank">
+                               ACHETER
+                            </a>
+                        </div>
+                        <div class="product-meta">
+                            <span class="stock-info">⚠️ Stock limité (8 restants)</span>
+                            <span class="rating">⭐⭐⭐⭐⭐ (72 avis)</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 9 - The Philosopher's Stone -->
+                <article class="product-card" data-collection="symboles" data-price="39" data-stock="available">
+                    <div class="product-badge premium">PREMIUM</div>
+                    <div class="product-image">
+                        <img src="images/products/philosophers-stone.jpg" alt="T-shirt The Philosopher's Stone - BINAEL" loading="lazy">
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product="philosophers-stone">VOIR DÉTAILS</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>THE PHILOSOPHER'S STONE</h3>
+                        <p class="product-desc">Alchimie spirituelle, la pierre de transformation</p>
+                        <div class="product-footer">
+                            <span class="price">39€</span>
+                            <a href="https://votre-boutique.myshopify.com/products/philosophers-stone" 
+                               class="btn-shopify" 
+                               target="_blank">
+                               ACHETER
+                            </a>
+                        </div>
+                        <div class="product-meta">
+                            <span class="stock-info">✓ En stock</span>
+                            <span class="rating">⭐⭐⭐⭐⭐ (98 avis)</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Bundle Offer -->
+    <section class="bundle-offer">
+        <div class="container">
+            <div class="bundle-box">
+                <span class="bundle-badge">OFFRE SPÉCIALE</span>
+                <h2>PACK ÉVEIL</h2>
+                <p>3 T-SHIRTS AU CHOIX</p>
+                <div class="bundle-price">
+                    <span class="price-old">105€</span>
+                    <span class="price-new">99€</span>
+                    <span class="price-save">Économisez 6€</span>
+                </div>
+                <a href="https://votre-boutique.myshopify.com/products/pack-eveil-3-tshirts" 
+                   class="btn btn-primary" 
+                   target="_blank">
+                   PROFITER DE L'OFFRE
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Bar -->
+    <section class="shop-info-bar">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-icon">🚚</div>
+                    <h4>Livraison Offerte</h4>
+                    <p>Dès 50€ d'achat</p>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">↩️</div>
+                    <h4>Retours Gratuits</h4>
+                    <p>30 jours pour changer d'avis</p>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">✓</div>
+                    <h4>Qualité Premium</h4>
+                    <p>Coton bio 100% certifié</p>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">🌍</div>
+                    <h4>Made in Europe</h4>
+                    <p>Production éthique locale</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guide Tailles CTA -->
+    <section class="size-guide-cta">
+        <div class="container-narrow">
+            <div class="cta-box">
+                <h3>Besoin d'aide pour choisir votre taille ?</h3>
+                <p>Consultez notre guide des tailles détaillé</p>
+                <a href="qualite.html#guide-tailles" class="btn btn-outline">GUIDE DES TAILLES</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>SHOP</h4>
+                    <ul>
+                        <li><a href="shop.html">Collection Awakening</a></li>
+                        <li><a href="shop.html#nouveautes">Nouveautés</a></li>
+                        <li><a href="shop.html#bestsellers">Best-sellers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>UNIVERS</h4>
+                    <ul>
+                        <li><a href="hierarchies.html">Les Hiérarchies</a></li>
+                        <li><a href="maisons-anges.html">Les Maisons d'Anges</a></li>
+                        <li><a href="ange-gardien.html">Ange Gardien</a></li>
+                        <li><a href="evolution.html">Origine & Évolution</a></li>
+                        <li><a href="quiz.html">Quel Ange Êtes-Vous?</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>INFORMATIONS</h4>
+                    <ul>
+                        <li><a href="qualite.html">Qualité & Entretien</a></li>
+                        <li><a href="legal.html">Mentions Légales</a></li>
+                        <li><a href="legal.html#cgv">CGV</a></li>
+                        <li><a href="legal.html#retours">Politique de Retour</a></li>
+                        <li><a href="legal.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>SUIVEZ-NOUS</h4>
+                    <div class="social-links">
+                        <a href="https://instagram.com/binael.fr" target="_blank" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="https://tiktok.com/@binael.fr" target="_blank" aria-label="TikTok">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                        </a>
+                        <a href="https://pinterest.com/binaelfr" target="_blank" aria-label="Pinterest">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="lang-footer">
+                        <a href="shop.html" class="active-lang">🇫🇷 FR</a>
+                        <span class="lang-separator"> | </span>
+                        <a href="en/shop.html">🇬🇧 EN</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="disclaimer">
+                    ⚠️ <strong>FICTION ÉSOTÉRIQUE</strong><br>
+                    BINAEL est un univers de FICTION basé sur des traditions mystiques.<br>
+                    <a href="legal.html">Lire les mentions légales →</a>
+                </div>
+                <div class="copyright">
+                    <p>BINAEL © 2026 • Fiction ésotérique • Porter • Partager • Profiter</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/shop.js"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Univers Ésotérique | BINAEL</title>
+    <meta name="description" content="Explorez l'univers ésotérique : angéologie, géométrie sacrée, kabbale, spiritualité et style.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo"><a href="index.html"><span class="logo-text">BINAEL</span></a></div>
+            <button class="burger-menu" id="burger-menu"><span></span><span></span><span></span></button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+            </ul>
+            <div class="nav-cart"><a href="shop.html" class="cart-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count">0</span></a></div>
+        </div>
+    </nav>
+
+    <div class="particles-container" id="particles"></div>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>BLOG BINAEL</h1>
+            <p class="page-subtitle">Explorer l'univers ésotérique • Angéologie • Géométrie Sacrée • Spiritualité</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="blog-categories">
+                <button class="category-btn active" data-category="all">Tous</button>
+                <button class="category-btn" data-category="angeologie">Angéologie</button>
+                <button class="category-btn" data-category="geometrie">Géométrie Sacrée</button>
+                <button class="category-btn" data-category="spiritualite">Spiritualité</button>
+                <button class="category-btn" data-category="style">Style</button>
+            </div>
+
+            <div class="blog-grid">
+                <article class="blog-card" data-category="angeologie">
+                    <div class="blog-image">
+                        <img src="images/blog/hierarchies.jpg" alt="Les 9 Hiérarchies Angéliques" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Angéologie</span>
+                        <span class="blog-date">28 Février 2026</span>
+                        <h3>Les 9 Hiérarchies Angéliques Expliquées</h3>
+                        <p>Découvrez les trois triades angéliques, des Séraphins aux Anges gardiens. Plongez dans la structure céleste selon la tradition kabbalistique et chrétienne.</p>
+                        <a href="hierarchies.html" class="blog-link">LIRE L'ARTICLE →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="geometrie">
+                    <div class="blog-image">
+                        <img src="images/blog/metatron.jpg" alt="Le Cube de Métatron" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Géométrie Sacrée</span>
+                        <span class="blog-date">25 Février 2026</span>
+                        <h3>Le Cube de Métatron : Clé de l'Univers</h3>
+                        <p>Explorez la géométrie sacrée à travers le Cube de Métatron, qui contient tous les solides de Platon. Les mathématiques divines révélées.</p>
+                        <a href="#" class="blog-link">LIRE L'ARTICLE →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="spiritualite">
+                    <div class="blog-image">
+                        <img src="images/blog/ange-gardien.jpg" alt="Qui est votre Ange Gardien" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Spiritualité</span>
+                        <span class="blog-date">20 Février 2026</span>
+                        <h3>Qui Est Votre Ange Gardien ?</h3>
+                        <p>Binael pourrait-il être votre guide spirituel ? Découvrez les signes de présence angélique et comment communiquer avec votre ange gardien.</p>
+                        <a href="ange-gardien.html" class="blog-link">LIRE L'ARTICLE →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="angeologie">
+                    <div class="blog-image">
+                        <img src="images/blog/grigori.jpg" alt="Les Anges Déchus" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Angéologie</span>
+                        <span class="blog-date">15 Février 2026</span>
+                        <h3>Histoire des Anges Déchus : Les Grigori</h3>
+                        <p>Plongez dans le Livre d'Hénoch et découvrez l'histoire des 200 anges déchus qui enseignèrent aux hommes les arts interdits.</p>
+                        <a href="evolution.html" class="blog-link">LIRE L'ARTICLE →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="geometrie">
+                    <div class="blog-image">
+                        <img src="images/blog/symboles.jpg" alt="Symboles Hermétiques" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Géométrie Sacrée</span>
+                        <span class="blog-date">10 Février 2026</span>
+                        <h3>Top 5 Symboles Hermétiques et Leur Signification</h3>
+                        <p>Vesica Piscis, Fleur de Vie, Ouroboros... Découvrez les symboles les plus puissants de l'hermétisme et leur signification profonde.</p>
+                        <a href="#" class="blog-link">LIRE L'ARTICLE →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="style">
+                    <div class="blog-image">
+                        <img src="images/blog/style.jpg" alt="Porter le Streetwear Ésotérique" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Style & Inspiration</span>
+                        <span class="blog-date">5 Février 2026</span>
+                        <h3>Comment Porter le Streetwear Ésotérique</h3>
+                        <p>Conseils de style pour intégrer les designs BINAEL dans votre garde-robe. Looks casual, urban et spirituel.</p>
+                        <a href="#" class="blog-link">LIRE L'ARTICLE →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="spiritualite">
+                    <div class="blog-image">
+                        <img src="images/blog/kabbale.jpg" alt="Kabbale pour Débutants" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Spiritualité</span>
+                        <span class="blog-date">1 Février 2026</span>
+                        <h3>Kabbale pour Débutants : L'Arbre de Vie</h3>
+                        <p>Introduction accessible à la Kabbale hébraïque. Comprendre les 10 Sephiroth et les 22 sentiers de l'Arbre de Vie.</p>
+                        <a href="#" class="blog-link">LIRE L'ARTICLE →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="angeologie">
+                    <div class="blog-image">
+                        <img src="images/blog/seraphim.jpg" alt="Les Séraphins" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Angéologie</span>
+                        <span class="blog-date">28 Janvier 2026</span>
+                        <h3>Les Séraphins : Anges de Feu Purificateur</h3>
+                        <p>Plongez dans le monde des Séraphins, les anges les plus proches de Dieu. Leur rôle, leurs six ailes, et leur feu transformateur.</p>
+                        <a href="hierarchies.html" class="blog-link">LIRE L'ARTICLE →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="container-narrow">
+            <div class="newsletter-content">
+                <h2>NEWSLETTER</h2>
+                <p>Recevez nos nouveaux articles et découvertes ésotériques</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="ton@email.com" required>
+                    <button type="submit" class="btn btn-primary">S'INSCRIRE</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><h4>SHOP</h4><ul><li><a href="shop.html">Collection</a></li></ul></div>
+                <div class="footer-col"><h4>BLOG</h4><ul><li><a href="blog.html">Articles</a></li></ul></div>
+            </div>
+            <div class="footer-bottom">
+                <div class="disclaimer">⚠️ <strong>FICTION ÉSOTÉRIQUE</strong></div>
+                <div class="copyright"><p>BINAEL © 2026 • Porter • Partager • Profiter</p></div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+    <script>
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const category = btn.dataset.category;
+                document.querySelectorAll('.blog-card').forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
