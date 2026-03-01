@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BINAEL - Streetwear Ésotérique | Porter • Partager • Profiter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --sky-white: #FFFFFF; --blue-celestial: #4A90E2; --blue-light: #7CB9E8;
+            --blue-pale: #E3F2FD; --gold-divine: #D4AF37; --text-primary: #2C5F8D;
+            --text-secondary: #5B8DB8; --shadow-soft: rgba(74, 144, 226, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(180deg, #FFF 0%, #F8FBFF 50%, #F0F7FF 100%);
+            background-attachment: fixed; color: var(--text-primary); line-height: 1.7;
+        }
+        h1, h2, h3 { font-family: 'Cinzel', serif; font-weight: 600; color: var(--blue-celestial); }
+        h1 { font-size: clamp(2.5rem, 8vw, 5rem); }
+        h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        p { font-size: 1.125rem; margin-bottom: 1rem; color: var(--text-secondary); }
+        a { color: var(--blue-celestial); text-decoration: none; transition: 0.2s; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--blue-pale); position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 2px 20px var(--shadow-soft);
+        }
+        .nav-container {
+            max-width: 1400px; margin: 0 auto; padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo-text {
+            font-family: 'Cinzel', serif; font-size: 1.75rem; font-weight: 700; letter-spacing: 0.2em;
+            background: linear-gradient(135deg, var(--blue-celestial), var(--blue-light), var(--gold-divine));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .nav-menu { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-menu a {
+            font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--text-primary); padding: 0.5rem 0;
+        }
+        
+        /* Discount Banner */
+        .discount-banner {
+            background: linear-gradient(135deg, var(--blue-celestial), var(--blue-light));
+            color: white; padding: 1rem; text-align: center; position: relative;
+        }
+        .discount-text { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.1em; font-weight: 600; }
+        .banner-close {
+            position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+            background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 95vh; display: flex; flex-direction: column; align-items: center;
+            justify-content: center; padding: 6rem 2rem; position: relative;
+        }
+        .hero-content { text-align: center; animation: fadeIn 1.2s ease-out; }
+        .logo-wings { width: 180px; height: 180px; margin-bottom: 2rem; }
+        .logo-text-hero {
+            font-size: clamp(3rem, 10vw, 6rem); font-weight: 700; letter-spacing: 0.25em;
+            background: linear-gradient(135deg, var(--blue-celestial), var(--blue-light), var(--gold-divine));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;
+        }
+        .hero-tagline {
+            font-size: 1.5rem; font-style: italic; color: var(--blue-light);
+            margin-bottom: 4rem; font-weight: 400;
+        }
+        .hero-cta { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block; padding: 1rem 2.5rem; font-family: 'Cinzel', serif;
+            font-size: 0.875rem; letter-spacing: 0.15em; text-transform: uppercase;
+            border: none; cursor: pointer; transition: 0.4s; border-radius: 50px; font-weight: 600;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--blue-celestial), var(--blue-light));
+            color: white; box-shadow: 0 4px 20px rgba(74, 144, 226, 0.3);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(74, 144, 226, 0.4); }
+        .btn-secondary {
+            background: white; border: 2px solid var(--blue-celestial); color: var(--blue-celestial);
+        }
+        .btn-outline { background: transparent; border: 1px solid var(--blue-light); color: var(--blue-celestial); }
+        
+        /* Sections */
+        section { padding: 6rem 0; position: relative; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        
+        /* Products */
+        .products-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem; margin-bottom: 4rem;
+        }
+        .product-card {
+            background: white; border: 1px solid var(--blue-pale); border-radius: 16px;
+            overflow: hidden; transition: 0.4s; box-shadow: 0 4px 20px var(--shadow-soft);
+        }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(74, 144, 226, 0.12); }
+        .product-badge {
+            position: absolute; top: 20px; right: 20px; z-index: 10; padding: 0.5rem 1rem;
+            font-family: 'Cinzel', serif; font-size: 0.75rem; border-radius: 20px; color: white;
+        }
+        .product-badge.best-seller { background: linear-gradient(135deg, #FF6B6B, #FF8E8E); }
+        .product-badge.new { background: linear-gradient(135deg, var(--blue-celestial), var(--blue-light)); }
+        .product-badge.premium { background: linear-gradient(135deg, var(--gold-divine), #FFD700); }
+        .product-image {
+            aspect-ratio: 1; background: #F0F7FF; display: flex; align-items: center;
+            justify-content: center; color: var(--text-secondary); font-size: 0.9rem;
+        }
+        .product-info { padding: 2rem; }
+        .product-info h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+        .product-footer { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .price { font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 700; color: var(--blue-celestial); }
+        .add-to-cart {
+            padding: 0.5rem 1.5rem; background: transparent; border: 2px solid var(--blue-celestial);
+            color: var(--blue-celestial); font-family: 'Cinzel', serif; font-size: 0.75rem;
+            cursor: pointer; border-radius: 25px; font-weight: 600;
+        }
+        .add-to-cart:hover { background: var(--blue-celestial); color: white; }
+        .product-meta { font-size: 0.875rem; border-top: 1px solid var(--blue-pale); padding-top: 1rem; }
+        .rating { color: var(--gold-divine); }
+        
+        /* Other sections */
+        .manifesto {
+            background: linear-gradient(135deg, var(--blue-pale) 0%, white 50%, rgba(212, 175, 55, 0.1) 100%);
+            border-top: 2px solid #B8D8F0; border-bottom: 2px solid #B8D8F0;
+        }
+        .manifesto-content { text-align: center; padding: 2rem; }
+        .quiz-box {
+            background: white; border: 2px solid #B8D8F0; border-radius: 24px; padding: 4rem 3rem;
+            text-align: center; max-width: 700px; margin: 0 auto;
+        }
+        .quiz-icon { font-size: 4rem; margin-bottom: 2rem; }
+        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 4rem; }
+        .value-item {
+            text-align: center; padding: 3rem 2rem; background: white; border: 1px solid var(--blue-pale);
+            border-radius: 16px; transition: 0.4s;
+        }
+        .value-icon { font-size: 2.5rem; color: var(--blue-celestial); margin-bottom: 1rem; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .testimonial { background: white; border: 1px solid var(--blue-pale); border-radius: 16px; padding: 2rem; }
+        .stars { color: var(--gold-divine); margin-bottom: 1rem; }
+        
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, var(--blue-pale), rgba(212, 175, 55, 0.1));
+            border: 2px solid #B8D8F0; border-radius: 24px; margin: 6rem 2rem;
+        }
+        .newsletter-content { text-align: center; padding: 4rem 3rem; }
+        .newsletter-form { display: flex; gap: 1rem; max-width: 500px; margin: 0 auto 1rem; }
+        .newsletter-form input {
+            flex: 1; padding: 1rem 1.5rem; background: white; border: 2px solid #B8D8F0;
+            border-radius: 50px; font-family: 'Cormorant Garamond', serif; font-size: 1rem;
+        }
+        
+        /* Footer */
+        .footer { background: linear-gradient(180deg, white 0%, #F8FBFF 100%); border-top: 2px solid var(--blue-pale); padding: 6rem 0 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; margin-bottom: 4rem; }
+        .footer-col h4 { font-size: 1rem; letter-spacing: 0.15em; margin-bottom: 2rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 1rem; }
+        .footer-bottom { border-top: 1px solid var(--blue-pale); padding-top: 2rem; text-align: center; }
+        .disclaimer {
+            background: var(--blue-pale); border: 1px solid #B8D8F0; border-radius: 12px;
+            padding: 2rem; margin-bottom: 2rem; font-size: 0.95rem;
+        }
+        .disclaimer strong { color: var(--blue-celestial); font-weight: 700; }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .products-grid { grid-template-columns: 1fr; }
+            .hero-cta { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="discount-banner" id="banner">
+        <span class="discount-text">✨ OFFRE SPÉCIALE : 2 T-SHIRTS = -15% • CODE : AWAKENING15</span>
+        <button class="banner-close" onclick="document.getElementById('banner').style.display='none'">&times;</button>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo"><a href="index.html"><span class="logo-text">BINAEL</span></a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="legal.html">Legal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <svg class="logo-wings" viewBox="0 0 200 200">
+                <path d="M100 100 L70 60 L50 50 L40 60 L50 80 L70 90 Z" fill="#FFD700" opacity="0.8"/>
+                <path d="M100 100 L130 60 L150 50 L160 60 L150 80 L130 90 Z" fill="#FFD700" opacity="0.8"/>
+                <circle cx="100" cy="100" r="8" fill="#FFD700"/>
+            </svg>
+            <h1 class="logo-text-hero">BINAEL</h1>
+            <p style="font-family: 'Cinzel', serif; text-transform: uppercase; letter-spacing: 0.15em; color: #5B8DB8;">Collection Awakening • Streetwear Ésotérique</p>
+            <p class="hero-tagline">Porter • Partager • Profiter</p>
+            <div class="hero-cta">
+                <a href="shop.html" class="btn btn-primary">VOIR LA COLLECTION</a>
+                <a href="hierarchies.html" class="btn btn-secondary">DÉCOUVRIR L'UNIVERS</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="collection-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2>COLLECTION</h2>
+                <p>Designs exclusifs • Éditions limitées • 100 pièces par design</p>
+            </div>
+            <div class="products-grid">
+                <article class="product-card" style="position: relative;">
+                    <div class="product-badge best-seller">BEST-SELLER</div>
+                    <div class="product-image">[Image: L'Ange Doré]</div>
+                    <div class="product-info">
+                        <h3>L'ANGE DORÉ</h3>
+                        <p>Le gardien bienveillant, la lumière dans l'obscurité</p>
+                        <div class="product-footer">
+                            <span class="price">35€</span>
+                            <button class="add-to-cart" onclick="alert('Ajouté au panier !')">AJOUTER</button>
+                        </div>
+                        <div class="product-meta">
+                            <div>⚠️ Plus que 23 disponibles</div>
+                            <div class="rating">⭐⭐⭐⭐⭐ (87 avis)</div>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="product-card" style="position: relative;">
+                    <div class="product-badge new">NEW</div>
+                    <div class="product-image">[Image: Fallen Light]</div>
+                    <div class="product-info">
+                        <h3>FALLEN LIGHT</h3>
+                        <p>Entre deux mondes, la quête de rédemption</p>
+                        <div class="product-footer">
+                            <span class="price">35€</span>
+                            <button class="add-to-cart" onclick="alert('Ajouté au panier !')">AJOUTER</button>
+                        </div>
+                        <div class="product-meta">
+                            <div>🔥 47 personnes regardent</div>
+                            <div class="rating">⭐⭐⭐⭐⭐ (42 avis)</div>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="product-card" style="position: relative;">
+                    <div class="product-badge premium">PREMIUM</div>
+                    <div class="product-image">[Image: Sacred Geometry]</div>
+                    <div class="product-info">
+                        <h3>SACRED GEOMETRY</h3>
+                        <p>Les clés de l'univers, le langage sacré</p>
+                        <div class="product-footer">
+                            <span class="price">39€</span>
+                            <button class="add-to-cart" onclick="alert('Ajouté au panier !')">AJOUTER</button>
+                        </div>
+                        <div class="product-meta">
+                            <div>⏰ Édition limitée</div>
+                            <div class="rating">⭐⭐⭐⭐⭐ (134 avis)</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div style="text-align: center;"><a href="shop.html" class="btn btn-outline">VOIR TOUTE LA COLLECTION</a></div>
+        </div>
+    </section>
+
+    <section class="manifesto">
+        <div class="container">
+            <div class="manifesto-content">
+                <h2>L'ÉVEIL COMMENCE</h2>
+                <div style="width: 100px; height: 2px; background: linear-gradient(to right, transparent, #7CB9E8, transparent); margin: 2rem auto;"></div>
+                <p style="font-size: 1.35rem; font-style: italic; margin-bottom: 2rem;">Depuis la nuit des temps, ils veillent. Dans les textes d'Hénoch, la Kabbale hébraïque, les traditions hermétiques.</p>
+                <p><strong>BINAEL n'est pas qu'une marque.</strong></p>
+                <p>C'est un univers, une fiction ésotérique qui explore nos mythologies, nos quêtes spirituelles, notre connexion au divin.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="quiz-cta">
+        <div class="container">
+            <div class="quiz-box">
+                <div class="quiz-icon">🪽</div>
+                <h2>QUEL ANGE ÊTES-VOUS ?</h2>
+                <p>Découvrez votre hiérarchie angélique et votre ange gardien</p>
+                <a href="quiz.html" class="btn btn-primary">COMMENCER LE QUIZ</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="values" style="background: #F8FBFF;">
+        <div class="container">
+            <div class="section-header"><h2>NOS VALEURS</h2></div>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-icon">✓</div>
+                    <h3>Coton Bio 100%</h3>
+                    <p>Certifié GOTS, doux et respectueux</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">✓</div>
+                    <h3>Impression Durable</h3>
+                    <p>Testée 50+ lavages à 30°C</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">✓</div>
+                    <h3>Made in Europe</h3>
+                    <p>Production éthique et locale</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">✓</div>
+                    <h3>Éditions Limitées</h3>
+                    <p>100 pièces numérotées</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="social-proof">
+        <div class="container">
+            <div class="section-header">
+                <h2>ILS PORTENT BINAEL</h2>
+                <p style="color: #4A90E2;">Rejoins les 500+ éveilleurs</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p style="font-style: italic;">"L'imprimé résiste parfaitement, qualité incroyable !"</p>
+                    <cite style="font-style: normal; font-size: 0.875rem; color: #4A90E2; font-weight: 600;">— Marie L.</cite>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p style="font-style: italic;">"Design sublime, j'ai reçu plein de compliments."</p>
+                    <cite style="font-style: normal; font-size: 0.875rem; color: #4A90E2; font-weight: 600;">— Julie</cite>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p style="font-style: italic;">"Le coton est d'une douceur exceptionnelle !"</p>
+                    <cite style="font-style: normal; font-size: 0.875rem; color: #4A90E2; font-weight: 600;">— Thomas R.</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>REJOINS L'ÉVEIL</h2>
+                <p>Reçois les nouvelles collections en avant-première</p>
+                <form class="newsletter-form" onsubmit="alert('Merci ! Bienvenue 🎁'); return false;">
+                    <input type="email" placeholder="ton@email.com" required>
+                    <button type="submit" class="btn btn-primary">S'INSCRIRE</button>
+                </form>
+                <p style="color: #D4AF37; font-weight: 600;">🎁 -10% sur ta première commande</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>SHOP</h4>
+                    <ul><li><a href="shop.html">Collection</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>UNIVERS</h4>
+                    <ul>
+                        <li><a href="hierarchies.html">Hiérarchies</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>INFORMATIONS</h4>
+                    <ul>
+                        <li><a href="qualite.html">Qualité</a></li>
+                        <li><a href="legal.html">Legal</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="disclaimer">
+                    ⚠️ <strong>FICTION ÉSOTÉRIQUE</strong><br>
+                    BINAEL est un univers de FICTION basé sur des traditions mystiques.
+                </div>
+                <div style="font-size: 0.875rem; color: #5B8DB8; opacity: 0.7;">
+                    <p>BINAEL © 2026 • Porter • Partager • Profiter</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
