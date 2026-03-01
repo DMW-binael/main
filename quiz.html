@@ -2,260 +2,171 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quel Ange Êtes-Vous? | Quiz BINAEL</title>
-    <meta name="description" content="Découvrez votre hiérarchie angélique à travers 10 questions ésotériques. Quel ange gardien correspond à votre essence spirituelle?">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Quel Ange Êtes-Vous? | BINAEL</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/quiz.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cormorant Garamond', serif; background: linear-gradient(180deg, #FFF, #F8FBFF, #F0F7FF); background-attachment: fixed; color: #2C5F8D; line-height: 1.7; }
+        h1, h2 { font-family: 'Cinzel', serif; color: #4A90E2; }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
+        .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #E3F2FD; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(74,144,226,0.08); }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; }
+        .logo-text { font-family: 'Cinzel', serif; font-size: 1.75rem; font-weight: 700; letter-spacing: 0.2em; background: linear-gradient(135deg, #4A90E2, #7CB9E8, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .quiz-intro { min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 4rem 2rem; }
+        .intro-box { background: white; border: 2px solid #B8D8F0; border-radius: 24px; padding: 4rem 3rem; text-align: center; box-shadow: 0 8px 40px rgba(74,144,226,0.12); }
+        .intro-icon { font-size: 5rem; margin-bottom: 2rem; }
+        .btn { padding: 1rem 2.5rem; font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.15em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 50px; font-weight: 600; background: linear-gradient(135deg, #4A90E2, #7CB9E8); color: white; text-decoration: none; display: inline-block; }
+        .question-box { background: white; border: 2px solid #B8D8F0; border-radius: 24px; padding: 3rem; margin: 4rem auto; box-shadow: 0 8px 40px rgba(74,144,226,0.12); display: none; }
+        .question-box.active { display: block; }
+        .answers { margin-top: 2rem; }
+        .answer-btn { width: 100%; padding: 1.5rem; background: #F0F7FF; border: 2px solid #E3F2FD; border-radius: 16px; font-family: 'Cormorant Garamond', serif; font-size: 1.125rem; color: #2C5F8D; cursor: pointer; margin-bottom: 1rem; text-align: left; transition: 0.3s; }
+        .answer-btn:hover { background: #E3F2FD; border-color: #4A90E2; transform: translateX(10px); }
+        .results-box { background: white; border: 2px solid #B8D8F0; border-radius: 24px; padding: 4rem 3rem; margin: 4rem auto; text-align: center; display: none; }
+        .results-box.active { display: block; }
+        .results-icon { font-size: 6rem; margin-bottom: 2rem; }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html">
-                    <span class="logo-text">BINAEL</span>
-                </a>
-            </div>
-            
-            <button class="burger-menu" id="burger-menu" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li class="nav-dropdown">
-                    <a href="#" class="dropdown-toggle">Univers <span class="arrow">▼</span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="hierarchies.html">Les Hiérarchies</a></li>
-                        <li><a href="maisons-anges.html">Les Maisons d'Anges</a></li>
-                        <li><a href="ange-gardien.html">Qu'est-ce qu'un Ange Gardien?</a></li>
-                        <li><a href="evolution.html">Origine & Évolution</a></li>
-                    </ul>
-                </li>
-                <li><a href="quiz.html" class="active">Quel Ange Êtes-Vous?</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="qualite.html">Qualité & Entretien</a></li>
-                <li><a href="legal.html">Legal</a></li>
-                <li class="lang-switch">
-                    <a href="quiz.html" class="active-lang">FR</a>
-                    <span class="lang-separator">/</span>
-                    <a href="en/quiz.html">EN</a>
-                </li>
-            </ul>
-            
-            <div class="nav-cart">
-                <a href="shop.html" class="cart-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="9" cy="21" r="1"/>
-                        <circle cx="20" cy="21" r="1"/>
-                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-                    </svg>
-                    <span class="cart-count">0</span>
-                </a>
-            </div>
+            <div><a href="index.html" style="text-decoration: none;"><span class="logo-text">BINAEL</span></a></div>
         </div>
     </nav>
 
-    <!-- Particles Background -->
-    <div class="particles-container" id="particles"></div>
-
-    <!-- Quiz Container -->
-    <div class="quiz-container">
-        
-        <!-- Intro Screen -->
-        <section class="quiz-intro" id="quiz-intro">
-            <div class="intro-content">
-                <div class="intro-icon">🪽</div>
-                <h1>QUEL ANGE ÊTES-VOUS ?</h1>
-                <p class="intro-text">
-                    Découvrez votre hiérarchie angélique et votre ange gardien 
-                    à travers 10 questions ésotériques inspirées de la Kabbale 
-                    et des traditions hermétiques.
-                </p>
-                <p class="intro-subtext">
-                    Chaque réponse révèle un aspect de votre essence spirituelle.
-                </p>
-                <button class="btn btn-primary btn-large" id="start-quiz">
-                    ✨ COMMENCER LE QUIZ
-                </button>
-                <p class="intro-disclaimer">
-                    ⚠️ Ce quiz est une fiction ésotérique à but divertissant et contemplatif
-                </p>
-            </div>
-        </section>
-
-        <!-- Quiz Questions -->
-        <section class="quiz-questions" id="quiz-questions" style="display: none;">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress-fill"></div>
-                <span class="progress-text" id="progress-text">Question 1/10</span>
-            </div>
-
-            <div class="question-container" id="question-container">
-                <!-- Questions will be dynamically loaded here -->
-            </div>
-        </section>
-
-        <!-- Results Screen -->
-        <section class="quiz-results" id="quiz-results" style="display: none;">
-            <div class="results-content">
-                <div class="results-badge">
-                    <span class="results-icon" id="results-icon">🪽</span>
-                </div>
-                <h2 class="results-title" id="results-title">VOUS ÊTES UN SÉRAPHIN</h2>
-                <p class="results-subtitle" id="results-subtitle">L'Ardent • Le Feu Purificateur</p>
-                
-                <div class="results-image" id="results-image">
-                    <img src="images/angels/seraphim.png" alt="Séraphin">
-                </div>
-                
-                <div class="results-description" id="results-description">
-                    <!-- Description will be loaded dynamically -->
-                </div>
-                
-                <div class="results-qualities">
-                    <h3>Vos Qualités</h3>
-                    <ul id="results-qualities-list">
-                        <!-- Qualities will be loaded dynamically -->
-                    </ul>
-                </div>
-                
-                <div class="results-mission">
-                    <h3>Votre Mission</h3>
-                    <p id="results-mission-text"><!-- Mission will be loaded dynamically --></p>
-                </div>
-                
-                <div class="results-product">
-                    <h3>Votre T-shirt Parfait</h3>
-                    <div class="product-recommendation" id="product-recommendation">
-                        <!-- Product will be loaded dynamically -->
-                    </div>
-                </div>
-                
-                <div class="results-actions">
-                    <div class="social-share">
-                        <h4>Partager mon résultat :</h4>
-                        <div class="share-buttons">
-                            <button class="share-btn share-twitter" id="share-twitter">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
-                                </svg>
-                                Twitter
-                            </button>
-                            <button class="share-btn share-facebook" id="share-facebook">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
-                                </svg>
-                                Facebook
-                            </button>
-                            <button class="share-btn share-copy" id="share-copy">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
-                                </svg>
-                                Copier le lien
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <button class="btn btn-outline" id="restart-quiz">
-                        🔄 REFAIRE LE QUIZ
-                    </button>
-                    
-                    <a href="ange-gardien.html" class="btn btn-secondary">
-                        📖 EN SAVOIR PLUS SUR LES ANGES
-                    </a>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
+    <div class="quiz-intro" id="intro">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>SHOP</h4>
-                    <ul>
-                        <li><a href="shop.html">Collection Awakening</a></li>
-                        <li><a href="shop.html#nouveautes">Nouveautés</a></li>
-                        <li><a href="shop.html#bestsellers">Best-sellers</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>UNIVERS</h4>
-                    <ul>
-                        <li><a href="hierarchies.html">Les Hiérarchies</a></li>
-                        <li><a href="maisons-anges.html">Les Maisons d'Anges</a></li>
-                        <li><a href="ange-gardien.html">Ange Gardien</a></li>
-                        <li><a href="evolution.html">Origine & Évolution</a></li>
-                        <li><a href="quiz.html">Quel Ange Êtes-Vous?</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>INFORMATIONS</h4>
-                    <ul>
-                        <li><a href="qualite.html">Qualité & Entretien</a></li>
-                        <li><a href="legal.html">Mentions Légales</a></li>
-                        <li><a href="legal.html#cgv">CGV</a></li>
-                        <li><a href="legal.html#retours">Politique de Retour</a></li>
-                        <li><a href="legal.html#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>SUIVEZ-NOUS</h4>
-                    <div class="social-links">
-                        <a href="https://instagram.com/binael.fr" target="_blank" aria-label="Instagram">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
-                        <a href="https://tiktok.com/@binael.fr" target="_blank" aria-label="TikTok">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                            </svg>
-                        </a>
-                        <a href="https://pinterest.com/binaelfr" target="_blank" aria-label="Pinterest">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="lang-footer">
-                        <a href="quiz.html" class="active-lang">🇫🇷 FR</a>
-                        <span class="lang-separator"> | </span>
-                        <a href="en/quiz.html">🇬🇧 EN</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div class="disclaimer">
-                    ⚠️ <strong>FICTION ÉSOTÉRIQUE</strong><br>
-                    BINAEL est un univers de FICTION basé sur des traditions mystiques.<br>
-                    <a href="legal.html">Lire les mentions légales →</a>
-                </div>
-                <div class="copyright">
-                    <p>BINAEL © 2026 • Fiction ésotérique • Porter • Partager • Profiter</p>
-                </div>
+            <div class="intro-box">
+                <div class="intro-icon">🪽</div>
+                <h1 style="margin-bottom: 1rem;">QUEL ANGE ÊTES-VOUS ?</h1>
+                <p style="font-size: 1.125rem; color: #5B8DB8; margin-bottom: 3rem;">
+                    Découvrez votre hiérarchie angélique à travers 5 questions ésotériques
+                </p>
+                <button class="btn" onclick="startQuiz()">✨ COMMENCER LE QUIZ</button>
             </div>
         </div>
-    </footer>
+    </div>
 
-    <script src="js/script.js"></script>
-    <script src="js/quiz.js"></script>
+    <div class="container">
+        <div class="question-box" id="q1">
+            <h2 style="margin-bottom: 2rem;">Quel élément vous attire le plus ?</h2>
+            <div class="answers">
+                <button class="answer-btn" onclick="answer('seraphim')">🔥 Le Feu (passion, transformation)</button>
+                <button class="answer-btn" onclick="answer('gardien')">💧 L'Eau (émotion, intuition)</button>
+                <button class="answer-btn" onclick="answer('throne')">🌍 La Terre (stabilité, matérialité)</button>
+                <button class="answer-btn" onclick="answer('cherubim')">💨 L'Air (intellect, communication)</button>
+            </div>
+        </div>
+
+        <div class="question-box" id="q2">
+            <h2 style="margin-bottom: 2rem;">Quelle qualité vous définit le mieux ?</h2>
+            <div class="answers">
+                <button class="answer-btn" onclick="answer('gardien')">❤️ La compassion</button>
+                <button class="answer-btn" onclick="answer('seraphim')">💪 La force</button>
+                <button class="answer-btn" onclick="answer('cherubim')">🧠 La sagesse</button>
+                <button class="answer-btn" onclick="answer('throne')">⚖️ La justice</button>
+            </div>
+        </div>
+
+        <div class="question-box" id="q3">
+            <h2 style="margin-bottom: 2rem;">Quelle serait votre mission idéale ?</h2>
+            <div class="answers">
+                <button class="answer-btn" onclick="answer('gardien')">🛡️ Protéger les innocents</button>
+                <button class="answer-btn" onclick="answer('cherubim')">📚 Transmettre la connaissance</button>
+                <button class="answer-btn" onclick="answer('throne')">⚔️ Combattre l'injustice</button>
+                <button class="answer-btn" onclick="answer('seraphim')">🔥 Purifier et transformer</button>
+            </div>
+        </div>
+
+        <div class="question-box" id="q4">
+            <h2 style="margin-bottom: 2rem;">Quelle couleur résonne en vous ?</h2>
+            <div class="answers">
+                <button class="answer-btn" onclick="answer('seraphim')">🟡 Or (divinité, lumière)</button>
+                <button class="answer-btn" onclick="answer('cherubim')">🔵 Bleu (ciel, infini)</button>
+                <button class="answer-btn" onclick="answer('gardien')">⚪ Blanc (pureté, clarté)</button>
+                <button class="answer-btn" onclick="answer('throne')">⚪ Argent (justice, équilibre)</button>
+            </div>
+        </div>
+
+        <div class="question-box" id="q5">
+            <h2 style="margin-bottom: 2rem;">Que cherchez-vous ?</h2>
+            <div class="answers">
+                <button class="answer-btn" onclick="answer('cherubim')">🔍 La vérité absolue</button>
+                <button class="answer-btn" onclick="answer('gardien')">💖 L'amour universel</button>
+                <button class="answer-btn" onclick="answer('seraphim')">⚡ Le pouvoir intérieur</button>
+                <button class="answer-btn" onclick="answer('throne')">⚖️ La justice et l'équilibre</button>
+            </div>
+        </div>
+
+        <div class="results-box" id="results">
+            <div class="results-icon" id="result-icon">🔥</div>
+            <h1 id="result-title" style="margin-bottom: 1rem;">VOUS ÊTES UN SÉRAPHIN</h1>
+            <p id="result-desc" style="font-size: 1.125rem; color: #5B8DB8; margin-bottom: 2rem; line-height: 1.8;">
+                Vous êtes un Séraphin, le plus proche du divin. Votre essence est le feu pur de la transformation.
+            </p>
+            <a href="shop.html" class="btn">VOIR VOTRE T-SHIRT PARFAIT</a>
+            <button class="btn" onclick="location.reload()" style="margin-left: 1rem; background: white; border: 2px solid #4A90E2; color: #4A90E2;">REFAIRE LE QUIZ</button>
+        </div>
+    </div>
+
+    <script>
+        let scores = { seraphim: 0, cherubim: 0, throne: 0, gardien: 0 };
+        let currentQ = 0;
+        
+        function startQuiz() {
+            document.getElementById('intro').style.display = 'none';
+            document.getElementById('q1').classList.add('active');
+        }
+        
+        function answer(type) {
+            scores[type]++;
+            currentQ++;
+            document.querySelectorAll('.question-box').forEach(q => q.classList.remove('active'));
+            
+            if (currentQ < 5) {
+                document.getElementById('q' + (currentQ + 1)).classList.add('active');
+            } else {
+                showResults();
+            }
+        }
+        
+        function showResults() {
+            let maxScore = 0;
+            let result = 'seraphim';
+            for (let type in scores) {
+                if (scores[type] > maxScore) {
+                    maxScore = scores[type];
+                    result = type;
+                }
+            }
+            
+            const results = {
+                seraphim: {
+                    icon: '🔥',
+                    title: 'SÉRAPHIN',
+                    desc: 'Vous êtes un Séraphin, le plus proche du divin. Votre essence est le feu pur de la transformation. Votre passion ardente purifie et élève.'
+                },
+                cherubim: {
+                    icon: '📚',
+                    title: 'CHÉRUBIN',
+                    desc: 'Vous êtes un Chérubin, gardien de la sagesse divine. Votre intellect pénétrant et votre soif de connaissance vous distinguent.'
+                },
+                throne: {
+                    icon: '⚖️',
+                    title: 'TRÔNE',
+                    desc: 'Vous êtes un Trône, pilier de la justice divine. Votre sens inébranlable de l\'équité et votre intégrité vous rendent incorruptible.'
+                },
+                gardien: {
+                    icon: '🛡️',
+                    title: 'ANGE GARDIEN',
+                    desc: 'Vous êtes un Ange Gardien, protecteur dévoué. Votre compassion infinie et votre présence réconfortante apaisent les cœurs troublés.'
+                }
+            };
+            
+            document.getElementById('result-icon').textContent = results[result].icon;
+            document.getElementById('result-title').textContent = 'VOUS ÊTES ' + results[result].title;
+            document.getElementById('result-desc').textContent = results[result].desc;
+            document.getElementById('results').classList.add('active');
+        }
+    </script>
 </body>
 </html>
