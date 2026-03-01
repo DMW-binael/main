@@ -3,250 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BINAEL - Streetwear Ésotérique | Collection Awakening</title>
-    <meta name="description" content="T-shirts ésotériques édition limitée. Anges, géométrie sacrée, symbolisme hermétique. 100 pièces par design.">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>BINAEL - Streetwear Ésotérique | Porter • Partager • Profiter</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --sky-white: #FFFFFF; --blue-celestial: #4A90E2; --blue-light: #7CB9E8;
+            --blue-pale: #E3F2FD; --gold-divine: #D4AF37; --text-primary: #2C5F8D;
+            --text-secondary: #5B8DB8; --shadow-soft: rgba(74, 144, 226, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(180deg, #FFF 0%, #F8FBFF 50%, #F0F7FF 100%);
+            background-attachment: fixed; color: var(--text-primary); line-height: 1.7;
+        }
+        h1, h2, h3 { font-family: 'Cinzel', serif; font-weight: 600; color: var(--blue-celestial); }
+        h1 { font-size: clamp(2.5rem, 8vw, 5rem); }
+        h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        p { font-size: 1.125rem; margin-bottom: 1rem; color: var(--text-secondary); }
+        a { color: var(--blue-celestial); text-decoration: none; transition: 0.2s; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--blue-pale); position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 2px 20px var(--shadow-soft);
+        }
+        .nav-container {
+            max-width: 1400px; margin: 0 auto; padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo-text {
+            font-family: 'Cinzel', serif; font-size: 1.75rem; font-weight: 700; letter-spacing: 0.2em;
+            background: linear-gradient(135deg, var(--blue-celestial), var(--blue-light), var(--gold-divine));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .nav-menu { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-menu a {
+            font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--text-primary); padding: 0.5rem 0;
+        }
+        
+        /* Discount Banner */
+        .discount-banner {
+            background: linear-gradient(135deg, var(--blue-celestial), var(--blue-light));
+            color: white; padding: 1rem; text-align: center; position: relative;
+        }
+        .discount-text { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.1em; font-weight: 600; }
+        .banner-close {
+            position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+            background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 95vh; display: flex; flex-direction: column; align-items: center;
+            justify-content: center; padding: 6rem 2rem; position: relative;
+        }
+        .hero-content { text-align: center; animation: fadeIn 1.2s ease-out; }
+        .logo-wings { width: 180px; height: 180px; margin-bottom: 2rem; }
+        .logo-text-hero {
+            font-size: clamp(3rem, 10vw, 6rem); font-weight: 700; letter-spacing: 0.25em;
+            background: linear-gradient(135deg, var(--blue-celestial), var(--blue-light), var(--gold-divine));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;
+        }
+        .hero-tagline {
+            font-size: 1.5rem; font-style: italic; color: var(--blue-light);
+            margin-bottom: 4rem; font-weight: 400;
+        }
+        .hero-cta { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block; padding: 1rem 2.5rem; font-family: 'Cinzel', serif;
+            font-size: 0.875rem; letter-spacing: 0.15em; text-transform: uppercase;
+            border: none; cursor: pointer; transition: 0.4s; border-radius: 50px; font-weight: 600;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--blue-celestial), var(--blue-light));
+            color: white; box-shadow: 0 4px 20px rgba(74, 144, 226, 0.3);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(74, 144, 226, 0.4); }
+        .btn-secondary {
+            background: white; border: 2px solid var(--blue-celestial); color: var(--blue-celestial);
+        }
+        .btn-outline { background: transparent; border: 1px solid var(--blue-light); color: var(--blue-celestial); }
+        
+        /* Sections */
+        section { padding: 6rem 0; position: relative; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        
+        /* Products */
+        .products-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem; margin-bottom: 4rem;
+        }
+        .product-card {
+            background: white; border: 1px solid var(--blue-pale); border-radius: 16px;
+            overflow: hidden; transition: 0.4s; box-shadow: 0 4px 20px var(--shadow-soft);
+        }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(74, 144, 226, 0.12); }
+        .product-badge {
+            position: absolute; top: 20px; right: 20px; z-index: 10; padding: 0.5rem 1rem;
+            font-family: 'Cinzel', serif; font-size: 0.75rem; border-radius: 20px; color: white;
+        }
+        .product-badge.best-seller { background: linear-gradient(135deg, #FF6B6B, #FF8E8E); }
+        .product-badge.new { background: linear-gradient(135deg, var(--blue-celestial), var(--blue-light)); }
+        .product-badge.premium { background: linear-gradient(135deg, var(--gold-divine), #FFD700); }
+        .product-image {
+            aspect-ratio: 1; background: #F0F7FF; display: flex; align-items: center;
+            justify-content: center; color: var(--text-secondary); font-size: 0.9rem;
+        }
+        .product-info { padding: 2rem; }
+        .product-info h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+        .product-footer { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .price { font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 700; color: var(--blue-celestial); }
+        .add-to-cart {
+            padding: 0.5rem 1.5rem; background: transparent; border: 2px solid var(--blue-celestial);
+            color: var(--blue-celestial); font-family: 'Cinzel', serif; font-size: 0.75rem;
+            cursor: pointer; border-radius: 25px; font-weight: 600;
+        }
+        .add-to-cart:hover { background: var(--blue-celestial); color: white; }
+        .product-meta { font-size: 0.875rem; border-top: 1px solid var(--blue-pale); padding-top: 1rem; }
+        .rating { color: var(--gold-divine); }
+        
+        /* Other sections */
+        .manifesto {
+            background: linear-gradient(135deg, var(--blue-pale) 0%, white 50%, rgba(212, 175, 55, 0.1) 100%);
+            border-top: 2px solid #B8D8F0; border-bottom: 2px solid #B8D8F0;
+        }
+        .manifesto-content { text-align: center; padding: 2rem; }
+        .quiz-box {
+            background: white; border: 2px solid #B8D8F0; border-radius: 24px; padding: 4rem 3rem;
+            text-align: center; max-width: 700px; margin: 0 auto;
+        }
+        .quiz-icon { font-size: 4rem; margin-bottom: 2rem; }
+        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 4rem; }
+        .value-item {
+            text-align: center; padding: 3rem 2rem; background: white; border: 1px solid var(--blue-pale);
+            border-radius: 16px; transition: 0.4s;
+        }
+        .value-icon { font-size: 2.5rem; color: var(--blue-celestial); margin-bottom: 1rem; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .testimonial { background: white; border: 1px solid var(--blue-pale); border-radius: 16px; padding: 2rem; }
+        .stars { color: var(--gold-divine); margin-bottom: 1rem; }
+        
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, var(--blue-pale), rgba(212, 175, 55, 0.1));
+            border: 2px solid #B8D8F0; border-radius: 24px; margin: 6rem 2rem;
+        }
+        .newsletter-content { text-align: center; padding: 4rem 3rem; }
+        .newsletter-form { display: flex; gap: 1rem; max-width: 500px; margin: 0 auto 1rem; }
+        .newsletter-form input {
+            flex: 1; padding: 1rem 1.5rem; background: white; border: 2px solid #B8D8F0;
+            border-radius: 50px; font-family: 'Cormorant Garamond', serif; font-size: 1rem;
+        }
+        
+        /* Footer */
+        .footer { background: linear-gradient(180deg, white 0%, #F8FBFF 100%); border-top: 2px solid var(--blue-pale); padding: 6rem 0 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; margin-bottom: 4rem; }
+        .footer-col h4 { font-size: 1rem; letter-spacing: 0.15em; margin-bottom: 2rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 1rem; }
+        .footer-bottom { border-top: 1px solid var(--blue-pale); padding-top: 2rem; text-align: center; }
+        .disclaimer {
+            background: var(--blue-pale); border: 1px solid #B8D8F0; border-radius: 12px;
+            padding: 2rem; margin-bottom: 2rem; font-size: 0.95rem;
+        }
+        .disclaimer strong { color: var(--blue-celestial); font-weight: 700; }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .products-grid { grid-template-columns: 1fr; }
+            .hero-cta { flex-direction: column; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Discount Banner -->
-    <div class="discount-banner" id="discount-banner">
-        <div class="discount-content">
-            <span class="discount-icon">✨</span>
-            <span class="discount-text">OFFRE SPÉCIALE : 2 T-SHIRTS ACHETÉS = -15% • CODE : AWAKENING15</span>
-            <button class="banner-close" aria-label="Fermer">&times;</button>
-        </div>
+    <div class="discount-banner" id="banner">
+        <span class="discount-text">✨ OFFRE SPÉCIALE : 2 T-SHIRTS = -15% • CODE : AWAKENING15</span>
+        <button class="banner-close" onclick="document.getElementById('banner').style.display='none'">&times;</button>
     </div>
 
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html">
-                    <span class="logo-text">BINAEL</span>
-                </a>
-            </div>
-            
-            <!-- Burger Menu -->
-            <button class="burger-menu" id="burger-menu" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="index.html" class="active">Accueil</a></li>
+            <div class="nav-logo"><a href="index.html"><span class="logo-text">BINAEL</span></a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
                 <li><a href="shop.html">Shop</a></li>
-                <li class="nav-dropdown">
-                    <a href="#" class="dropdown-toggle">Univers <span class="arrow">▼</span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="hiérarchies.html">Les Hiérarchies</a></li>
-                        <li><a href="maisons-anges.html">Les Maisons d'Anges</a></li>
-                        <li><a href="ange-gardien.html">Qu'est-ce qu'un Ange Gardien?</a></li>
-                        <li><a href="evolution.html">Origine & Évolution</a></li>
-                    </ul>
-                </li>
-                <li><a href="quiz.html">Quel Ange Êtes-Vous?</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="qualite.html">Qualité & Entretien</a></li>
                 <li><a href="legal.html">Legal</a></li>
-                <li class="lang-switch">
-                    <a href="index.html" class="active-lang">FR</a>
-                    <span class="lang-separator">/</span>
-                    <a href="en/index.html">EN</a>
-                </li>
             </ul>
-            
-            <div class="nav-cart">
-                <a href="shop.html#cart" class="cart-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="9" cy="21" r="1"/>
-                        <circle cx="20" cy="21" r="1"/>
-                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-                    </svg>
-                    <span class="cart-count">0</span>
-                </a>
-            </div>
         </div>
     </nav>
 
-    <!-- Particles Background -->
-    <div class="particles-container" id="particles"></div>
-
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-logo">
-                <svg class="logo-wings" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <filter id="glow">
-                            <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                            <feMerge>
-                                <feMergeNode in="coloredBlur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
-                        <linearGradient id="wingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    
-                    <!-- Left Wing -->
-                    <path d="M100 100 L70 60 L50 50 L40 60 L50 80 L70 90 Z" 
-                          fill="url(#wingGradient)" opacity="0.8" filter="url(#glow)"/>
-                    
-                    <!-- Right Wing -->
-                    <path d="M100 100 L130 60 L150 50 L160 60 L150 80 L130 90 Z" 
-                          fill="url(#wingGradient)" opacity="0.8" filter="url(#glow)"/>
-                    
-                    <!-- Body/Halo -->
-                    <circle cx="100" cy="100" r="8" fill="#FFD700" filter="url(#glow)"/>
-                    
-                    <!-- Halo Ring -->
-                    <circle cx="100" cy="85" r="15" fill="none" stroke="#FFD700" 
-                            stroke-width="2" opacity="0.6" filter="url(#glow)"/>
-                </svg>
-                <h1 class="logo-text-hero">BINAEL</h1>
-            </div>
-            
-            <p class="hero-subtitle">Collection Awakening • Streetwear Ésotérique • Fiction</p>
+            <svg class="logo-wings" viewBox="0 0 200 200">
+                <path d="M100 100 L70 60 L50 50 L40 60 L50 80 L70 90 Z" fill="#FFD700" opacity="0.8"/>
+                <path d="M100 100 L130 60 L150 50 L160 60 L150 80 L130 90 Z" fill="#FFD700" opacity="0.8"/>
+                <circle cx="100" cy="100" r="8" fill="#FFD700"/>
+            </svg>
+            <h1 class="logo-text-hero">BINAEL</h1>
+            <p style="font-family: 'Cinzel', serif; text-transform: uppercase; letter-spacing: 0.15em; color: #5B8DB8;">Collection Awakening • Streetwear Ésotérique</p>
             <p class="hero-tagline">Porter • Partager • Profiter</p>
-            
             <div class="hero-cta">
                 <a href="shop.html" class="btn btn-primary">VOIR LA COLLECTION</a>
-                <a href="hiérarchies.html" class="btn btn-secondary">DÉCOUVRIR L'UNIVERS</a>
+                <a href="hierarchies.html" class="btn btn-secondary">DÉCOUVRIR L'UNIVERS</a>
             </div>
-        </div>
-        
-        <div class="scroll-indicator">
-            <span>EXPLORER</span>
-            <div class="scroll-line"></div>
         </div>
     </section>
 
-    <!-- Collection Preview -->
     <section class="collection-preview">
         <div class="container">
             <div class="section-header">
                 <h2>COLLECTION</h2>
                 <p>Designs exclusifs • Éditions limitées • 100 pièces par design</p>
             </div>
-            
             <div class="products-grid">
-                <!-- Product 1 -->
-                <article class="product-card" data-product="ange-dore">
+                <article class="product-card" style="position: relative;">
                     <div class="product-badge best-seller">BEST-SELLER</div>
-                    <div class="product-image">
-                        <img src="images/products/ange-dore.jpg" alt="T-shirt L'Ange Doré - BINAEL" loading="lazy">
-                        <div class="product-overlay">
-                            <button class="quick-view" data-product="ange-dore">VOIR DÉTAILS</button>
-                        </div>
-                    </div>
+                    <div class="product-image">[Image: L'Ange Doré]</div>
                     <div class="product-info">
                         <h3>L'ANGE DORÉ</h3>
-                        <p class="product-desc">Le gardien bienveillant, la lumière dans l'obscurité</p>
+                        <p>Le gardien bienveillant, la lumière dans l'obscurité</p>
                         <div class="product-footer">
                             <span class="price">35€</span>
-                            <button class="add-to-cart" data-name="L'Ange Doré" data-price="35">AJOUTER</button>
+                            <button class="add-to-cart" onclick="alert('Ajouté au panier !')">AJOUTER</button>
                         </div>
                         <div class="product-meta">
-                            <span class="stock-info">⚠️ Plus que 23 disponibles</span>
-                            <span class="rating">⭐⭐⭐⭐⭐ (87 avis)</span>
+                            <div>⚠️ Plus que 23 disponibles</div>
+                            <div class="rating">⭐⭐⭐⭐⭐ (87 avis)</div>
                         </div>
                     </div>
                 </article>
                 
-                <!-- Product 2 -->
-                <article class="product-card" data-product="fallen-light">
+                <article class="product-card" style="position: relative;">
                     <div class="product-badge new">NEW</div>
-                    <div class="product-image">
-                        <img src="images/products/fallen-light.jpg" alt="T-shirt Fallen Light - BINAEL" loading="lazy">
-                        <div class="product-overlay">
-                            <button class="quick-view" data-product="fallen-light">VOIR DÉTAILS</button>
-                        </div>
-                    </div>
+                    <div class="product-image">[Image: Fallen Light]</div>
                     <div class="product-info">
                         <h3>FALLEN LIGHT</h3>
-                        <p class="product-desc">Entre deux mondes, la quête de rédemption</p>
+                        <p>Entre deux mondes, la quête de rédemption</p>
                         <div class="product-footer">
                             <span class="price">35€</span>
-                            <button class="add-to-cart" data-name="Fallen Light" data-price="35">AJOUTER</button>
+                            <button class="add-to-cart" onclick="alert('Ajouté au panier !')">AJOUTER</button>
                         </div>
                         <div class="product-meta">
-                            <span class="stock-info">🔥 47 personnes regardent</span>
-                            <span class="rating">⭐⭐⭐⭐⭐ (42 avis)</span>
+                            <div>🔥 47 personnes regardent</div>
+                            <div class="rating">⭐⭐⭐⭐⭐ (42 avis)</div>
                         </div>
                     </div>
                 </article>
                 
-                <!-- Product 3 -->
-                <article class="product-card" data-product="sacred-geometry">
+                <article class="product-card" style="position: relative;">
                     <div class="product-badge premium">PREMIUM</div>
-                    <div class="product-image">
-                        <img src="images/products/sacred-geometry.jpg" alt="T-shirt Sacred Geometry - BINAEL" loading="lazy">
-                        <div class="product-overlay">
-                            <button class="quick-view" data-product="sacred-geometry">VOIR DÉTAILS</button>
-                        </div>
-                    </div>
+                    <div class="product-image">[Image: Sacred Geometry]</div>
                     <div class="product-info">
                         <h3>SACRED GEOMETRY</h3>
-                        <p class="product-desc">Les clés de l'univers, le langage sacré</p>
+                        <p>Les clés de l'univers, le langage sacré</p>
                         <div class="product-footer">
                             <span class="price">39€</span>
-                            <button class="add-to-cart" data-name="Sacred Geometry" data-price="39">AJOUTER</button>
+                            <button class="add-to-cart" onclick="alert('Ajouté au panier !')">AJOUTER</button>
                         </div>
                         <div class="product-meta">
-                            <span class="stock-info">⏰ Édition limitée</span>
-                            <span class="rating">⭐⭐⭐⭐⭐ (134 avis)</span>
+                            <div>⏰ Édition limitée</div>
+                            <div class="rating">⭐⭐⭐⭐⭐ (134 avis)</div>
                         </div>
                     </div>
                 </article>
             </div>
-            
-            <div class="section-cta">
-                <a href="shop.html" class="btn btn-outline">VOIR TOUTE LA COLLECTION</a>
-            </div>
+            <div style="text-align: center;"><a href="shop.html" class="btn btn-outline">VOIR TOUTE LA COLLECTION</a></div>
         </div>
     </section>
 
-    <!-- Manifesto Section -->
     <section class="manifesto">
-        <div class="container-narrow">
+        <div class="container">
             <div class="manifesto-content">
                 <h2>L'ÉVEIL COMMENCE</h2>
-                <div class="divider"></div>
-                <p class="lead">Depuis la nuit des temps, ils veillent. Dans les textes d'Hénoch, la Kabbale hébraïque, les traditions hermétiques.</p>
+                <div style="width: 100px; height: 2px; background: linear-gradient(to right, transparent, #7CB9E8, transparent); margin: 2rem auto;"></div>
+                <p style="font-size: 1.35rem; font-style: italic; margin-bottom: 2rem;">Depuis la nuit des temps, ils veillent. Dans les textes d'Hénoch, la Kabbale hébraïque, les traditions hermétiques.</p>
                 <p><strong>BINAEL n'est pas qu'une marque.</strong></p>
                 <p>C'est un univers, une fiction ésotérique qui explore nos mythologies, nos quêtes spirituelles, notre connexion au divin.</p>
-                <a href="hiérarchies.html" class="btn btn-text">DÉCOUVRIR L'HISTOIRE →</a>
             </div>
         </div>
     </section>
 
-    <!-- Angel Quiz CTA -->
     <section class="quiz-cta">
         <div class="container">
             <div class="quiz-box">
                 <div class="quiz-icon">🪽</div>
                 <h2>QUEL ANGE ÊTES-VOUS ?</h2>
-                <p>Découvrez votre hiérarchie angélique et votre ange gardien à travers un quiz ésotérique</p>
+                <p>Découvrez votre hiérarchie angélique et votre ange gardien</p>
                 <a href="quiz.html" class="btn btn-primary">COMMENCER LE QUIZ</a>
             </div>
         </div>
     </section>
 
-    <!-- Values Section -->
-    <section class="values">
+    <section class="values" style="background: #F8FBFF;">
         <div class="container">
-            <div class="section-header">
-                <h2>NOS VALEURS</h2>
-            </div>
+            <div class="section-header"><h2>NOS VALEURS</h2></div>
             <div class="values-grid">
                 <div class="value-item">
                     <div class="value-icon">✓</div>
@@ -266,182 +327,84 @@
                 <div class="value-item">
                     <div class="value-icon">✓</div>
                     <h3>Éditions Limitées</h3>
-                    <p>100 pièces numérotées par design</p>
+                    <p>100 pièces numérotées</p>
                 </div>
             </div>
-            <div class="section-cta">
-                <a href="qualite.html" class="btn btn-text">EN SAVOIR PLUS SUR LA QUALITÉ →</a>
-            </div>
         </div>
     </section>
 
-    <!-- Blog Preview -->
-    <section class="blog-preview">
-        <div class="container">
-            <div class="section-header">
-                <h2>DERNIERS ARTICLES</h2>
-                <p>Explorez l'univers ésotérique</p>
-            </div>
-            <div class="blog-grid">
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="images/blog/hierarchies.jpg" alt="Les 9 Hiérarchies Angéliques" loading="lazy">
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-category">Angéologie</span>
-                        <h3>Les 9 Hiérarchies Angéliques Expliquées</h3>
-                        <p>Découvrez les trois triades angéliques, des Séraphins aux Anges gardiens...</p>
-                        <a href="blog/hierarchies-angeliques.html" class="blog-link">LIRE L'ARTICLE →</a>
-                    </div>
-                </article>
-                
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="images/blog/metatron.jpg" alt="Le Cube de Métatron" loading="lazy">
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-category">Géométrie Sacrée</span>
-                        <h3>Le Cube de Métatron : Clé de l'Univers</h3>
-                        <p>Explorez la géométrie sacrée et ses liens avec l'angéologie...</p>
-                        <a href="blog/cube-metatron.html" class="blog-link">LIRE L'ARTICLE →</a>
-                    </div>
-                </article>
-                
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="images/blog/ange-gardien.jpg" alt="Qui est votre Ange Gardien" loading="lazy">
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-category">Spiritualité</span>
-                        <h3>Qui Est Votre Ange Gardien ?</h3>
-                        <p>Binael pourrait-il être votre guide spirituel ? Découvrez...</p>
-                        <a href="ange-gardien.html" class="blog-link">LIRE L'ARTICLE →</a>
-                    </div>
-                </article>
-            </div>
-            <div class="section-cta">
-                <a href="blog.html" class="btn btn-outline">VOIR TOUS LES ARTICLES</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Proof -->
     <section class="social-proof">
         <div class="container">
-            <div class="social-proof-header">
+            <div class="section-header">
                 <h2>ILS PORTENT BINAEL</h2>
-                <p>Rejoins les 500+ éveilleurs</p>
+                <p style="color: #4A90E2;">Rejoins les 500+ éveilleurs</p>
             </div>
             <div class="testimonials-grid">
                 <div class="testimonial">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p>"L'imprimé résiste parfaitement au lavage, qualité incroyable !"</p>
-                    <cite>— Marie L.</cite>
+                    <p style="font-style: italic;">"L'imprimé résiste parfaitement, qualité incroyable !"</p>
+                    <cite style="font-style: normal; font-size: 0.875rem; color: #4A90E2; font-weight: 600;">— Marie L.</cite>
                 </div>
                 <div class="testimonial">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p>"Design sublime, j'ai reçu tellement de compliments à l'école."</p>
-                    <cite>— Julie, 16 ans</cite>
+                    <p style="font-style: italic;">"Design sublime, j'ai reçu plein de compliments."</p>
+                    <cite style="font-style: normal; font-size: 0.875rem; color: #4A90E2; font-weight: 600;">— Julie</cite>
                 </div>
                 <div class="testimonial">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p>"Le coton est d'une douceur exceptionnelle, je recommande !"</p>
-                    <cite>— Thomas R.</cite>
+                    <p style="font-style: italic;">"Le coton est d'une douceur exceptionnelle !"</p>
+                    <cite style="font-style: normal; font-size: 0.875rem; color: #4A90E2; font-weight: 600;">— Thomas R.</cite>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter -->
     <section class="newsletter">
-        <div class="container-narrow">
+        <div class="container">
             <div class="newsletter-content">
                 <h2>REJOINS L'ÉVEIL</h2>
                 <p>Reçois les nouvelles collections en avant-première</p>
-                <form class="newsletter-form" id="newsletter-form">
+                <form class="newsletter-form" onsubmit="alert('Merci ! Bienvenue 🎁'); return false;">
                     <input type="email" placeholder="ton@email.com" required>
                     <button type="submit" class="btn btn-primary">S'INSCRIRE</button>
                 </form>
-                <p class="newsletter-bonus">🎁 -10% sur ta première commande</p>
+                <p style="color: #D4AF37; font-weight: 600;">🎁 -10% sur ta première commande</p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <h4>SHOP</h4>
-                    <ul>
-                        <li><a href="shop.html">Collection Awakening</a></li>
-                        <li><a href="shop.html#nouveautes">Nouveautés</a></li>
-                        <li><a href="shop.html#bestsellers">Best-sellers</a></li>
-                    </ul>
+                    <ul><li><a href="shop.html">Collection</a></li></ul>
                 </div>
-                
                 <div class="footer-col">
                     <h4>UNIVERS</h4>
                     <ul>
-                        <li><a href="hiérarchies.html">Les Hiérarchies</a></li>
-                        <li><a href="maisons-anges.html">Les Maisons d'Anges</a></li>
-                        <li><a href="ange-gardien.html">Ange Gardien</a></li>
-                        <li><a href="evolution.html">Origine & Évolution</a></li>
-                        <li><a href="quiz.html">Quel Ange Êtes-Vous?</a></li>
+                        <li><a href="hierarchies.html">Hiérarchies</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-col">
                     <h4>INFORMATIONS</h4>
                     <ul>
-                        <li><a href="qualite.html">Qualité & Entretien</a></li>
-                        <li><a href="legal.html">Mentions Légales</a></li>
-                        <li><a href="legal.html#cgv">CGV</a></li>
-                        <li><a href="legal.html#retours">Politique de Retour</a></li>
-                        <li><a href="legal.html#contact">Contact</a></li>
+                        <li><a href="qualite.html">Qualité</a></li>
+                        <li><a href="legal.html">Legal</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-col">
-                    <h4>SUIVEZ-NOUS</h4>
-                    <div class="social-links">
-                        <a href="https://instagram.com/binael.fr" target="_blank" aria-label="Instagram">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
-                        <a href="https://tiktok.com/@binael.fr" target="_blank" aria-label="TikTok">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                            </svg>
-                        </a>
-                        <a href="https://pinterest.com/binaelfr" target="_blank" aria-label="Pinterest">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="lang-footer">
-                        <a href="index.html" class="active-lang">🇫🇷 FR</a>
-                        <span class="lang-separator"> | </span>
-                        <a href="en/index.html">🇬🇧 EN</a>
-                    </div>
-                </div>
             </div>
-            
             <div class="footer-bottom">
                 <div class="disclaimer">
                     ⚠️ <strong>FICTION ÉSOTÉRIQUE</strong><br>
-                    BINAEL est un univers de FICTION basé sur des traditions mystiques.<br>
-                    <a href="legal.html">Lire les mentions légales →</a>
+                    BINAEL est un univers de FICTION basé sur des traditions mystiques.
                 </div>
-                <div class="copyright">
-                    <p>BINAEL © 2026 • Fiction ésotérique</p>
+                <div style="font-size: 0.875rem; color: #5B8DB8; opacity: 0.7;">
+                    <p>BINAEL © 2026 • Porter • Partager • Profiter</p>
                 </div>
             </div>
         </div>
     </footer>
-
-    <script src="js/script.js"></script>
 </body>
 </html>
