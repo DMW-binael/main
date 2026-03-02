@@ -11,19 +11,33 @@
         h1, h2, h3 { font-family: 'Cinzel', serif; font-weight: 600; color: #4A90E2; }
         h1 { font-size: clamp(2.5rem, 8vw, 4rem); }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        .navbar { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #E3F2FD; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(74, 144, 226, 0.08); }
+        .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #E3F2FD; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(74,144,226,0.08); }
         .nav-container { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .nav-left { display: flex; align-items: center; gap: 1rem; }
+        .logo-svg { width: 40px; height: 40px; }
         .logo-text { font-family: 'Cinzel', serif; font-size: 1.75rem; font-weight: 700; letter-spacing: 0.2em; background: linear-gradient(135deg, #4A90E2, #7CB9E8, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .nav-menu { display: flex; gap: 2rem; list-style: none; }
         .nav-menu a { font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.12em; text-transform: uppercase; color: #2C5F8D; text-decoration: none; }
         .page-header { text-align: center; padding: 6rem 2rem 3rem; background: linear-gradient(180deg, #F8FBFF 0%, #FFFFFF 100%); }
         .page-subtitle { font-size: 1.125rem; color: #5B8DB8; margin-top: 1rem; }
+        
+        .not-tshirt-section { background: linear-gradient(135deg, #E3F2FD 0%, white 50%, rgba(255,215,0,0.05) 100%); padding: 4rem 0; border-top: 2px solid #B8D8F0; border-bottom: 2px solid #B8D8F0; margin-bottom: 3rem; }
+        .not-tshirt-content { max-width: 900px; margin: 0 auto; text-align: center; }
+        .not-tshirt-content h2 { font-size: 2.5rem; margin-bottom: 2rem; }
+        .not-tshirt-content .big-text { font-size: 1.5rem; line-height: 2; color: #2C5F8D; margin: 2rem 0; }
+        .highlight-blue { color: #4A90E2; font-weight: 700; }
+        .mission-box { background: white; border: 2px solid #B8D8F0; border-radius: 16px; padding: 2.5rem; margin: 2rem 0; box-shadow: 0 4px 20px rgba(74,144,226,0.08); }
+        .mission-box h3 { margin-bottom: 1.5rem; font-size: 1.5rem; }
+        .mission-list { text-align: left; margin: 1.5rem 0; }
+        .mission-item { display: flex; align-items: start; gap: 1rem; margin-bottom: 1rem; font-size: 1.125rem; }
+        .mission-icon { font-size: 1.5rem; }
+        
         .filters-bar { display: flex; gap: 1.5rem; flex-wrap: wrap; padding: 1.5rem 0; background: white; border-bottom: 1px solid #E3F2FD; position: sticky; top: 72px; z-index: 100; }
         .filter-group { display: flex; align-items: center; gap: 0.5rem; }
         .filter-select { padding: 0.5rem 1rem; border: 1px solid #B8D8F0; border-radius: 25px; background: white; color: #2C5F8D; font-family: 'Cormorant Garamond', serif; cursor: pointer; }
         .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; margin: 4rem 0; }
-        .product-card { background: white; border: 1px solid #E3F2FD; border-radius: 16px; overflow: hidden; transition: 0.4s; box-shadow: 0 4px 20px rgba(74, 144, 226, 0.08); position: relative; }
-        .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(74, 144, 226, 0.12); }
+        .product-card { background: white; border: 1px solid #E3F2FD; border-radius: 16px; overflow: hidden; transition: 0.4s; box-shadow: 0 4px 20px rgba(74,144,226,0.08); position: relative; }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(74,144,226,0.12); }
         .product-badge { position: absolute; top: 20px; right: 20px; z-index: 10; padding: 0.5rem 1rem; font-family: 'Cinzel', serif; font-size: 0.75rem; border-radius: 20px; color: white; font-weight: 600; }
         .product-badge.best-seller { background: linear-gradient(135deg, #FF6B6B, #FF8E8E); }
         .product-badge.new { background: linear-gradient(135deg, #4A90E2, #7CB9E8); }
@@ -34,7 +48,7 @@
         .product-desc { color: #5B8DB8; font-size: 0.95rem; margin-bottom: 1rem; }
         .product-footer { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
         .price { font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 700; color: #4A90E2; }
-        .btn-shopify { padding: 0.5rem 1.5rem; background: linear-gradient(135deg, #4A90E2, #7CB9E8); color: white; font-family: 'Cinzel', serif; font-size: 0.75rem; border: none; border-radius: 25px; cursor: pointer; font-weight: 600; text-decoration: none; display: inline-block; }
+        .btn-shopify { padding: 0.5rem 1.5rem; background: linear-gradient(135deg, #4A90E2, #7CB9E8); color: white; font-family: 'Cinzel', serif; font-size: 0.75rem; border: none; border-radius: 25px; cursor: pointer; font-weight: 600; text-decoration: none; display: inline-block; transition: 0.2s; }
         .btn-shopify:hover { transform: scale(1.05); }
         .product-meta { font-size: 0.875rem; border-top: 1px solid #E3F2FD; padding-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
         .rating { color: #D4AF37; }
@@ -45,7 +59,7 @@
         .price-old { font-size: 1.5rem; color: #5B8DB8; text-decoration: line-through; }
         .price-new { font-size: 2.5rem; font-family: 'Cinzel', serif; font-weight: 700; color: #4A90E2; }
         .btn { padding: 1rem 2.5rem; font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.15em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-block; }
-        .btn-primary { background: linear-gradient(135deg, #4A90E2, #7CB9E8); color: white; box-shadow: 0 4px 20px rgba(74, 144, 226, 0.3); }
+        .btn-primary { background: linear-gradient(135deg, #4A90E2, #7CB9E8); color: white; box-shadow: 0 4px 20px rgba(74,144,226,0.3); }
         .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; padding: 3rem 0; }
         .info-item { text-align: center; }
         .info-icon { font-size: 2.5rem; margin-bottom: 1rem; }
@@ -62,12 +76,18 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo"><a href="index.html"><span class="logo-text">BINAEL</span></a></div>
+            <div class="nav-left">
+                <svg class="logo-svg" viewBox="0 0 300 300">
+                    <g transform="translate(0,300) scale(0.1,-0.1)" fill="#FFD700">
+                        <path d="M1581 2621 c-12 -12 -21 -25 -21 -31 0 -16 -46 -12 -60 5 -18 21 -47 19 -60 -6 -11 -19 -13 -19 -29 -5 -24 22 -61 21 -61 -2 0 -16 11 -17 108 -17 90 0 111 3 126 18 21 21 40 22 56 2 7 -8 20 -15 30 -15 10 0 48 -13 84 -30 61 -27 66 -32 66 -60 0 -19 11 -46 27 -67 19 -25 29 -53 35 -100 8 -73 16 -87 64 -109 28 -14 34 -22 34 -49 0 -17 5 -47 11 -65 9 -24 9 -46 -1 -89 -18 -82 -28 -98 -79 -121 -87 -38 -96 -45 -99 -72 -2 -20 10 -41 54 -89 72 -82 119 -152 178 -265 41 -81 52 -94 96 -118 105 -57 125 -112 95 -261 -10 -49 -91 -161 -147 -205 -29 -22 -60 -46 -68 -53 -19 -17 -80 -38 -90 -32 -5 3 -11 1 -14 -4 -4 -5 -18 -8 -34 -6 -15 1 -30 -2 -34 -9 -6 -8 -12 -8 -26 1 -15 9 -22 9 -32 0 -10 -9 -11 -9 -5 2 6 11 -1 12 -34 6 -28 -5 -41 -3 -41 5 0 6 -5 8 -12 4 -6 -4 -16 -1 -22 7 -6 8 -32 23 -57 32 -61 23 -124 78 -170 149 -44 69 -67 140 -72 226 -5 84 -20 100 -79 83 -30 -9 -59 -30 -95 -67 -76 -78 -116 -69 -105 23 6 52 -16 83 -58 83 -39 0 -82 43 -74 74 5 19 -3 34 -36 70 -37 40 -42 50 -36 77 6 31 -20 83 -51 102 -19 11 -16 46 4 54 15 6 15 7 -3 13 -33 12 -54 0 -54 -32 0 -21 12 -40 45 -72 33 -33 41 -45 30 -50 -9 -3 -15 -18 -15 -35 0 -22 11 -39 44 -68 38 -34 43 -42 38 -71 -3 -25 1 -39 18 -57 23 -24 104 -50 122 -39 8 5 9 0 3 -17 -19 -59 -17 -107 4 -128 12 -12 31 -21 44 -21 33 0 90 42 112 84 11 21 27 36 38 36 10 0 31 7 46 15 l29 14 1 -77 c2 -279 260 -496 536 -452 201 32 358 187 395 388 15 84 1 131 -54 187 -24 23 -58 48 -77 54 -29 9 -40 22 -69 83 -50 104 -118 204 -190 281 -62 67 -72 97 -32 97 31 0 119 49 137 77 11 16 15 37 12 57 -4 25 -1 35 14 44 20 13 26 47 9 57 -5 3 -10 17 -10 31 0 13 -4 24 -10 24 -6 0 -7 18 -4 44 6 38 4 46 -15 55 -11 7 -21 9 -21 6 0 -3 -13 1 -30 10 -27 14 -30 20 -30 68 0 61 -29 130 -60 147 -16 9 -19 15 -11 23 15 15 14 52 -2 65 -7 6 -34 16 -60 23 -28 7 -60 24 -77 40 l-29 29 -3 -27 -3 -28 -15 30 c-19 37 -43 42 -69 16z"/>
+                    </g>
+                </svg>
+                <a href="index.html" style="text-decoration: none;"><span class="logo-text">BINAEL</span></a>
+            </div>
             <ul class="nav-menu">
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="quiz.html">Quiz</a></li>
-                <li><a href="legal.html">Legal</a></li>
             </ul>
         </div>
     </nav>
@@ -77,6 +97,67 @@
             <h1>COLLECTION AWAKENING</h1>
             <p class="page-subtitle">Streetwear Ésotérique • Éditions Limitées • 100 pièces par design</p>
             <p style="font-style: italic; color: #7CB9E8; margin-top: 1rem;">Porter • Partager • Profiter</p>
+        </div>
+    </section>
+
+    <section class="not-tshirt-section">
+        <div class="container">
+            <div class="not-tshirt-content">
+                <h2>VOUS NE PORTEZ PAS UN T-SHIRT</h2>
+                
+                <p class="big-text">
+                    Vous portez une <span class="highlight-blue">VALEUR</span>.<br>
+                    Vous portez une <span class="highlight-blue">IDÉE</span>.<br>
+                    Vous portez une <span class="highlight-blue">VÉRITÉ UNIVERSELLE</span>.
+                </p>
+
+                <div class="mission-box">
+                    <h3>Quand vous sortez avec BINAEL :</h3>
+                    <div class="mission-list">
+                        <div class="mission-item">
+                            <span class="mission-icon">✨</span>
+                            <p>Vous affirmez : <strong>"Je ne suis pas seul"</strong></p>
+                        </div>
+                        <div class="mission-item">
+                            <span class="mission-icon">🪽</span>
+                            <p>Vous rappelez : <strong>"Mon ange me guide"</strong></p>
+                        </div>
+                        <div class="mission-item">
+                            <span class="mission-icon">🔮</span>
+                            <p>Vous inspirez : <strong>Ceux qui vous voient se posent des questions</strong></p>
+                        </div>
+                        <div class="mission-item">
+                            <span class="mission-icon">💫</span>
+                            <p>Vous vibrez : <strong>À la fréquence de l'éveil</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="big-text" style="margin-top: 2rem;">
+                    Un maillot de foot vous connecte à une équipe. ⚽<br>
+                    <span class="highlight-blue">BINAEL vous connecte à VOTRE ANGE GARDIEN.</span> 🪽
+                </p>
+
+                <p style="font-size: 1.75rem; font-weight: 700; color: #4A90E2; margin-top: 2rem;">
+                    C'est incomparablement plus fort.
+                </p>
+
+                <div style="margin-top: 3rem;">
+                    <p style="font-size: 1.25rem; color: #2C5F8D; margin-bottom: 1rem;">
+                        <strong>MISSION DE BINAEL :</strong>
+                    </p>
+                    <p style="font-size: 1.125rem; color: #5B8DB8;">
+                        ✨ Vous aider à <span class="highlight-blue">faire grandir</span><br>
+                        🪽 Vous orienter vers le <span class="highlight-blue">chemin lumineux</span><br>
+                        🔮 Vous rappeler que vous êtes <span class="highlight-blue">accompagné</span>
+                    </p>
+                </div>
+
+                <p style="font-size: 1.5rem; font-weight: 700; color: #4A90E2; margin-top: 3rem;">
+                    Chaque design est une porte.<br>
+                    Quelle porte allez-vous ouvrir ?
+                </p>
+            </div>
         </div>
     </section>
 
@@ -147,7 +228,7 @@
                             <a href="#" class="btn-shopify">ACHETER</a>
                         </div>
                         <div class="product-meta">
-                            <span>⚠️ Stock limité (12 restants)</span>
+                            <span>⚠️ Stock limité</span>
                             <span class="rating">⭐⭐⭐⭐⭐ (134 avis)</span>
                         </div>
                     </div>
@@ -229,7 +310,7 @@
                             <a href="#" class="btn-shopify">ACHETER</a>
                         </div>
                         <div class="product-meta">
-                            <span>⚠️ Stock limité (8 restants)</span>
+                            <span>⚠️ Stock limité</span>
                             <span class="rating">⭐⭐⭐⭐⭐ (72 avis)</span>
                         </div>
                     </div>
