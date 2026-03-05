@@ -9,109 +9,224 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Cormorant Garamond', serif; background: linear-gradient(180deg, #FFF, #F8FBFF, #F0F7FF); background-attachment: fixed; color: #2C5F8D; line-height: 1.7; }
         h1, h2, h3 { font-family: 'Cinzel', serif; color: #4A90E2; }
+        p { font-size: 1.125rem; margin-bottom: 1rem; color: #5B8DB8; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #E3F2FD; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(74,144,226,0.08); }
-        .nav-container { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+
+        /* NAVBAR */
+        .navbar { background: rgba(255,255,255,0.97); border-bottom: 1px solid #E3F2FD; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(74,144,226,0.08); }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
         .nav-left { display: flex; align-items: center; gap: 1rem; }
         .logo-svg { width: 40px; height: 40px; }
-        .logo-text { font-family: 'Cinzel', serif; font-size: 1.75rem; font-weight: 700; letter-spacing: 0.2em; background: linear-gradient(135deg, #4A90E2, #7CB9E8, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo-text { font-family: 'Cinzel', serif; font-size: 1.75rem; font-weight: 700; letter-spacing: 0.2em; background: linear-gradient(135deg, #4A90E2, #7CB9E8, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
         .nav-menu { display: flex; gap: 2rem; list-style: none; }
-        .nav-menu a { font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.12em; text-transform: uppercase; color: #2C5F8D; text-decoration: none; }
-        .page-header { text-align: center; padding: 6rem 2rem 3rem; background: linear-gradient(180deg, #F8FBFF 0%, #FFFFFF 100%); }
-        .page-subtitle { font-size: 1.125rem; color: #5B8DB8; margin-top: 1rem; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; margin: 4rem 0; }
+        .nav-menu a { font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.12em; text-transform: uppercase; color: #2C5F8D; text-decoration: none; transition: color 0.2s; }
+        .nav-menu a:hover, .nav-menu a.active { color: #4A90E2; }
+
+        /* BURGER */
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; z-index: 1100; }
+        .burger span { display: block; width: 25px; height: 2px; background: #2C5F8D; border-radius: 2px; transition: 0.3s; }
+        .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger.open span:nth-child(2) { opacity: 0; }
+        .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* PAGE HEADER */
+        .page-header { text-align: center; padding: 5rem 2rem 3rem; background: linear-gradient(180deg, #F8FBFF 0%, #FFFFFF 100%); }
+        .page-header h1 { font-size: clamp(2rem, 6vw, 4rem); margin-bottom: 1rem; }
+        .page-subtitle { font-size: 1.125rem; color: #5B8DB8; margin-top: 0.5rem; }
+
+        /* PRODUCTS GRID */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; margin: 4rem 0; }
+
+        /* PRODUCT CARD */
         .product-card { background: white; border: 1px solid #E3F2FD; border-radius: 16px; overflow: hidden; transition: 0.4s; box-shadow: 0 4px 20px rgba(74,144,226,0.08); position: relative; }
         .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(74,144,226,0.12); }
         .product-badge { position: absolute; top: 20px; right: 20px; z-index: 10; padding: 0.5rem 1rem; font-family: 'Cinzel', serif; font-size: 0.75rem; border-radius: 20px; color: white; font-weight: 600; }
         .product-badge.best-seller { background: linear-gradient(135deg, #FF6B6B, #FF8E8E); }
         .product-badge.new { background: linear-gradient(135deg, #4A90E2, #7CB9E8); }
-        .product-badge.kids { background: linear-gradient(135deg, #9B59B6, #BB6BD9); }
-        .product-image { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; color: #5B8DB8; font-size: 0.9rem; }
+        .product-badge.soon { background: linear-gradient(135deg, #9B59B6, #BB6BD9); }
+        .product-image { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .product-image img { width: 80%; height: auto; object-fit: contain; display: block; margin: auto; }
         .product-info { padding: 2rem; }
-        .product-info h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
-        .product-desc { color: #5B8DB8; font-size: 0.95rem; margin-bottom: 1rem; }
+        .product-info h3 { font-size: 1.25rem; margin-bottom: 0.4rem; }
+        .product-desc { color: #5B8DB8; font-size: 0.95rem; margin-bottom: 1.25rem; }
+
+        /* SIZE SELECTOR */
+        .size-selector { margin-bottom: 1.25rem; }
+        .size-label { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.1em; color: #7CB9E8; text-transform: uppercase; margin-bottom: 0.6rem; display: block; }
+        .size-group { margin-bottom: 0.5rem; }
+        .size-group-label { font-size: 0.8rem; color: #2C5F8D; font-weight: 600; margin-bottom: 0.4rem; display: block; }
+        .size-buttons { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+        .size-btn { padding: 0.3rem 0.65rem; border: 1px solid #B8D8F0; background: white; color: #5B8DB8; font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; border-radius: 8px; cursor: pointer; transition: 0.2s; }
+        .size-btn:hover { border-color: #4A90E2; color: #4A90E2; }
+        .size-btn.selected { background: #4A90E2; color: white; border-color: #4A90E2; }
+        .size-separator { height: 1px; background: #E3F2FD; margin: 0.6rem 0; }
+
+        /* PRICE + BUY */
         .product-footer { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .price-block { display: flex; flex-direction: column; }
         .price { font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 700; color: #4A90E2; }
-        .btn-shopify { padding: 0.5rem 1.5rem; background: linear-gradient(135deg, #4A90E2, #7CB9E8); color: white; font-family: 'Cinzel', serif; font-size: 0.75rem; border: none; border-radius: 25px; cursor: pointer; font-weight: 600; text-decoration: none; display: inline-block; transition: 0.2s; }
+        .price-kids { font-size: 0.8rem; color: #7CB9E8; margin-top: 2px; }
+        .btn-shopify { padding: 0.6rem 1.5rem; background: linear-gradient(135deg, #4A90E2, #7CB9E8); color: white; font-family: 'Cinzel', serif; font-size: 0.75rem; border: none; border-radius: 25px; cursor: pointer; font-weight: 600; text-decoration: none; display: inline-block; transition: 0.2s; letter-spacing: 0.05em; }
         .btn-shopify:hover { transform: scale(1.05); }
-        .product-meta { font-size: 0.875rem; border-top: 1px solid #E3F2FD; padding-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+        .btn-shopify.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+        .product-meta { font-size: 0.875rem; border-top: 1px solid #E3F2FD; padding-top: 1rem; display: flex; flex-direction: column; gap: 0.4rem; color: #5B8DB8; }
         .rating { color: #D4AF37; }
-        .bundle-offer { background: linear-gradient(135deg, #E3F2FD, rgba(212, 175, 55, 0.1)); padding: 4rem 0; }
+
+        /* BUNDLE */
+        .bundle-offer { background: linear-gradient(135deg, #E3F2FD, rgba(212,175,55,0.1)); padding: 5rem 0; }
         .bundle-box { background: white; border: 2px solid #B8D8F0; border-radius: 24px; padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; position: relative; }
-        .bundle-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #FF6B6B, #FF8E8E); color: white; padding: 0.5rem 2rem; border-radius: 20px; font-family: 'Cinzel', serif; font-size: 0.875rem; font-weight: 600; }
+        .bundle-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #FF6B6B, #FF8E8E); color: white; padding: 0.5rem 2rem; border-radius: 20px; font-family: 'Cinzel', serif; font-size: 0.875rem; font-weight: 600; white-space: nowrap; }
         .bundle-price { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 2rem 0; }
         .price-old { font-size: 1.5rem; color: #5B8DB8; text-decoration: line-through; }
         .price-new { font-size: 2.5rem; font-family: 'Cinzel', serif; font-weight: 700; color: #4A90E2; }
-        .btn { padding: 1rem 2.5rem; font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.15em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-block; }
+        .btn { padding: 1rem 2.5rem; font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.15em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-block; transition: 0.4s; }
         .btn-primary { background: linear-gradient(135deg, #4A90E2, #7CB9E8); color: white; box-shadow: 0 4px 20px rgba(74,144,226,0.3); }
+        .btn-primary:hover { transform: translateY(-2px); }
+
+        /* INFO */
         .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; padding: 3rem 0; }
         .info-item { text-align: center; }
         .info-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-        .section-divider { text-align: center; margin: 4rem 0 2rem; }
-        .section-divider h2 { font-size: 2rem; color: #4A90E2; margin-bottom: 1rem; }
-        @media (max-width: 768px) { .nav-menu { display: none; } .products-grid { grid-template-columns: 1fr; } }
+
+        /* FOOTER */
+        .footer { background: linear-gradient(180deg, white 0%, #F8FBFF 100%); border-top: 2px solid #E3F2FD; padding: 4rem 0 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-bottom: 3rem; }
+        .footer-col h4 { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.15em; margin-bottom: 1.5rem; color: #4A90E2; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.75rem; }
+        .footer-col ul li a { color: #5B8DB8; text-decoration: none; font-size: 0.95rem; }
+        .disclaimer { background: #E3F2FD; border: 1px solid #B8D8F0; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; font-size: 0.95rem; text-align: center; }
+        .disclaimer strong { color: #4A90E2; }
+
+        @media (max-width: 768px) {
+            .burger { display: flex; }
+            .nav-menu { display: none; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.98); justify-content: center; align-items: center; gap: 2.5rem; z-index: 1050; }
+            .nav-menu.open { display: flex; }
+            .nav-menu a { font-size: 1.25rem; }
+            .products-grid { grid-template-columns: 1fr; }
+            .bundle-box { padding: 2rem 1.5rem; }
+        }
     </style>
 </head>
 <body>
+
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-left">
                 <img src="logo.svg" alt="BINAEL" class="logo-svg">
-                <a href="index.html" style="text-decoration: none;"><span class="logo-text">BINAEL</span></a>
+                <a href="index.html" class="logo-text">BINAEL</a>
             </div>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html">Accueil</a></li>
-                <li><a href="shop.html">Shop</a></li>
+                <li><a href="shop.html" class="active">Shop</a></li>
                 <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="ange-gardien.html">Ange Gardien</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="hierarchies.html">Hiérarchies</a></li>
             </ul>
+            <button class="burger" id="burger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
     <section class="page-header">
         <div class="container">
             <h1>COLLECTION AWAKENING</h1>
-            <p class="page-subtitle">6 Anges • 6 Étapes de l'Éveil • Adultes & Enfants</p>
-            <p style="font-style: italic; color: #7CB9E8; margin-top: 1rem;">Porter • Partager • Profiter</p>
+            <p class="page-subtitle">6 Designs • Adultes & Enfants • Coton bio 100%</p>
+            <p style="font-style: italic; color: #7CB9E8; margin-top: 0.5rem;">Porter • Partager • Profiter</p>
         </div>
     </section>
 
-    <section>
+    <section style="padding: 2rem 0 6rem;">
         <div class="container">
-            <div class="section-divider">
-                <h2>COLLECTION ADULTES</h2>
-                <p style="font-size: 1.125rem; color: #5B8DB8;">29€ • Tailles S-XXL • Coton bio</p>
-            </div>
-
             <div class="products-grid">
+
+                <!-- L'ANGE DORÉ -->
                 <article class="product-card">
                     <div class="product-badge best-seller">BEST-SELLER</div>
                     <div class="product-image" style="background: #FFFBF0;">
-                        <img src="ange-dore.png" alt="L'Ange Doré" style="width: 80%; margin: auto; display: block;">
+                        <img src="ange-dore-or.png" alt="L'Ange Doré">
                     </div>
                     <div class="product-info">
                         <h3>L'ANGE DORÉ</h3>
-                        <p class="product-desc">Le gardien bienveillant - L'Appel de l'éveil</p>
+                        <p class="product-desc">Le gardien bienveillant — L'Appel de l'éveil</p>
+                        <div class="size-selector">
+                            <span class="size-label">Choisir une taille</span>
+                            <div class="size-group">
+                                <span class="size-group-label">Adulte — 29€</span>
+                                <div class="size-buttons">
+                                    <button class="size-btn" onclick="selectSize(this)">S</button>
+                                    <button class="size-btn" onclick="selectSize(this)">M</button>
+                                    <button class="size-btn" onclick="selectSize(this)">L</button>
+                                    <button class="size-btn" onclick="selectSize(this)">XL</button>
+                                    <button class="size-btn" onclick="selectSize(this)">XXL</button>
+                                </div>
+                            </div>
+                            <div class="size-separator"></div>
+                            <div class="size-group">
+                                <span class="size-group-label">Enfant — 24€</span>
+                                <div class="size-buttons">
+                                    <button class="size-btn" onclick="selectSize(this)">3-4 ans</button>
+                                    <button class="size-btn" onclick="selectSize(this)">5-6 ans</button>
+                                    <button class="size-btn" onclick="selectSize(this)">7-8 ans</button>
+                                    <button class="size-btn" onclick="selectSize(this)">9-10 ans</button>
+                                    <button class="size-btn" onclick="selectSize(this)">11-12 ans</button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="product-footer">
-                            <span class="price">29€</span>
+                            <div class="price-block">
+                                <span class="price">29€</span>
+                                <span class="price-kids">24€ taille enfant</span>
+                            </div>
                             <a href="#" class="btn-shopify">ACHETER</a>
                         </div>
                         <div class="product-meta">
-                            <span>✓ En stock • Tailles S-XXL</span>
+                            <span>⚠️ Plus que 23 disponibles</span>
                             <span class="rating">⭐⭐⭐⭐⭐ (87 avis)</span>
                         </div>
                     </div>
                 </article>
 
+                <!-- DIVINE FEMININE -->
                 <article class="product-card">
                     <div class="product-badge new">NEW</div>
                     <div class="product-image" style="background: #FFF5F8;">
-                        <img src="cherubin_rose.png" alt="Divine Feminine" style="width: 80%; margin: auto; display: block;">
+                        <img src="divine-feminine-rose.png" alt="Divine Feminine">
                     </div>
                     <div class="product-info">
                         <h3>DIVINE FEMININE</h3>
-                        <p class="product-desc">Le chérubin Binael Femme - L'Amour de Soi</p>
+                        <p class="product-desc">Le chérubin Binael Femme — L'Amour de Soi</p>
+                        <div class="size-selector">
+                            <span class="size-label">Choisir une taille</span>
+                            <div class="size-group">
+                                <span class="size-group-label">Adulte — 29€</span>
+                                <div class="size-buttons">
+                                    <button class="size-btn" onclick="selectSize(this)">S</button>
+                                    <button class="size-btn" onclick="selectSize(this)">M</button>
+                                    <button class="size-btn" onclick="selectSize(this)">L</button>
+                                    <button class="size-btn" onclick="selectSize(this)">XL</button>
+                                    <button class="size-btn" onclick="selectSize(this)">XXL</button>
+                                </div>
+                            </div>
+                            <div class="size-separator"></div>
+                            <div class="size-group">
+                                <span class="size-group-label">Enfant — 24€</span>
+                                <div class="size-buttons">
+                                    <button class="size-btn" onclick="selectSize(this)">3-4 ans</button>
+                                    <button class="size-btn" onclick="selectSize(this)">5-6 ans</button>
+                                    <button class="size-btn" onclick="selectSize(this)">7-8 ans</button>
+                                    <button class="size-btn" onclick="selectSize(this)">9-10 ans</button>
+                                    <button class="size-btn" onclick="selectSize(this)">11-12 ans</button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="product-footer">
-                            <span class="price">29€</span>
+                            <div class="price-block">
+                                <span class="price">29€</span>
+                                <span class="price-kids">24€ taille enfant</span>
+                            </div>
                             <a href="#" class="btn-shopify">ACHETER</a>
                         </div>
                         <div class="product-meta">
@@ -121,16 +236,41 @@
                     </div>
                 </article>
 
+                <!-- FALLEN LIGHT -->
                 <article class="product-card">
                     <div class="product-badge new">NEW</div>
                     <div class="product-image" style="background: #1A1A1A;">
-                        <img src="cherubin_noir_fallen_angel.png" alt="Fallen Light" style="width: 80%; margin: auto; display: block; filter: invert(1);">
+                        <img src="cherubin_noir_fallen_angel.png" alt="Fallen Light">
                     </div>
                     <div class="product-info">
                         <h3>FALLEN LIGHT</h3>
-                        <p class="product-desc">Entre deux mondes - Accepter l'Ombre</p>
+                        <p class="product-desc">Entre deux mondes — Accepter l'Ombre</p>
+                        <div class="size-selector">
+                            <span class="size-label">Choisir une taille</span>
+                            <div class="size-group">
+                                <span class="size-group-label">Adulte — 29€</span>
+                                <div class="size-buttons">
+                                    <button class="size-btn" onclick="selectSize(this)">S</button>
+                                    <button class="size-btn" onclick="selectSize(this)">M</button>
+                                    <button class="size-btn" onclick="selectSize(this)">L</button>
+                                    <button class="size-btn" onclick="selectSize(this)">XL</button>
+                                    <button class="size-btn" onclick="selectSize(this)">XXL</button>
+                                </div>
+                            </div>
+                            <div class="size-separator"></div>
+                            <div class="size-group">
+                                <span class="size-group-label">Enfant — 24€</span>
+                                <div class="size-buttons">
+                                    <button class="size-btn" onclick="selectSize(this)">9-10 ans</button>
+                                    <button class="size-btn" onclick="selectSize(this)">11-12 ans</button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="product-footer">
-                            <span class="price">29€</span>
+                            <div class="price-block">
+                                <span class="price">29€</span>
+                                <span class="price-kids">24€ taille enfant</span>
+                            </div>
                             <a href="#" class="btn-shopify">ACHETER</a>
                         </div>
                         <div class="product-meta">
@@ -140,15 +280,43 @@
                     </div>
                 </article>
 
+                <!-- SACRED GUARDIAN -->
                 <article class="product-card">
                     <div class="product-image" style="background: #E3F2FD;">
-                        <img src="cherubin_bleu.png" alt="Sacred Guardian" style="width: 80%; margin: auto; display: block;">
+                        <img src="cherubin_bleu.png" alt="Sacred Guardian">
                     </div>
                     <div class="product-info">
                         <h3>SACRED GUARDIAN</h3>
-                        <p class="product-desc">Le gardien sacré - La Protection Divine</p>
+                        <p class="product-desc">Le gardien sacré — La Protection Divine</p>
+                        <div class="size-selector">
+                            <span class="size-label">Choisir une taille</span>
+                            <div class="size-group">
+                                <span class="size-group-label">Adulte — 29€</span>
+                                <div class="size-buttons">
+                                    <button class="size-btn" onclick="selectSize(this)">S</button>
+                                    <button class="size-btn" onclick="selectSize(this)">M</button>
+                                    <button class="size-btn" onclick="selectSize(this)">L</button>
+                                    <button class="size-btn" onclick="selectSize(this)">XL</button>
+                                    <button class="size-btn" onclick="selectSize(this)">XXL</button>
+                                </div>
+                            </div>
+                            <div class="size-separator"></div>
+                            <div class="size-group">
+                                <span class="size-group-label">Enfant — 24€</span>
+                                <div class="size-buttons">
+                                    <button class="size-btn" onclick="selectSize(this)">3-4 ans</button>
+                                    <button class="size-btn" onclick="selectSize(this)">5-6 ans</button>
+                                    <button class="size-btn" onclick="selectSize(this)">7-8 ans</button>
+                                    <button class="size-btn" onclick="selectSize(this)">9-10 ans</button>
+                                    <button class="size-btn" onclick="selectSize(this)">11-12 ans</button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="product-footer">
-                            <span class="price">29€</span>
+                            <div class="price-block">
+                                <span class="price">29€</span>
+                                <span class="price-kids">24€ taille enfant</span>
+                            </div>
                             <a href="#" class="btn-shopify">ACHETER</a>
                         </div>
                         <div class="product-meta">
@@ -158,180 +326,188 @@
                     </div>
                 </article>
 
+                <!-- SERAPHIM FIRE -->
                 <article class="product-card">
-                  <div class="product-image" style="background: #000;">
-    <img src="seraphim_fire.png" alt="Seraphim Fire" style="width: 80%; margin: auto; display: block;">
-                  </div>
+                    <div class="product-badge soon">BIENTÔT</div>
+                    <div class="product-image" style="background: #000;">
+                        <img src="seraphim_fire.png" alt="Seraphim Fire">
+                    </div>
                     <div class="product-info">
                         <h3>SERAPHIM FIRE</h3>
-                        <p class="product-desc">Le feu purificateur - La Transformation</p>
+                        <p class="product-desc">Le feu purificateur — La Transformation</p>
+                        <div class="size-selector">
+                            <span class="size-label">Disponible bientôt</span>
+                            <div class="size-group">
+                                <span class="size-group-label">Adulte — 29€</span>
+                                <div class="size-buttons">
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">S</button>
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">M</button>
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">L</button>
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">XL</button>
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">XXL</button>
+                                </div>
+                            </div>
+                            <div class="size-separator"></div>
+                            <div class="size-group">
+                                <span class="size-group-label">Enfant — 24€</span>
+                                <div class="size-buttons">
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">3-4 ans</button>
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">5-6 ans</button>
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">7-8 ans</button>
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">9-10 ans</button>
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">11-12 ans</button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="product-footer">
-                            <span class="price">29€</span>
-                            <a href="#" class="btn-shopify" style="opacity: 0.5; cursor: not-allowed;">BIENTÔT</a>
+                            <div class="price-block">
+                                <span class="price">29€</span>
+                                <span class="price-kids">24€ taille enfant</span>
+                            </div>
+                            <a href="#" class="btn-shopify disabled">BIENTÔT</a>
                         </div>
                         <div class="product-meta">
-                            <span>🔥 En création</span>
+                            <span>🔥 Lancement imminent</span>
                             <span>Disponible prochainement</span>
                         </div>
                     </div>
                 </article>
 
+                <!-- THE WATCHER -->
                 <article class="product-card">
+                    <div class="product-badge soon">BIENTÔT</div>
                     <div class="product-image" style="background: #fff;">
-    <img src="the_watcher_cherubin_bleu.png" alt="The Watcher" style="width: 80%; margin: auto; display: block;">
+                        <img src="the_watcher_cherubin_bleu.png" alt="The Watcher">
                     </div>
                     <div class="product-info">
                         <h3>THE WATCHER</h3>
-                        <p class="product-desc">L'œil qui voit tout - L'Observation</p>
+                        <p class="product-desc">L'œil qui voit tout — L'Observation</p>
+                        <div class="size-selector">
+                            <span class="size-label">Disponible bientôt</span>
+                            <div class="size-group">
+                                <span class="size-group-label">Adulte — 29€</span>
+                                <div class="size-buttons">
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">S</button>
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">M</button>
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">L</button>
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">XL</button>
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">XXL</button>
+                                </div>
+                            </div>
+                            <div class="size-separator"></div>
+                            <div class="size-group">
+                                <span class="size-group-label">Enfant — 24€</span>
+                                <div class="size-buttons">
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">3-4 ans</button>
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">5-6 ans</button>
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">7-8 ans</button>
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">9-10 ans</button>
+                                    <button class="size-btn" disabled style="opacity:0.4;cursor:not-allowed;">11-12 ans</button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="product-footer">
-                            <span class="price">29€</span>
-                            <a href="#" class="btn-shopify" style="opacity: 0.5; cursor: not-allowed;">BIENTÔT</a>
+                            <div class="price-block">
+                                <span class="price">29€</span>
+                                <span class="price-kids">24€ taille enfant</span>
+                            </div>
+                            <a href="#" class="btn-shopify disabled">BIENTÔT</a>
                         </div>
                         <div class="product-meta">
-                            <span>👁️ En création</span>
+                            <span>👁️ Lancement imminent</span>
                             <span>Disponible prochainement</span>
                         </div>
                     </div>
                 </article>
-            </div>
 
-            <div class="section-divider" style="margin-top: 6rem;">
-                <h2>🧒 COLLECTION KIDS</h2>
-                <p style="font-size: 1.125rem; color: #5B8DB8;">L'éveil en famille • 24€ • Tailles 3-12 ans</p>
-            </div>
-
-            <div class="products-grid">
-                <article class="product-card">
-                    <div class="product-badge kids">KIDS</div>
-                    <div class="product-image" style="background: #FFFBF0;">
-                        <img src="ange-dore.png" alt="L'Ange Doré Kids" style="width: 70%; margin: auto; display: block;">
-                    </div>
-                    <div class="product-info">
-                        <h3>L'ANGE DORÉ KIDS</h3>
-                        <p class="product-desc">Pour les petits anges • Unisexe 3-12 ans</p>
-                        <div class="product-footer">
-                            <span class="price">24€</span>
-                            <a href="#" class="btn-shopify">ACHETER</a>
-                        </div>
-                        <div class="product-meta">
-                            <span>✓ Tailles 3-4 à 11-12 ans</span>
-                            <span class="rating">⭐⭐⭐⭐⭐ (34 avis)</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <div class="product-badge kids">KIDS</div>
-                    <div class="product-image" style="background: #FFF5F8;">
-                        <img src="cherubin_rose.png" alt="Divine Feminine Kids" style="width: 70%; margin: auto; display: block;">
-                    </div>
-                    <div class="product-info">
-                        <h3>DIVINE FEMININE KIDS</h3>
-                        <p class="product-desc">Douceur & force • Filles 3-12 ans</p>
-                        <div class="product-footer">
-                            <span class="price">24€</span>
-                            <a href="#" class="btn-shopify">ACHETER</a>
-                        </div>
-                        <div class="product-meta">
-                            <span>🌸 Tailles 3-4 à 11-12 ans</span>
-                            <span class="rating">⭐⭐⭐⭐⭐ (28 avis)</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <div class="product-badge kids">KIDS</div>
-                    <div class="product-image" style="background: #1A1A1A;">
-                        <img src="cherubin_noir_fallen_angel.png" alt="Fallen Light Kids" style="width: 70%; margin: auto; display: block; filter: invert(1);">
-                    </div>
-                    <div class="product-info">
-                        <h3>FALLEN LIGHT KIDS</h3>
-                        <p class="product-desc">Pour les ados • Unisexe 9-12 ans</p>
-                        <div class="product-footer">
-                            <span class="price">24€</span>
-                            <a href="#" class="btn-shopify">ACHETER</a>
-                        </div>
-                        <div class="product-meta">
-                            <span>🖤 Tailles 9-10 et 11-12 ans</span>
-                            <span class="rating">⭐⭐⭐⭐⭐ (19 avis)</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <div class="product-badge kids">KIDS</div>
-                    <div class="product-image" style="background: #E3F2FD;">
-                        <img src="cherubin_bleu.png" alt="Sacred Guardian Kids" style="width: 70%; margin: auto; display: block;">
-                    </div>
-                    <div class="product-info">
-                        <h3>SACRED GUARDIAN KIDS</h3>
-                        <p class="product-desc">Le protecteur • Garçons 3-12 ans</p>
-                        <div class="product-footer">
-                            <span class="price">24€</span>
-                            <a href="#" class="btn-shopify">ACHETER</a>
-                        </div>
-                        <div class="product-meta">
-                            <span>💙 Tailles 3-4 à 11-12 ans</span>
-                            <span class="rating">⭐⭐⭐⭐⭐ (31 avis)</span>
-                        </div>
-                    </div>
-                </article>
             </div>
         </div>
     </section>
 
+    <!-- PACK DUO -->
     <section class="bundle-offer">
         <div class="container">
             <div class="bundle-box">
-                <span class="bundle-badge">PACK DUO</span>
-                <h2 style="margin-bottom: 0.5rem;">PARENT + ENFANT</h2>
-                <p style="color: #5B8DB8; margin-bottom: 2rem;">1 T-shirt adulte + 1 T-shirt enfant</p>
+                <span class="bundle-badge">✨ PACK DUO FAMILLE</span>
+                <h2 style="margin-bottom: 0.5rem; margin-top: 1rem;">PARENT + ENFANT</h2>
+                <p style="color: #5B8DB8; margin-bottom: 2rem;">1 T-shirt adulte + 1 T-shirt enfant • Même design</p>
                 <div class="bundle-price">
                     <span class="price-old">53€</span>
                     <span class="price-new">49€</span>
                 </div>
                 <a href="#" class="btn btn-primary">CRÉER MON DUO</a>
-                <p style="margin-top: 1.5rem; font-size: 0.95rem; color: #5B8DB8;">L'éveil en famille • Économisez 4€</p>
+                <p style="margin-top: 1.5rem; font-size: 0.95rem; color: #5B8DB8;">L'éveil en famille • Économisez 4€ 🪽</p>
             </div>
         </div>
     </section>
 
-    <section style="background: #F8FBFF;">
+    <!-- INFOS -->
+    <section style="background: #F8FBFF; padding: 4rem 0;">
         <div class="container">
             <div class="info-grid">
                 <div class="info-item">
                     <div class="info-icon">🚚</div>
-                    <h4 style="font-family: 'Cinzel', serif; color: #4A90E2; margin-bottom: 0.5rem;">Livraison Offerte</h4>
-                    <p style="font-size: 0.95rem; color: #5B8DB8;">Dès 50€ d'achat</p>
+                    <h4 style="font-family:'Cinzel',serif;color:#4A90E2;margin-bottom:0.5rem;">Livraison Offerte</h4>
+                    <p style="font-size:0.95rem;color:#5B8DB8;">Dès 50€ d'achat</p>
                 </div>
                 <div class="info-item">
                     <div class="info-icon">↩️</div>
-                    <h4 style="font-family: 'Cinzel', serif; color: #4A90E2; margin-bottom: 0.5rem;">Retours Gratuits</h4>
-                    <p style="font-size: 0.95rem; color: #5B8DB8;">30 jours pour changer d'avis</p>
+                    <h4 style="font-family:'Cinzel',serif;color:#4A90E2;margin-bottom:0.5rem;">Retours Gratuits</h4>
+                    <p style="font-size:0.95rem;color:#5B8DB8;">30 jours pour changer d'avis</p>
                 </div>
                 <div class="info-item">
                     <div class="info-icon">✓</div>
-                    <h4 style="font-family: 'Cinzel', serif; color: #4A90E2; margin-bottom: 0.5rem;">Qualité Premium</h4>
-                    <p style="font-size: 0.95rem; color: #5B8DB8;">Coton bio 100% certifié</p>
+                    <h4 style="font-family:'Cinzel',serif;color:#4A90E2;margin-bottom:0.5rem;">Qualité Premium</h4>
+                    <p style="font-size:0.95rem;color:#5B8DB8;">Coton bio 100% certifié</p>
                 </div>
                 <div class="info-item">
                     <div class="info-icon">🌍</div>
-                    <h4 style="font-family: 'Cinzel', serif; color: #4A90E2; margin-bottom: 0.5rem;">Made in Europe</h4>
-                    <p style="font-size: 0.95rem; color: #5B8DB8;">Production éthique locale</p>
+                    <h4 style="font-family:'Cinzel',serif;color:#4A90E2;margin-bottom:0.5rem;">Made in Europe</h4>
+                    <p style="font-size:0.95rem;color:#5B8DB8;">Production éthique locale</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer style="background: linear-gradient(180deg, white 0%, #F8FBFF 100%); border-top: 2px solid #E3F2FD; padding: 2rem 0;">
+    <footer class="footer">
         <div class="container">
-            <div style="text-align: center; padding: 1rem 0;">
-                <div style="background: #E3F2FD; border: 1px solid #B8D8F0; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; font-size: 0.95rem;">
-                    ⚠️ <strong style="color: #4A90E2;">FICTION ÉSOTÉRIQUE</strong><br>BINAEL est un univers de FICTION.
-                </div>
-                <p style="font-size: 0.875rem; color: #5B8DB8;">BINAEL © 2026 • Porter • Partager • Profiter</p>
+            <div class="footer-grid">
+                <div class="footer-col"><h4>SHOP</h4><ul><li><a href="shop.html">Collection</a></li></ul></div>
+                <div class="footer-col"><h4>UNIVERS</h4><ul><li><a href="ange-gardien.html">Qui est BINAEL?</a></li><li><a href="hierarchies.html">Hiérarchies</a></li><li><a href="quiz.html">Quiz</a></li></ul></div>
+                <div class="footer-col"><h4>INFORMATIONS</h4><ul><li><a href="qualite.html">Qualité</a></li><li><a href="legal.html">Legal</a></li></ul></div>
             </div>
+            <div class="disclaimer">⚠️ <strong>FICTION ÉSOTÉRIQUE</strong><br>BINAEL est un univers de FICTION basé sur des traditions mystiques.</div>
+            <div style="text-align:center;font-size:0.875rem;color:#5B8DB8;"><p>BINAEL © 2026 • Porter • Partager • Profiter</p></div>
         </div>
     </footer>
+
+    <script>
+        // Burger menu
+        const burger = document.getElementById('burger');
+        const navMenu = document.getElementById('nav-menu');
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('open');
+            navMenu.classList.toggle('open');
+        });
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('open');
+                navMenu.classList.remove('open');
+            });
+        });
+
+        // Sélecteur de taille — un seul actif par groupe de tailles dans la même carte
+        function selectSize(btn) {
+            const group = btn.closest('.size-group');
+            group.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+
+            // Mettre à jour le prix affiché selon adulte ou enfant
+            const card = btn.closest('.product-card');
+            const priceEl = card.querySelector('.price');
+            const isKids = group.querySelector('.size-group-label').textContent.includes('Enfant');
+            priceEl.textContent = isKids ? '24€' : '29€';
+        }
+    </script>
 </body>
 </html>
