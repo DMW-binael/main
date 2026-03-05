@@ -9,37 +9,91 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Cormorant Garamond', serif; background: linear-gradient(180deg, #FFF, #F8FBFF, #F0F7FF); background-attachment: fixed; color: #2C5F8D; line-height: 1.8; }
         h1, h2, h3 { font-family: 'Cinzel', serif; color: #4A90E2; }
+        p { font-size: 1.125rem; margin-bottom: 1rem; color: #5B8DB8; }
         .container { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
-        .navbar { background: rgba(255,255,255,0.95); border-bottom: 1px solid #E3F2FD; position: sticky; top: 0; z-index: 1000; padding: 1rem 2rem; display: flex; align-items: center; gap: 1rem; }
+
+        /* NAVBAR */
+        .navbar { background: rgba(255,255,255,0.97); border-bottom: 1px solid #E3F2FD; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(74,144,226,0.08); }
+        .nav-container { padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .nav-left { display: flex; align-items: center; gap: 1rem; }
         .logo-svg { width: 40px; height: 40px; }
-        .logo-text { font-family: 'Cinzel', serif; font-size: 1.75rem; font-weight: 700; letter-spacing: 0.2em; background: linear-gradient(135deg, #4A90E2, #7CB9E8, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo-text { font-family: 'Cinzel', serif; font-size: 1.75rem; font-weight: 700; letter-spacing: 0.2em; background: linear-gradient(135deg, #4A90E2, #7CB9E8, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+        .nav-menu { display: flex; gap: 2rem; list-style: none; }
+        .nav-menu a { font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.12em; text-transform: uppercase; color: #2C5F8D; text-decoration: none; transition: color 0.2s; }
+        .nav-menu a:hover, .nav-menu a.active { color: #4A90E2; }
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; z-index: 1100; }
+        .burger span { display: block; width: 25px; height: 2px; background: #2C5F8D; border-radius: 2px; transition: 0.3s; }
+        .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger.open span:nth-child(2) { opacity: 0; }
+        .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* QUIZ */
         .quiz-intro { min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 4rem 2rem; }
         .intro-box { background: white; border: 2px solid #B8D8F0; border-radius: 24px; padding: 4rem 3rem; text-align: center; box-shadow: 0 8px 40px rgba(74,144,226,0.12); }
         .intro-icon { font-size: 5rem; margin-bottom: 2rem; }
-        .btn { padding: 1rem 2.5rem; font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.15em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 50px; font-weight: 600; background: linear-gradient(135deg, #4A90E2, #7CB9E8); color: white; transition: 0.3s; }
+        .btn { padding: 1rem 2.5rem; font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.15em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 50px; font-weight: 600; background: linear-gradient(135deg, #4A90E2, #7CB9E8); color: white; transition: 0.3s; text-decoration: none; display: inline-block; }
         .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(74,144,226,0.3); }
+        .btn-secondary { background: white; border: 2px solid #4A90E2; color: #4A90E2; }
+        .btn-secondary:hover { background: #E3F2FD; }
+
         .question-box { background: white; border: 2px solid #B8D8F0; border-radius: 24px; padding: 3rem; margin: 4rem auto; box-shadow: 0 8px 40px rgba(74,144,226,0.12); display: none; }
         .question-box.active { display: block; }
         .progress-bar { width: 100%; height: 8px; background: #E3F2FD; border-radius: 10px; margin-bottom: 2rem; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, #4A90E2, #7CB9E8); transition: 0.3s; border-radius: 10px; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #4A90E2, #7CB9E8); transition: 0.4s; border-radius: 10px; }
         .question-number { font-family: 'Cinzel', serif; font-size: 0.875rem; color: #7CB9E8; margin-bottom: 1rem; letter-spacing: 0.1em; }
-        .question-text { font-size: 1.5rem; margin-bottom: 2rem; color: #2C5F8D; }
+        .question-text { font-size: 1.5rem; margin-bottom: 2rem; color: #2C5F8D; font-family: 'Cinzel', serif; font-weight: 600; line-height: 1.4; }
         .answers { display: grid; gap: 1rem; margin-top: 2rem; }
         .answer-btn { width: 100%; padding: 1.5rem; background: #F8FBFF; border: 2px solid #E3F2FD; border-radius: 16px; font-family: 'Cormorant Garamond', serif; font-size: 1.125rem; color: #2C5F8D; cursor: pointer; text-align: left; transition: 0.3s; }
-        .answer-btn:hover { background: #E3F2FD; border-color: #4A90E2; transform: translateX(10px); }
+        .answer-btn:hover { background: #E3F2FD; border-color: #4A90E2; transform: translateX(8px); }
+
         .results-box { background: white; border: 2px solid #B8D8F0; border-radius: 24px; padding: 4rem 3rem; margin: 4rem auto; text-align: center; display: none; }
         .results-box.active { display: block; }
         .results-icon { font-size: 6rem; margin-bottom: 2rem; }
         .product-recommendation { background: linear-gradient(135deg, #E3F2FD, rgba(255,215,0,0.1)); border: 2px solid #B8D8F0; border-radius: 16px; padding: 2rem; margin: 2rem 0; }
-        .product-image { width: 200px; height: 200px; background: #F0F7FF; margin: 0 auto 1rem; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #5B8DB8; }
-        .btn-secondary { background: white; border: 2px solid #4A90E2; color: #4A90E2; }
-        .btn-secondary:hover { background: #E3F2FD; }
+        .product-img-box { width: 180px; height: 180px; background: #F0F7FF; margin: 0 auto 1rem; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 5rem; overflow: hidden; }
+        .product-img-box img { width: 100%; height: 100%; object-fit: contain; }
+
+        /* FOOTER */
+        .footer { background: linear-gradient(180deg, white 0%, #F8FBFF 100%); border-top: 2px solid #E3F2FD; padding: 4rem 0 2rem; margin-top: 4rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-bottom: 3rem; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 2rem; }
+        .footer-col h4 { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.15em; margin-bottom: 1.5rem; color: #4A90E2; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.75rem; }
+        .footer-col ul li a { color: #5B8DB8; text-decoration: none; font-size: 0.95rem; }
+        .disclaimer { background: #E3F2FD; border: 1px solid #B8D8F0; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; font-size: 0.95rem; text-align: center; max-width: 1200px; margin-left: auto; margin-right: auto; padding-left: 2rem; padding-right: 2rem; }
+        .disclaimer strong { color: #4A90E2; }
+
+        @media (max-width: 768px) {
+            .burger { display: flex; }
+            .nav-menu { display: none; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.98); justify-content: center; align-items: center; gap: 2.5rem; z-index: 1050; }
+            .nav-menu.open { display: flex; }
+            .nav-menu a { font-size: 1.25rem; }
+            .intro-box { padding: 2.5rem 1.5rem; }
+            .question-box, .results-box { padding: 2rem 1.5rem; }
+            .question-text { font-size: 1.25rem; }
+        }
     </style>
 </head>
 <body>
+
     <nav class="navbar">
-        <img src="logo.svg" alt="BINAEL" class="logo-svg">
-        <a href="index.html" style="text-decoration: none;"><span class="logo-text">BINAEL</span></a>
+        <div class="nav-container">
+            <div class="nav-left">
+                <img src="logo.svg" alt="BINAEL" class="logo-svg">
+                <a href="index.html" class="logo-text">BINAEL</a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="quiz.html" class="active">Quiz</a></li>
+                <li><a href="ange-gardien.html">Ange Gardien</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="hierarchies.html">Hiérarchies</a></li>
+            </ul>
+            <button class="burger" id="burger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </nav>
 
     <div class="quiz-intro" id="intro">
@@ -61,9 +115,7 @@
 
     <div class="container">
         <div class="question-box" id="questions-container">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress"></div>
-            </div>
+            <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
             <div class="question-number" id="question-number">QUESTION 1/12</div>
             <h2 class="question-text" id="question-text"></h2>
             <div class="answers" id="answers-container"></div>
@@ -71,277 +123,199 @@
 
         <div class="results-box" id="results">
             <div class="results-icon" id="result-icon">🔥</div>
-            <h1 id="result-title" style="margin-bottom: 1rem;">VOUS ÊTES UN SÉRAPHIN</h1>
+            <h1 id="result-title" style="margin-bottom: 1rem;"></h1>
             <p id="result-desc" style="font-size: 1.125rem; color: #5B8DB8; margin-bottom: 2rem; line-height: 1.8;"></p>
-            
             <div class="product-recommendation">
-                <h3 style="margin-bottom: 1rem; color: #4A90E2;">🪽 VOTRE T-SHIRT PARFAIT</h3>
-                <div class="product-image" id="product-image">[Image produit]</div>
-                <h2 id="product-name" style="margin-bottom: 0.5rem;">SERAPHIM FIRE</h2>
+                <h3 style="margin-bottom: 1.5rem; color: #4A90E2;">🪽 VOTRE T-SHIRT PARFAIT</h3>
+                <div class="product-img-box" id="product-img-box">
+                    <img id="product-img" src="" alt="" style="display:none;">
+                    <span id="product-img-fallback" style="font-size:4rem;"></span>
+                </div>
+                <h2 id="product-name" style="margin-bottom: 0.5rem;"></h2>
                 <p id="product-desc" style="color: #5B8DB8; margin-bottom: 1rem;"></p>
-                <p style="font-size: 1.5rem; font-family: 'Cinzel', serif; font-weight: 700; color: #4A90E2; margin-bottom: 2rem;">35€</p>
-                <a href="shop.html" class="btn">VOIR CE T-SHIRT</a>
+                <p style="font-size: 1.5rem; font-family: 'Cinzel', serif; font-weight: 700; color: #4A90E2; margin-bottom: 2rem;">29€</p>
+                <a href="shop.html" class="btn">VOIR CE T-SHIRT →</a>
             </div>
-
-            <div style="margin-top: 3rem;">
+            <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                 <button class="btn btn-secondary" onclick="location.reload()">REFAIRE LE QUIZ</button>
-                <a href="shop.html" class="btn" style="margin-left: 1rem;">VOIR TOUTE LA COLLECTION</a>
+                <a href="shop.html" class="btn">VOIR TOUTE LA COLLECTION</a>
             </div>
         </div>
     </div>
 
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col"><h4>SHOP</h4><ul><li><a href="shop.html">Collection</a></li></ul></div>
+            <div class="footer-col"><h4>UNIVERS</h4><ul><li><a href="hierarchies.html">Hiérarchies</a></li><li><a href="ange-gardien.html">Ange Gardien</a></li></ul></div>
+            <div class="footer-col"><h4>INFORMATIONS</h4><ul><li><a href="qualite.html">Qualité</a></li><li><a href="legal.html">Legal</a></li></ul></div>
+        </div>
+        <div class="disclaimer">⚠️ <strong>FICTION ÉSOTÉRIQUE</strong><br>BINAEL est un univers de FICTION basé sur des traditions mystiques.</div>
+        <div style="text-align:center;font-size:0.875rem;color:#5B8DB8;padding:0 2rem;"><p>BINAEL © 2026 • Porter • Partager • Profiter</p></div>
+    </footer>
+
     <script>
+        // Burger menu
+        const burger = document.getElementById('burger');
+        const navMenu = document.getElementById('nav-menu');
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('open');
+            navMenu.classList.toggle('open');
+        });
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('open');
+                navMenu.classList.remove('open');
+            });
+        });
+
+        // Quiz data
         const quizData = {
             questions: [
-                {
-                    question: "Dans le monde actuel rapide et stressant, vous cherchez avant tout...",
-                    answers: [
-                        { text: "La paix intérieure et le calme", scores: { gardien: 3, throne: 1 } },
-                        { text: "La compréhension profonde du sens de la vie", scores: { cherubim: 3, philosopher: 2 } },
-                        { text: "La transformation et l'évolution personnelle", scores: { seraphim: 3, fallen: 2 } },
-                        { text: "L'équilibre entre lumière et ombre", scores: { fallen: 3, watcher: 2 } }
-                    ]
-                },
-                {
-                    question: "Quand vous faites face à l'incertitude, vous...",
-                    answers: [
-                        { text: "Vous tournez vers votre intuition", scores: { gardien: 2, watcher: 3 } },
-                        { text: "Analysez la situation en profondeur", scores: { cherubim: 3, philosopher: 2 } },
-                        { text: "Voyez cela comme une opportunité de grandir", scores: { seraphim: 3, fallen: 1 } },
-                        { text: "Cherchez l'ordre caché derrière le chaos", scores: { geometry: 3, vesica: 2 } }
-                    ]
-                },
-                {
-                    question: "Votre plus grande force est...",
-                    answers: [
-                        { text: "Votre compassion et votre empathie", scores: { gardien: 3, throne: 1 } },
-                        { text: "Votre sagesse et votre discernement", scores: { cherubim: 3, philosopher: 2 } },
-                        { text: "Votre courage face au changement", scores: { seraphim: 3, fallen: 2 } },
-                        { text: "Votre capacité à voir les connexions", scores: { geometry: 3, asabove: 2 } }
-                    ]
-                },
-                {
-                    question: "Pour vous reconnecter à votre être profond, vous préférez...",
-                    answers: [
-                        { text: "La méditation silencieuse", scores: { watcher: 3, gardien: 2 } },
-                        { text: "L'étude de textes sacrés ou philosophiques", scores: { cherubim: 3, philosopher: 2 } },
-                        { text: "L'action transformatrice", scores: { seraphim: 3, fallen: 1 } },
-                        { text: "L'observation de la nature et ses symboles", scores: { geometry: 3, vesica: 2 } }
-                    ]
-                },
-                {
-                    question: "Votre relation avec votre part d'ombre est...",
-                    answers: [
-                        { text: "Je préfère me concentrer sur la lumière", scores: { seraphim: 2, ange: 3 } },
-                        { text: "Je cherche à la comprendre intellectuellement", scores: { cherubim: 3, philosopher: 2 } },
-                        { text: "Je l'accepte comme partie intégrante de moi", scores: { fallen: 3, asabove: 2 } },
-                        { text: "Je l'observe sans jugement", scores: { watcher: 3, gardien: 1 } }
-                    ]
-                },
-                {
-                    question: "Dans votre quête spirituelle, vous êtes attiré par...",
-                    answers: [
-                        { text: "Les anges gardiens et la protection divine", scores: { gardien: 3, ange: 2 } },
-                        { text: "La géométrie sacrée et les symboles", scores: { geometry: 3, vesica: 2, philosopher: 1 } },
-                        { text: "L'alchimie et la transformation", scores: { philosopher: 3, seraphim: 2 } },
-                        { text: "La dualité et les mystères de l'existence", scores: { fallen: 3, asabove: 2 } }
-                    ]
-                },
-                {
-                    question: "Votre mission dans la vie est de...",
-                    answers: [
-                        { text: "Protéger et aider ceux que vous aimez", scores: { gardien: 3, watcher: 2 } },
-                        { text: "Chercher et partager la connaissance", scores: { cherubim: 3, philosopher: 2 } },
-                        { text: "Vous transformer constamment", scores: { seraphim: 3, fallen: 2 } },
-                        { text: "Maintenir l'équilibre et l'harmonie", scores: { throne: 3, vesica: 2 } }
-                    ]
-                },
-                {
-                    question: "Face à un défi, vous...",
-                    answers: [
-                        { text: "Restez calme et rassurant", scores: { gardien: 3, throne: 1 } },
-                        { text: "Cherchez à comprendre la leçon", scores: { cherubim: 3, watcher: 2 } },
-                        { text: "Vous enflammez et passez à l'action", scores: { seraphim: 3 } },
-                        { text: "Acceptez et vous adaptez", scores: { fallen: 3, asabove: 2 } }
-                    ]
-                },
-                {
-                    question: "Votre élément préféré est...",
-                    answers: [
-                        { text: "Le Feu (passion, transformation)", scores: { seraphim: 3, philosopher: 1 } },
-                        { text: "L'Eau (émotion, intuition)", scores: { guardien: 3, vesica: 2 } },
-                        { text: "L'Air (intellect, communication)", scores: { cherubim: 3, geometry: 1 } },
-                        { text: "La Terre (stabilité, ancrage)", scores: { throne: 3, watcher: 2 } }
-                    ]
-                },
-                {
-                    question: "Vous vous sentez le plus aligné quand...",
-                    answers: [
-                        { text: "Vous êtes au service des autres", scores: { gardien: 3, ange: 2 } },
-                        { text: "Vous apprenez quelque chose de nouveau", scores: { cherubim: 3, philosopher: 2 } },
-                        { text: "Vous sortez de votre zone de confort", scores: { seraphim: 3, fallen: 2 } },
-                        { text: "Vous contemplez les mystères de l'univers", scores: { geometry: 3, asabove: 2 } }
-                    ]
-                },
-                {
-                    question: "Votre citation préférée serait...",
-                    answers: [
-                        { text: "\"L'amour est la seule réponse\"", scores: { guardien: 3, ange: 2 } },
-                        { text: "\"Connais-toi toi-même\"", scores: { cherubim: 3, watcher: 2 } },
-                        { text: "\"De mes cendres, je renais\"", scores: { seraphim: 3, fallen: 2, philosopher: 1 } },
-                        { text: "\"Tout est connecté\"", scores: { geometry: 3, vesica: 2, asabove: 3 } }
-                    ]
-                },
-                {
-                    question: "Votre cadeau pour l'humanité serait...",
-                    answers: [
-                        { text: "La paix et la sécurité", scores: { guardien: 3, throne: 2 } },
-                        { text: "La sagesse et la compréhension", scores: { cherubim: 3, philosopher: 2 } },
-                        { text: "Le courage de se transformer", scores: { seraphim: 3, fallen: 2 } },
-                        { text: "La révélation des lois universelles", scores: { geometry: 3, asabove: 3 } }
-                    ]
-                }
+                { question: "Dans le monde actuel rapide et stressant, vous cherchez avant tout...", answers: [
+                    { text: "La paix intérieure et le calme", scores: { gardien: 3, throne: 1 } },
+                    { text: "La compréhension profonde du sens de la vie", scores: { cherubim: 3, philosopher: 2 } },
+                    { text: "La transformation et l'évolution personnelle", scores: { seraphim: 3, fallen: 2 } },
+                    { text: "L'équilibre entre lumière et ombre", scores: { fallen: 3, watcher: 2 } }
+                ]},
+                { question: "Quand vous faites face à l'incertitude, vous...", answers: [
+                    { text: "Vous tournez vers votre intuition", scores: { gardien: 2, watcher: 3 } },
+                    { text: "Analysez la situation en profondeur", scores: { cherubim: 3, philosopher: 2 } },
+                    { text: "Voyez cela comme une opportunité de grandir", scores: { seraphim: 3, fallen: 1 } },
+                    { text: "Cherchez l'ordre caché derrière le chaos", scores: { geometry: 3, vesica: 2 } }
+                ]},
+                { question: "Votre plus grande force est...", answers: [
+                    { text: "Votre compassion et votre empathie", scores: { gardien: 3, throne: 1 } },
+                    { text: "Votre sagesse et votre discernement", scores: { cherubim: 3, philosopher: 2 } },
+                    { text: "Votre courage face au changement", scores: { seraphim: 3, fallen: 2 } },
+                    { text: "Votre capacité à voir les connexions", scores: { geometry: 3, asabove: 2 } }
+                ]},
+                { question: "Pour vous reconnecter à votre être profond, vous préférez...", answers: [
+                    { text: "La méditation silencieuse", scores: { watcher: 3, gardien: 2 } },
+                    { text: "L'étude de textes sacrés ou philosophiques", scores: { cherubim: 3, philosopher: 2 } },
+                    { text: "L'action transformatrice", scores: { seraphim: 3, fallen: 1 } },
+                    { text: "L'observation de la nature et ses symboles", scores: { geometry: 3, vesica: 2 } }
+                ]},
+                { question: "Votre relation avec votre part d'ombre est...", answers: [
+                    { text: "Je préfère me concentrer sur la lumière", scores: { seraphim: 2, ange: 3 } },
+                    { text: "Je cherche à la comprendre intellectuellement", scores: { cherubim: 3, philosopher: 2 } },
+                    { text: "Je l'accepte comme partie intégrante de moi", scores: { fallen: 3, asabove: 2 } },
+                    { text: "Je l'observe sans jugement", scores: { watcher: 3, gardien: 1 } }
+                ]},
+                { question: "Dans votre quête spirituelle, vous êtes attiré par...", answers: [
+                    { text: "Les anges gardiens et la protection divine", scores: { gardien: 3, ange: 2 } },
+                    { text: "La géométrie sacrée et les symboles", scores: { geometry: 3, vesica: 2, philosopher: 1 } },
+                    { text: "L'alchimie et la transformation", scores: { philosopher: 3, seraphim: 2 } },
+                    { text: "La dualité et les mystères de l'existence", scores: { fallen: 3, asabove: 2 } }
+                ]},
+                { question: "Votre mission dans la vie est de...", answers: [
+                    { text: "Protéger et aider ceux que vous aimez", scores: { gardien: 3, watcher: 2 } },
+                    { text: "Chercher et partager la connaissance", scores: { cherubim: 3, philosopher: 2 } },
+                    { text: "Vous transformer constamment", scores: { seraphim: 3, fallen: 2 } },
+                    { text: "Maintenir l'équilibre et l'harmonie", scores: { throne: 3, vesica: 2 } }
+                ]},
+                { question: "Face à un défi, vous...", answers: [
+                    { text: "Restez calme et rassurant", scores: { gardien: 3, throne: 1 } },
+                    { text: "Cherchez à comprendre la leçon", scores: { cherubim: 3, watcher: 2 } },
+                    { text: "Vous enflammez et passez à l'action", scores: { seraphim: 3 } },
+                    { text: "Acceptez et vous adaptez", scores: { fallen: 3, asabove: 2 } }
+                ]},
+                { question: "Votre élément préféré est...", answers: [
+                    { text: "Le Feu — passion, transformation", scores: { seraphim: 3, philosopher: 1 } },
+                    { text: "L'Eau — émotion, intuition", scores: { gardien: 3, vesica: 2 } },
+                    { text: "L'Air — intellect, communication", scores: { cherubim: 3, geometry: 1 } },
+                    { text: "La Terre — stabilité, ancrage", scores: { throne: 3, watcher: 2 } }
+                ]},
+                { question: "Vous vous sentez le plus aligné quand...", answers: [
+                    { text: "Vous êtes au service des autres", scores: { gardien: 3, ange: 2 } },
+                    { text: "Vous apprenez quelque chose de nouveau", scores: { cherubim: 3, philosopher: 2 } },
+                    { text: "Vous sortez de votre zone de confort", scores: { seraphim: 3, fallen: 2 } },
+                    { text: "Vous contemplez les mystères de l'univers", scores: { geometry: 3, asabove: 2 } }
+                ]},
+                { question: "Votre citation inspirante serait...", answers: [
+                    { text: "\"L'amour est la seule réponse\"", scores: { gardien: 3, ange: 2 } },
+                    { text: "\"Connais-toi toi-même\"", scores: { cherubim: 3, watcher: 2 } },
+                    { text: "\"De mes cendres, je renais\"", scores: { seraphim: 3, fallen: 2, philosopher: 1 } },
+                    { text: "\"Tout est connecté\"", scores: { geometry: 3, vesica: 2, asabove: 3 } }
+                ]},
+                { question: "Votre cadeau pour l'humanité serait...", answers: [
+                    { text: "La paix et la sécurité", scores: { gardien: 3, throne: 2 } },
+                    { text: "La sagesse et la compréhension", scores: { cherubim: 3, philosopher: 2 } },
+                    { text: "Le courage de se transformer", scores: { seraphim: 3, fallen: 2 } },
+                    { text: "La révélation des lois universelles", scores: { geometry: 3, asabove: 3 } }
+                ]}
             ],
-            
             results: {
-                ange: {
-                    title: "L'ANGE DORÉ",
-                    subtitle: "Le Gardien Bienveillant",
-                    icon: "✨",
+                ange: { title: "L'ANGE DORÉ", subtitle: "Le Gardien Bienveillant", icon: "✨", img: "ange-dore-or.png",
                     description: "Vous êtes comme l'Ange Doré : une présence lumineuse et protectrice. Votre compassion naturelle et votre désir de veiller sur les autres font de vous un véritable gardien. Dans ce monde rapide et incertain, vous êtes celui qui apporte la stabilité, la douceur et la lumière.",
                     qualities: "Compassion • Protection • Lumière • Bienveillance",
                     mission: "Votre mission : être une source de réconfort dans un monde stressant. Votre simple présence apaise.",
-                    product: {
-                        name: "L'ANGE DORÉ",
-                        desc: "Le gardien bienveillant, la lumière dans l'obscurité",
-                        price: "35€"
-                    }
+                    product: { name: "L'ANGE DORÉ", desc: "Le gardien bienveillant, la lumière dans l'obscurité" }
                 },
-                seraphim: {
-                    title: "SERAPHIM FIRE",
-                    subtitle: "L'Ange de Feu",
-                    icon: "🔥",
+                seraphim: { title: "SERAPHIM FIRE", subtitle: "L'Ange de Feu", icon: "🔥", img: "seraphim_fire.png",
                     description: "Vous êtes un Séraphin, l'ange le plus proche du divin. Votre passion ardente et votre désir de transformation vous animent. Face à la complexité du monde, vous ne vous résignez pas : vous vous enflammez pour créer le changement.",
                     qualities: "Passion • Transformation • Purification • Courage",
                     mission: "Votre mission : brûler ce qui ne sert plus, transformer l'ancien en nouveau, être le feu purificateur.",
-                    product: {
-                        name: "SERAPHIM FIRE",
-                        desc: "Le séraphin à six ailes, le feu purificateur",
-                        price: "35€"
-                    }
+                    product: { name: "SERAPHIM FIRE", desc: "Le feu purificateur, la transformation divine" }
                 },
-                cherubim: {
-                    title: "SACRED GEOMETRY",
-                    subtitle: "Le Sage",
-                    icon: "📚",
-                    description: "Vous êtes un Chérubin, gardien de la sagesse divine. Votre intellect pénétrant vous permet de voir l'ordre caché derrière le chaos apparent du monde. La géométrie sacrée révèle pour vous les lois qui régissent l'univers.",
+                cherubim: { title: "SACRED GUARDIAN", subtitle: "Le Sage", icon: "📚", img: "cherubin_bleu.png",
+                    description: "Vous êtes un Chérubin, gardien de la sagesse divine. Votre intellect pénétrant vous permet de voir l'ordre caché derrière le chaos apparent du monde.",
                     qualities: "Sagesse • Connaissance • Compréhension • Vision",
                     mission: "Votre mission : révéler les vérités cachées, enseigner, guider par la connaissance.",
-                    product: {
-                        name: "SACRED GEOMETRY",
-                        desc: "Les clés de l'univers, le langage sacré",
-                        price: "39€"
-                    }
+                    product: { name: "SACRED GUARDIAN", desc: "Le gardien sacré, la protection divine" }
                 },
-                fallen: {
-                    title: "FALLEN LIGHT",
-                    subtitle: "L'Ange Déchu",
-                    icon: "🖤",
-                    description: "Vous êtes comme l'Ange Déchu : entre deux mondes. Vous avez compris que la lumière ne peut exister sans l'ombre. Dans un monde qui vous pousse à choisir un camp, vous embrassez votre dualité. Vous n'êtes pas tombé par faiblesse, mais descendu par choix.",
+                fallen: { title: "FALLEN LIGHT", subtitle: "L'Ange Déchu", icon: "🖤", img: "cherubin_noir_fallen_angel.png",
+                    description: "Vous êtes comme l'Ange Déchu : entre deux mondes. Vous avez compris que la lumière ne peut exister sans l'ombre. Dans un monde qui vous pousse à choisir un camp, vous embrassez votre dualité.",
                     qualities: "Dualité • Authenticité • Courage • Transformation",
                     mission: "Votre mission : montrer qu'on peut être imparfait et sacré à la fois. L'ombre fait partie du chemin.",
-                    product: {
-                        name: "FALLEN LIGHT",
-                        desc: "Entre deux mondes, la quête de rédemption",
-                        price: "35€"
-                    }
+                    product: { name: "FALLEN LIGHT", desc: "Entre deux mondes, la quête de rédemption" }
                 },
-                throne: {
-                    title: "THRONE OF LIGHT",
-                    subtitle: "Le Juste",
-                    icon: "⚖️",
-                    description: "Vous êtes un Trône, pilier de la justice divine. Dans un monde parfois injuste et violent, vous maintenez l'équilibre. Votre intégrité inébranlable et votre sens aigu de l'équité font de vous un phare de justice.",
+                throne: { title: "SACRED GUARDIAN", subtitle: "Le Juste", icon: "⚖️", img: "cherubin_bleu.png",
+                    description: "Vous êtes un Trône, pilier de la justice divine. Dans un monde parfois injuste, vous maintenez l'équilibre. Votre intégrité inébranlable et votre sens aigu de l'équité font de vous un phare de justice.",
                     qualities: "Justice • Équité • Intégrité • Équilibre",
                     mission: "Votre mission : maintenir l'ordre cosmique, restaurer l'équilibre, incarner la justice.",
-                    product: {
-                        name: "THRONE OF LIGHT",
-                        desc: "Le trône céleste, justice divine",
-                        price: "39€"
-                    }
+                    product: { name: "SACRED GUARDIAN", desc: "Le gardien sacré, la protection divine" }
                 },
-                watcher: {
-                    title: "THE WATCHER",
-                    subtitle: "L'Observateur",
-                    icon: "👁️",
+                watcher: { title: "THE WATCHER", subtitle: "L'Observateur", icon: "👁️", img: "the_watcher_cherubin_bleu.png",
                     description: "Vous êtes le Veilleur, celui qui observe sans juger. Dans un monde agité, vous trouvez la paix dans l'observation silencieuse. Votre capacité à prendre du recul vous permet de voir ce que d'autres manquent.",
                     qualities: "Observation • Discernement • Patience • Vision",
                     mission: "Votre mission : observer, témoigner, voir la vérité au-delà des apparences.",
-                    product: {
-                        name: "THE WATCHER",
-                        desc: "L'œil qui voit tout, le gardien vigilant",
-                        price: "35€"
-                    }
+                    product: { name: "THE WATCHER", desc: "L'œil qui voit tout, le gardien vigilant" }
                 },
-                geometry: {
-                    title: "SACRED GEOMETRY",
-                    subtitle: "Le Géomètre Divin",
-                    icon: "🔷",
-                    description: "Vous voyez les patterns divins partout. La géométrie sacrée n'est pas qu'un concept pour vous : c'est une révélation quotidienne. Dans le chaos apparent, vous percevez l'ordre mathématique de l'univers.",
+                geometry: { title: "SACRED GUARDIAN", subtitle: "Le Géomètre Divin", icon: "🔷", img: "cherubin_bleu.png",
+                    description: "Vous voyez les patterns divins partout. Dans le chaos apparent, vous percevez l'ordre mathématique de l'univers.",
                     qualities: "Harmonie • Structure • Beauté • Connexion",
                     mission: "Votre mission : révéler l'ordre divin, montrer que tout est connecté.",
-                    product: {
-                        name: "SACRED GEOMETRY",
-                        desc: "Les clés de l'univers, le langage sacré",
-                        price: "39€"
-                    }
+                    product: { name: "SACRED GUARDIAN", desc: "Le gardien sacré, la protection divine" }
                 },
-                philosopher: {
-                    title: "THE PHILOSOPHER'S STONE",
-                    subtitle: "L'Alchimiste",
-                    icon: "🪨",
+                philosopher: { title: "FALLEN LIGHT", subtitle: "L'Alchimiste", icon: "🪨", img: "cherubin_noir_fallen_angel.png",
                     description: "Vous êtes un alchimiste spirituel. Votre mission est la transmutation : transformer le plomb de la vie en or spirituel. Les défis du monde ne vous découragent pas, ils sont votre matière première.",
                     qualities: "Transformation • Alchimie • Création • Évolution",
                     mission: "Votre mission : transformer les épreuves en sagesse, le chaos en opportunité.",
-                    product: {
-                        name: "THE PHILOSOPHER'S STONE",
-                        desc: "Alchimie spirituelle, la pierre de transformation",
-                        price: "39€"
-                    }
+                    product: { name: "FALLEN LIGHT", desc: "Entre deux mondes, la quête de rédemption" }
                 },
-                asabove: {
-                    title: "AS ABOVE SO BELOW",
-                    subtitle: "L'Hermétiste",
-                    icon: "🔺🔻",
+                asabove: { title: "THE WATCHER", subtitle: "L'Hermétiste", icon: "🔺", img: "the_watcher_cherubin_bleu.png",
                     description: "Vous comprenez les lois hermétiques : ce qui est en haut est comme ce qui est en bas. Vous voyez les correspondances partout. Cette sagesse vous permet de naviguer sereinement dans un monde complexe.",
                     qualities: "Correspondance • Sagesse • Équilibre • Vision",
                     mission: "Votre mission : enseigner les lois universelles, révéler les connexions cachées.",
-                    product: {
-                        name: "AS ABOVE SO BELOW",
-                        desc: "Maxime hermétique, correspondance universelle",
-                        price: "35€"
-                    }
+                    product: { name: "THE WATCHER", desc: "L'œil qui voit tout, le gardien vigilant" }
                 },
-                vesica: {
-                    title: "VESICA PISCIS",
-                    subtitle: "L'Unificateur",
-                    icon: "◎",
+                vesica: { title: "DIVINE FEMININE", subtitle: "L'Unificateur", icon: "◎", img: "divine-feminine-rose.png",
                     description: "Vous êtes la Vesica Piscis : l'union des opposés. Masculin et féminin, esprit et matière, ciel et terre. Dans un monde de divisions, vous cherchez l'unité. Vous êtes le pont entre les mondes.",
                     qualities: "Union • Harmonie • Équilibre • Création",
                     mission: "Votre mission : unir ce qui semble séparé, créer l'harmonie depuis la dualité.",
-                    product: {
-                        name: "VESICA PISCIS",
-                        desc: "L'union du ciel et de la terre, matrice sacrée",
-                        price: "35€"
-                    }
+                    product: { name: "DIVINE FEMININE", desc: "L'amour de soi, la féminité divine" }
+                },
+                gardien: { title: "L'ANGE DORÉ", subtitle: "Le Protecteur", icon: "🪽", img: "ange-dore-or.png",
+                    description: "Vous êtes un gardien naturel. Votre présence rassure, votre énergie protège. Vous êtes celui vers qui les autres se tournent dans les moments difficiles.",
+                    qualities: "Protection • Amour • Présence • Force douce",
+                    mission: "Votre mission : veiller, protéger, accompagner chaque âme sur son chemin.",
+                    product: { name: "L'ANGE DORÉ", desc: "Le gardien bienveillant, la lumière dans l'obscurité" }
                 }
             }
         };
 
         let currentQuestion = 0;
-        let scores = {
-            ange: 0, seraphim: 0, cherubim: 0, fallen: 0, throne: 0,
-            watcher: 0, geometry: 0, philosopher: 0, asabove: 0, vesica: 0, guardien: 0
-        };
+        let scores = { ange: 0, seraphim: 0, cherubim: 0, fallen: 0, throne: 0, watcher: 0, geometry: 0, philosopher: 0, asabove: 0, vesica: 0, gardien: 0 };
 
         function startQuiz() {
             document.getElementById('intro').style.display = 'none';
@@ -351,31 +325,25 @@
 
         function showQuestion() {
             const question = quizData.questions[currentQuestion];
-            document.getElementById('question-number').textContent = `QUESTION ${currentQuestion + 1}/12`;
+            document.getElementById('question-number').textContent = `QUESTION ${currentQuestion + 1}/${quizData.questions.length}`;
             document.getElementById('question-text').textContent = question.question;
-            
-            const answersContainer = document.getElementById('answers-container');
-            answersContainer.innerHTML = '';
-            
-            question.answers.forEach((answer, index) => {
+            const container = document.getElementById('answers-container');
+            container.innerHTML = '';
+            question.answers.forEach(answer => {
                 const btn = document.createElement('button');
                 btn.className = 'answer-btn';
                 btn.textContent = answer.text;
                 btn.onclick = () => selectAnswer(answer.scores);
-                answersContainer.appendChild(btn);
+                container.appendChild(btn);
             });
-            
             updateProgress();
         }
 
         function selectAnswer(answerScores) {
-            // Ajouter les scores
             for (let key in answerScores) {
                 scores[key] = (scores[key] || 0) + answerScores[key];
             }
-            
             currentQuestion++;
-            
             if (currentQuestion < quizData.questions.length) {
                 showQuestion();
             } else {
@@ -389,36 +357,39 @@
         }
 
         function showResults() {
-            // Trouver le score le plus élevé
             let maxScore = 0;
             let resultKey = 'ange';
-            
             for (let key in scores) {
-                if (scores[key] > maxScore) {
-                    maxScore = scores[key];
-                    resultKey = key;
-                }
+                if (scores[key] > maxScore) { maxScore = scores[key]; resultKey = key; }
             }
-            
-            // Mapper guardien vers ange
-            if (resultKey === 'guardien') resultKey = 'ange';
-            
-            const result = quizData.results[resultKey];
-            
+            const result = quizData.results[resultKey] || quizData.results['ange'];
+
             document.getElementById('questions-container').classList.remove('active');
             document.getElementById('results').classList.add('active');
-            
             document.getElementById('result-icon').textContent = result.icon;
             document.getElementById('result-title').textContent = result.title;
             document.getElementById('result-desc').innerHTML = `
-                <p style="margin-bottom: 1rem;"><em>"${result.subtitle}"</em></p>
-                <p style="margin-bottom: 1.5rem;">${result.description}</p>
-                <p style="margin-bottom: 1rem;"><strong>Vos qualités :</strong> ${result.qualities}</p>
-                <p><strong>${result.mission}</strong></p>
+                <p style="margin-bottom:1rem;font-style:italic;color:#7CB9E8;">"${result.subtitle}"</p>
+                <p style="margin-bottom:1.5rem;">${result.description}</p>
+                <p style="margin-bottom:1rem;"><strong style="color:#2C5F8D;">Vos qualités :</strong> ${result.qualities}</p>
+                <p><strong style="color:#2C5F8D;">${result.mission}</strong></p>
             `;
-            
             document.getElementById('product-name').textContent = result.product.name;
             document.getElementById('product-desc').textContent = result.product.desc;
+
+            // Afficher l'image produit
+            const img = document.getElementById('product-img');
+            const fallback = document.getElementById('product-img-fallback');
+            if (result.img) {
+                img.src = result.img;
+                img.alt = result.product.name;
+                img.style.display = 'block';
+                fallback.style.display = 'none';
+            } else {
+                img.style.display = 'none';
+                fallback.textContent = result.icon;
+                fallback.style.display = 'block';
+            }
         }
     </script>
 </body>
