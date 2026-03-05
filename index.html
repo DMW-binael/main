@@ -58,7 +58,8 @@
         .product-badge.best-seller { background: linear-gradient(135deg, #FF6B6B, #FF8E8E); }
         .product-badge.new { background: linear-gradient(135deg, #4A90E2, #7CB9E8); }
         .product-badge.premium { background: linear-gradient(135deg, #D4AF37, #FFD700); }
-        .product-image { aspect-ratio: 1; background: #F0F7FF; display: flex; align-items: center; justify-content: center; color: #5B8DB8; font-size: 0.9rem; }
+        .product-image { aspect-ratio: 1; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .product-image img { width: 80%; height: auto; display: block; margin: auto; object-fit: contain; }
         .product-info { padding: 2rem; }
         .product-info h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
         .product-footer { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
@@ -126,13 +127,11 @@
             <div class="why-content">
                 <h2>POURQUOI BINAEL ?</h2>
                 <p class="lead">Parce que vous ne portez pas un t-shirt.<br>Vous portez une <span class="highlight-white">VÉRITÉ</span>.</p>
-                
                 <p class="lead" style="margin-top: 3rem;">
                     La vérité que <span class="highlight-white">vous n'êtes pas seul</span>.<br>
                     La vérité qu'un <span class="highlight-white">ange gardien veille sur vous</span>.<br>
                     La vérité que votre vie a un <span class="highlight-white">sens, une direction</span>.
                 </p>
-
                 <div class="comparison-box">
                     <h3>Porter BINAEL, c'est affirmer :</h3>
                     <p style="font-size: 1.5rem; color: white; font-weight: 600; margin-top: 1.5rem;">
@@ -141,29 +140,24 @@
                         Mon ange me guide." 🪽
                     </p>
                 </div>
-
                 <p class="lead" style="margin-top: 3rem;">
                     Dans toutes les traditions du monde — Christianisme, Islam, Judaïsme, Zoroastrisme — 
                     <span class="highlight-white">les anges existent</span>.
                 </p>
-
                 <p class="lead">
                     <strong>BINAEL a une MISSION :</strong><br>
                     ✨ Vous aider à <span class="highlight-white">faire grandir</span><br>
                     🪽 Vous orienter vers le <span class="highlight-white">chemin lumineux</span>
                 </p>
-
                 <p class="lead" style="margin-top: 3rem;">
                     Pas dans un temple. Pas dans un livre.<br>
                     Dans votre <span class="highlight-white">VIE</span>. Dans votre <span class="highlight-white">QUOTIDIEN</span>.
                 </p>
-
                 <p class="lead">
                     <strong>C'est pour ça que BINAEL est du STREETWEAR.</strong><br>
                     Parce que la spiritualité doit descendre dans la rue.<br>
                     Parce que l'éveil ne doit pas être élitiste.
                 </p>
-
                 <p style="font-size: 1.75rem; margin-top: 4rem; font-weight: 700; color: white;">
                     Ce n'est pas de la mode.<br>
                     C'est un <span class="highlight-white">MOUVEMENT</span>. 🪽
@@ -230,9 +224,13 @@
                 <p style="font-style: italic; margin-top: 1rem;">Éditions limitées • 100 pièces par design</p>
             </div>
             <div class="products-grid">
+
+                <!-- L'ANGE DORÉ -->
                 <article class="product-card">
                     <div class="product-badge best-seller">BEST-SELLER</div>
-                    <div class="product-image">[Image: L'Ange Doré]</div>
+                    <div class="product-image" style="background: #fff;">
+                        <img src="ange-dore-or.png" alt="L'Ange Doré">
+                    </div>
                     <div class="product-info">
                         <h3>L'ANGE DORÉ</h3>
                         <p>Le gardien bienveillant, la lumière dans l'obscurité</p>
@@ -246,10 +244,13 @@
                         </div>
                     </div>
                 </article>
-                
+
+                <!-- FALLEN LIGHT -->
                 <article class="product-card">
                     <div class="product-badge new">NEW</div>
-                    <div class="product-image">[Image: Fallen Light]</div>
+                    <div class="product-image" style="background: #000;">
+                        <img src="cherubin_noir_fallen_angel.png" alt="Fallen Light">
+                    </div>
                     <div class="product-info">
                         <h3>FALLEN LIGHT</h3>
                         <p>Entre deux mondes, la quête de rédemption</p>
@@ -263,12 +264,15 @@
                         </div>
                     </div>
                 </article>
-                
+
+                <!-- SACRED GUARDIAN -->
                 <article class="product-card">
                     <div class="product-badge premium">PREMIUM</div>
-                    <div class="product-image">[Image: Sacred Geometry]</div>
+                    <div class="product-image" style="background: #E3F2FD;">
+                        <img src="sacred-guardian-bleu.png" alt="Sacred Guardian">
+                    </div>
                     <div class="product-info">
-                        <h3>SACRED GEOMETRY</h3>
+                        <h3>SACRED GUARDIAN</h3>
                         <p>Les clés de l'univers, le langage sacré</p>
                         <div class="product-footer">
                             <span class="price">29€</span>
@@ -280,6 +284,7 @@
                         </div>
                     </div>
                 </article>
+
             </div>
             <div style="text-align: center; margin-top: 4rem;">
                 <a href="shop.html" class="btn btn-primary">VOIR TOUTE LA COLLECTION</a>
