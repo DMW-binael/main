@@ -5,25 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Univers Ésotérique | BINAEL</title>
     <meta name="description" content="Explorez l'univers ésotérique : angéologie, géométrie sacrée, kabbale, spiritualité et style.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cormorant Garamond', serif; background: linear-gradient(180deg, #FFF 0%, #F8FBFF 50%, #F0F7FF 100%); background-attachment: fixed; color: #2C5F8D; line-height: 1.7; }
+        h1, h2, h3 { font-family: 'Cinzel', serif; font-weight: 600; color: #4A90E2; }
+        p { font-size: 1.125rem; margin-bottom: 1rem; color: #5B8DB8; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .container-narrow { max-width: 700px; margin: 0 auto; padding: 0 2rem; }
+        .btn { display: inline-block; padding: 1rem 2.5rem; font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.15em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 50px; font-weight: 600; text-decoration: none; transition: 0.4s; }
+        .btn-primary { background: linear-gradient(135deg, #4A90E2, #7CB9E8); color: white; box-shadow: 0 4px 20px rgba(74,144,226,0.3); }
+        .btn-primary:hover { transform: translateY(-2px); }
+
+        /* NAVBAR */
+        .navbar { background: rgba(255,255,255,0.97); border-bottom: 1px solid #E3F2FD; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(74,144,226,0.08); }
+        .nav-container { padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .nav-left { display: flex; align-items: center; gap: 1rem; }
+        .logo-text { font-family: 'Cinzel', serif; font-size: 1.75rem; font-weight: 700; letter-spacing: 0.2em; background: linear-gradient(135deg, #4A90E2, #7CB9E8, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+        .nav-menu { display: flex; gap: 2rem; list-style: none; }
+        .nav-menu a { font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.12em; text-transform: uppercase; color: #2C5F8D; text-decoration: none; transition: color 0.2s; }
+        .nav-menu a:hover, .nav-menu a.active { color: #4A90E2; }
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; z-index: 1100; }
+        .burger span { display: block; width: 25px; height: 2px; background: #2C5F8D; border-radius: 2px; transition: 0.3s; }
+        .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger.open span:nth-child(2) { opacity: 0; }
+        .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* PAGE HEADER */
+        .page-header { background: linear-gradient(135deg, #4A90E2, #7CB9E8); color: white; padding: 5rem 2rem; text-align: center; }
+        .page-header h1 { color: white; font-size: clamp(2rem, 6vw, 4rem); margin-bottom: 1rem; }
+        .page-subtitle { color: rgba(255,255,255,0.85); font-size: 1.125rem; font-style: italic; margin: 0; }
+
+        /* CATEGORIES */
+        .content-section { padding: 4rem 0; }
+        .blog-categories { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-bottom: 3rem; }
+        .category-btn { padding: 0.6rem 1.5rem; font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.1em; border: 2px solid #E3F2FD; background: white; color: #5B8DB8; border-radius: 25px; cursor: pointer; transition: 0.2s; }
+        .category-btn:hover, .category-btn.active { background: linear-gradient(135deg, #4A90E2, #7CB9E8); color: white; border-color: transparent; }
+
+        /* BLOG GRID */
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+        .blog-card { background: white; border: 1px solid #E3F2FD; border-radius: 16px; overflow: hidden; transition: 0.4s; box-shadow: 0 4px 20px rgba(74,144,226,0.08); }
+        .blog-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(74,144,226,0.15); }
+        .blog-image { aspect-ratio: 16/9; background: linear-gradient(135deg, #E3F2FD, #F0F7FF); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .blog-image img { width: 100%; height: 100%; object-fit: cover; }
+        .blog-image .blog-icon { font-size: 4rem; }
+        .blog-content { padding: 1.75rem; }
+        .blog-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; }
+        .blog-category { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; background: linear-gradient(135deg, #4A90E2, #7CB9E8); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; }
+        .blog-date { font-size: 0.875rem; color: #7CB9E8; font-style: italic; }
+        .blog-content h3 { font-size: 1.2rem; color: #2C5F8D; margin-bottom: 0.75rem; line-height: 1.4; }
+        .blog-content p { font-size: 1rem; color: #5B8DB8; margin-bottom: 1.25rem; }
+        .blog-link { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.1em; color: #4A90E2; text-decoration: none; border-bottom: 1px solid #B8D8F0; padding-bottom: 2px; transition: 0.2s; }
+        .blog-link:hover { color: #2C5F8D; border-color: #4A90E2; }
+
+        /* NEWSLETTER */
+        .newsletter { background: linear-gradient(135deg, #4A90E2, #7CB9E8); padding: 5rem 0; }
+        .newsletter h2 { color: white; text-align: center; margin-bottom: 1rem; }
+        .newsletter p { color: rgba(255,255,255,0.9); text-align: center; margin-bottom: 2rem; }
+        .newsletter-form { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .newsletter-form input { padding: 1rem 1.5rem; border: none; border-radius: 50px; font-family: 'Cormorant Garamond', serif; font-size: 1rem; width: 300px; max-width: 100%; outline: none; }
+        .newsletter-form button { padding: 1rem 2rem; background: white; color: #4A90E2; font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.1em; border: none; border-radius: 50px; cursor: pointer; font-weight: 700; transition: 0.2s; }
+        .newsletter-form button:hover { background: #FFD700; color: #2C5F8D; }
+
+        /* FOOTER */
+        .footer { background: linear-gradient(180deg, white 0%, #F8FBFF 100%); border-top: 2px solid #E3F2FD; padding: 4rem 0 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-bottom: 3rem; }
+        .footer-col h4 { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.15em; margin-bottom: 1.5rem; color: #4A90E2; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.75rem; }
+        .footer-col ul li a { color: #5B8DB8; text-decoration: none; font-size: 0.95rem; }
+        .disclaimer { background: #E3F2FD; border: 1px solid #B8D8F0; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; font-size: 0.95rem; text-align: center; }
+        .disclaimer strong { color: #4A90E2; }
+
+        @media (max-width: 768px) {
+            .burger { display: flex; }
+            .nav-menu { display: none; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.98); justify-content: center; align-items: center; gap: 2.5rem; z-index: 1050; }
+            .nav-menu.open { display: flex; }
+            .nav-menu a { font-size: 1.25rem; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .newsletter-form { flex-direction: column; align-items: center; }
+            .newsletter-form input { width: 100%; }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo"><a href="index.html"><span class="logo-text">BINAEL</span></a></div>
-            <button class="burger-menu" id="burger-menu"><span></span><span></span><span></span></button>
+            <div class="nav-left">
+                <a href="index.html" class="logo-text">BINAEL</a>
+            </div>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="shop.html">Shop</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="ange-gardien.html">Ange Gardien</a></li>
                 <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="hierarchies.html">Hiérarchies</a></li>
             </ul>
-            <div class="nav-cart"><a href="shop.html" class="cart-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count">0</span></a></div>
+            <button class="burger" id="burger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
-
-    <div class="particles-container" id="particles"></div>
 
     <section class="page-header">
         <div class="container">
@@ -43,13 +126,14 @@
             </div>
 
             <div class="blog-grid">
+
                 <article class="blog-card" data-category="angeologie">
-                    <div class="blog-image">
-                        <img src="images/blog/hierarchies.jpg" alt="Les 9 Hiérarchies Angéliques" loading="lazy">
-                    </div>
+                    <div class="blog-image"><div class="blog-icon">👼</div></div>
                     <div class="blog-content">
-                        <span class="blog-category">Angéologie</span>
-                        <span class="blog-date">28 Février 2026</span>
+                        <div class="blog-meta">
+                            <span class="blog-category">Angéologie</span>
+                            <span class="blog-date">28 Février 2026</span>
+                        </div>
                         <h3>Les 9 Hiérarchies Angéliques Expliquées</h3>
                         <p>Découvrez les trois triades angéliques, des Séraphins aux Anges gardiens. Plongez dans la structure céleste selon la tradition kabbalistique et chrétienne.</p>
                         <a href="hierarchies.html" class="blog-link">LIRE L'ARTICLE →</a>
@@ -57,12 +141,12 @@
                 </article>
 
                 <article class="blog-card" data-category="geometrie">
-                    <div class="blog-image">
-                        <img src="images/blog/metatron.jpg" alt="Le Cube de Métatron" loading="lazy">
-                    </div>
+                    <div class="blog-image"><div class="blog-icon">✡️</div></div>
                     <div class="blog-content">
-                        <span class="blog-category">Géométrie Sacrée</span>
-                        <span class="blog-date">25 Février 2026</span>
+                        <div class="blog-meta">
+                            <span class="blog-category">Géométrie Sacrée</span>
+                            <span class="blog-date">25 Février 2026</span>
+                        </div>
                         <h3>Le Cube de Métatron : Clé de l'Univers</h3>
                         <p>Explorez la géométrie sacrée à travers le Cube de Métatron, qui contient tous les solides de Platon. Les mathématiques divines révélées.</p>
                         <a href="#" class="blog-link">LIRE L'ARTICLE →</a>
@@ -70,12 +154,12 @@
                 </article>
 
                 <article class="blog-card" data-category="spiritualite">
-                    <div class="blog-image">
-                        <img src="images/blog/ange-gardien.jpg" alt="Qui est votre Ange Gardien" loading="lazy">
-                    </div>
+                    <div class="blog-image"><div class="blog-icon">🪽</div></div>
                     <div class="blog-content">
-                        <span class="blog-category">Spiritualité</span>
-                        <span class="blog-date">20 Février 2026</span>
+                        <div class="blog-meta">
+                            <span class="blog-category">Spiritualité</span>
+                            <span class="blog-date">20 Février 2026</span>
+                        </div>
                         <h3>Qui Est Votre Ange Gardien ?</h3>
                         <p>Binael pourrait-il être votre guide spirituel ? Découvrez les signes de présence angélique et comment communiquer avec votre ange gardien.</p>
                         <a href="ange-gardien.html" class="blog-link">LIRE L'ARTICLE →</a>
@@ -83,12 +167,12 @@
                 </article>
 
                 <article class="blog-card" data-category="angeologie">
-                    <div class="blog-image">
-                        <img src="images/blog/grigori.jpg" alt="Les Anges Déchus" loading="lazy">
-                    </div>
+                    <div class="blog-image"><div class="blog-icon">📜</div></div>
                     <div class="blog-content">
-                        <span class="blog-category">Angéologie</span>
-                        <span class="blog-date">15 Février 2026</span>
+                        <div class="blog-meta">
+                            <span class="blog-category">Angéologie</span>
+                            <span class="blog-date">15 Février 2026</span>
+                        </div>
                         <h3>Histoire des Anges Déchus : Les Grigori</h3>
                         <p>Plongez dans le Livre d'Hénoch et découvrez l'histoire des 200 anges déchus qui enseignèrent aux hommes les arts interdits.</p>
                         <a href="evolution.html" class="blog-link">LIRE L'ARTICLE →</a>
@@ -96,12 +180,12 @@
                 </article>
 
                 <article class="blog-card" data-category="geometrie">
-                    <div class="blog-image">
-                        <img src="images/blog/symboles.jpg" alt="Symboles Hermétiques" loading="lazy">
-                    </div>
+                    <div class="blog-image"><div class="blog-icon">🔯</div></div>
                     <div class="blog-content">
-                        <span class="blog-category">Géométrie Sacrée</span>
-                        <span class="blog-date">10 Février 2026</span>
+                        <div class="blog-meta">
+                            <span class="blog-category">Géométrie Sacrée</span>
+                            <span class="blog-date">10 Février 2026</span>
+                        </div>
                         <h3>Top 5 Symboles Hermétiques et Leur Signification</h3>
                         <p>Vesica Piscis, Fleur de Vie, Ouroboros... Découvrez les symboles les plus puissants de l'hermétisme et leur signification profonde.</p>
                         <a href="#" class="blog-link">LIRE L'ARTICLE →</a>
@@ -109,12 +193,12 @@
                 </article>
 
                 <article class="blog-card" data-category="style">
-                    <div class="blog-image">
-                        <img src="images/blog/style.jpg" alt="Porter le Streetwear Ésotérique" loading="lazy">
-                    </div>
+                    <div class="blog-image"><div class="blog-icon">👕</div></div>
                     <div class="blog-content">
-                        <span class="blog-category">Style & Inspiration</span>
-                        <span class="blog-date">5 Février 2026</span>
+                        <div class="blog-meta">
+                            <span class="blog-category">Style & Inspiration</span>
+                            <span class="blog-date">5 Février 2026</span>
+                        </div>
                         <h3>Comment Porter le Streetwear Ésotérique</h3>
                         <p>Conseils de style pour intégrer les designs BINAEL dans votre garde-robe. Looks casual, urban et spirituel.</p>
                         <a href="#" class="blog-link">LIRE L'ARTICLE →</a>
@@ -122,12 +206,12 @@
                 </article>
 
                 <article class="blog-card" data-category="spiritualite">
-                    <div class="blog-image">
-                        <img src="images/blog/kabbale.jpg" alt="Kabbale pour Débutants" loading="lazy">
-                    </div>
+                    <div class="blog-image"><div class="blog-icon">🌳</div></div>
                     <div class="blog-content">
-                        <span class="blog-category">Spiritualité</span>
-                        <span class="blog-date">1 Février 2026</span>
+                        <div class="blog-meta">
+                            <span class="blog-category">Spiritualité</span>
+                            <span class="blog-date">1 Février 2026</span>
+                        </div>
                         <h3>Kabbale pour Débutants : L'Arbre de Vie</h3>
                         <p>Introduction accessible à la Kabbale hébraïque. Comprendre les 10 Sephiroth et les 22 sentiers de l'Arbre de Vie.</p>
                         <a href="#" class="blog-link">LIRE L'ARTICLE →</a>
@@ -135,30 +219,29 @@
                 </article>
 
                 <article class="blog-card" data-category="angeologie">
-                    <div class="blog-image">
-                        <img src="images/blog/seraphim.jpg" alt="Les Séraphins" loading="lazy">
-                    </div>
+                    <div class="blog-image"><div class="blog-icon">🔥</div></div>
                     <div class="blog-content">
-                        <span class="blog-category">Angéologie</span>
-                        <span class="blog-date">28 Janvier 2026</span>
+                        <div class="blog-meta">
+                            <span class="blog-category">Angéologie</span>
+                            <span class="blog-date">28 Janvier 2026</span>
+                        </div>
                         <h3>Les Séraphins : Anges de Feu Purificateur</h3>
                         <p>Plongez dans le monde des Séraphins, les anges les plus proches de Dieu. Leur rôle, leurs six ailes, et leur feu transformateur.</p>
                         <a href="hierarchies.html" class="blog-link">LIRE L'ARTICLE →</a>
                     </div>
                 </article>
+
             </div>
         </div>
     </section>
 
     <section class="newsletter">
         <div class="container-narrow">
-            <div class="newsletter-content">
-                <h2>NEWSLETTER</h2>
-                <p>Recevez nos nouveaux articles et découvertes ésotériques</p>
-                <form class="newsletter-form" id="newsletter-form">
-                    <input type="email" placeholder="ton@email.com" required>
-                    <button type="submit" class="btn btn-primary">S'INSCRIRE</button>
-                </form>
+            <h2>NEWSLETTER</h2>
+            <p>Recevez nos nouveaux articles et découvertes ésotériques</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="ton@email.com">
+                <button onclick="alert('Merci pour votre inscription !')">S\'INSCRIRE</button>
             </div>
         </div>
     </section>
@@ -167,27 +250,37 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col"><h4>SHOP</h4><ul><li><a href="shop.html">Collection</a></li></ul></div>
-                <div class="footer-col"><h4>BLOG</h4><ul><li><a href="blog.html">Articles</a></li></ul></div>
+                <div class="footer-col"><h4>UNIVERS</h4><ul><li><a href="hierarchies.html">Hiérarchies</a></li><li><a href="ange-gardien.html">Ange Gardien</a></li><li><a href="quiz.html">Quiz</a></li></ul></div>
+                <div class="footer-col"><h4>INFORMATIONS</h4><ul><li><a href="qualite.html">Qualité</a></li><li><a href="legal.html">Legal</a></li></ul></div>
             </div>
-            <div class="footer-bottom">
-                <div class="disclaimer">⚠️ <strong>FICTION ÉSOTÉRIQUE</strong></div>
-                <div class="copyright"><p>BINAEL © 2026 • Porter • Partager • Profiter</p></div>
-            </div>
+            <div class="disclaimer">⚠️ <strong>FICTION ÉSOTÉRIQUE</strong><br>BINAEL est un univers de FICTION basé sur des traditions mystiques.</div>
+            <div style="text-align:center;font-size:0.875rem;color:#5B8DB8;"><p>BINAEL © 2026 • Porter • Partager • Profiter</p></div>
         </div>
     </footer>
-    <script src="js/script.js"></script>
+
     <script>
+        // Burger menu
+        const burger = document.getElementById('burger');
+        const navMenu = document.getElementById('nav-menu');
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('open');
+            navMenu.classList.toggle('open');
+        });
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('open');
+                navMenu.classList.remove('open');
+            });
+        });
+
+        // Filtres catégories
         document.querySelectorAll('.category-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 const category = btn.dataset.category;
                 document.querySelectorAll('.blog-card').forEach(card => {
-                    if (category === 'all' || card.dataset.category === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
+                    card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
                 });
             });
         });
