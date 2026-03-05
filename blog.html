@@ -77,6 +77,10 @@
         .disclaimer { background: #E3F2FD; border: 1px solid #B8D8F0; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; font-size: 0.95rem; text-align: center; }
         .disclaimer strong { color: #4A90E2; }
 
+
+        .lang-btn { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.1em; background: #E3F2FD; border: 1px solid #B8D8F0; color: #4A90E2; padding: 0.4rem 0.9rem; border-radius: 20px; cursor: pointer; transition: 0.2s; white-space: nowrap; }
+        .lang-btn:hover { background: #4A90E2; color: white; }
+        .nav-right { display: flex; align-items: center; gap: 1.5rem; }
         @media (max-width: 768px) {
             .burger { display: flex; }
             .nav-menu { display: none; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.98); justify-content: center; align-items: center; gap: 2.5rem; z-index: 1050; }
@@ -94,8 +98,9 @@
             <div class="nav-left">
                 <a href="index.html" class="logo-text">BINAEL</a>
             </div>
+            <div class="nav-right">
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="index.html">Accueil</a></li>
+                <li><a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a></li>
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="quiz.html">Quiz</a></li>
                 <li><a href="ange-gardien.html">Ange Gardien</a></li>
@@ -105,24 +110,26 @@
             <button class="burger" id="burger" aria-label="Menu">
                 <span></span><span></span><span></span>
             </button>
+            <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">🇬🇧 EN</button>
+        </div>
         </div>
     </nav>
 
     <section class="page-header">
         <div class="container">
-            <h1>BLOG BINAEL</h1>
-            <p class="page-subtitle">Explorer l'univers ésotérique • Angéologie • Géométrie Sacrée • Spiritualité</p>
+            <h1 data-fr="BLOG BINAEL" data-en="BINAEL BLOG">BLOG BINAEL</h1>
+            <p class="page-subtitle" data-fr="Explorer l'univers ésotérique • Angéologie • Géométrie Sacrée • Spiritualité" data-en="Explore the esoteric universe • Angelology • Sacred Geometry • Spirituality">Explorer l'univers ésotérique • Angéologie • Géométrie Sacrée • Spiritualité</p>
         </div>
     </section>
 
     <section class="content-section">
         <div class="container">
             <div class="blog-categories">
-                <button class="category-btn active" data-category="all">Tous</button>
-                <button class="category-btn" data-category="angeologie">Angéologie</button>
-                <button class="category-btn" data-category="geometrie">Géométrie Sacrée</button>
-                <button class="category-btn" data-category="spiritualite">Spiritualité</button>
-                <button class="category-btn" data-category="style">Style</button>
+                <button class="category-btn active" data-category="all" data-fr="Tous" data-en="All">Tous</button>
+                <button class="category-btn" data-category="angeologie" data-fr="Angéologie" data-en="Angelology">Angéologie</button>
+                <button class="category-btn" data-category="geometrie" data-fr="Géométrie Sacrée" data-en="Sacred Geometry">Géométrie Sacrée</button>
+                <button class="category-btn" data-category="spiritualite" data-fr="Spiritualité" data-en="Spirituality">Spiritualité</button>
+                <button class="category-btn" data-category="style" data-fr="Style" data-en="Style">Style</button>
             </div>
 
             <div class="blog-grid">
@@ -136,7 +143,7 @@
                         </div>
                         <h3>Les 9 Hiérarchies Angéliques Expliquées</h3>
                         <p>Découvrez les trois triades angéliques, des Séraphins aux Anges gardiens. Plongez dans la structure céleste selon la tradition kabbalistique et chrétienne.</p>
-                        <a href="hierarchies.html" class="blog-link">LIRE L'ARTICLE →</a>
+                        <a href="hierarchies.html" class="blog-link" data-fr="LIRE L'ARTICLE →" data-en="READ ARTICLE →">LIRE L'ARTICLE →</a>
                     </div>
                 </article>
 
@@ -237,8 +244,8 @@
 
     <section class="newsletter">
         <div class="container-narrow">
-            <h2>NEWSLETTER</h2>
-            <p>Recevez nos nouveaux articles et découvertes ésotériques</p>
+            <h2 data-fr="NEWSLETTER" data-en="NEWSLETTER">NEWSLETTER</h2>
+            <p data-fr="Recevez nos nouveaux articles et découvertes ésotériques" data-en="Receive our new articles and esoteric discoveries">Recevez nos nouveaux articles et découvertes ésotériques</p>
             <div class="newsletter-form">
                 <input type="email" placeholder="ton@email.com">
                 <button onclick="alert('Merci pour votre inscription !')">S\'INSCRIRE</button>
@@ -253,7 +260,7 @@
                 <div class="footer-col"><h4>UNIVERS</h4><ul><li><a href="hierarchies.html">Hiérarchies</a></li><li><a href="ange-gardien.html">Ange Gardien</a></li><li><a href="quiz.html">Quiz</a></li></ul></div>
                 <div class="footer-col"><h4>INFORMATIONS</h4><ul><li><a href="qualite.html">Qualité</a></li><li><a href="legal.html">Legal</a></li></ul></div>
             </div>
-            <div class="disclaimer">⚠️ <strong>FICTION ÉSOTÉRIQUE</strong><br>BINAEL est un univers de FICTION basé sur des traditions mystiques.</div>
+            <div class="disclaimer">⚠️ <strong data-fr="FICTION ÉSOTÉRIQUE" data-en="ESOTERIC FICTION">FICTION ÉSOTÉRIQUE</strong><br>BINAEL est un univers de FICTION basé sur des traditions mystiques.</div>
             <div style="text-align:center;font-size:0.875rem;color:#5B8DB8;"><p>BINAEL © 2026 • Porter • Partager • Profiter</p></div>
         </div>
     </footer>
@@ -284,6 +291,23 @@
                 });
             });
         });
-    </script>
+    
+    // Language system
+    function getLang() { return localStorage.getItem('binael_lang') || 'fr'; }
+    function setLang(lang) { localStorage.setItem('binael_lang', lang); applyLang(lang); updateLangBtn(lang); }
+    function toggleLang() { setLang(getLang() === 'fr' ? 'en' : 'fr'); }
+    function applyLang(lang) {
+        document.querySelectorAll('[data-fr]').forEach(el => {
+            const text = el.getAttribute('data-' + lang);
+            if (text) el.innerHTML = text;
+        });
+        document.documentElement.lang = lang;
+    }
+    function updateLangBtn(lang) {
+        const btn = document.getElementById('lang-toggle');
+        if (btn) btn.innerHTML = lang === 'fr' ? '🇬🇧 EN' : '🇫🇷 FR';
+    }
+    const _lang = getLang(); applyLang(_lang); updateLangBtn(_lang);
+</script>
 </body>
 </html>
