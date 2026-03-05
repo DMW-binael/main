@@ -3,212 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BINAEL : Votre Pont vers Votre Ange Gardien | BINAEL</title>
+    <title>BINAEL : Votre Pont vers Votre Ange Gardien</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Cormorant Garamond', serif; background: linear-gradient(180deg, #FFF, #F8FBFF, #F0F7FF); background-attachment: fixed; color: #2C5F8D; line-height: 1.8; }
         h1, h2, h3 { font-family: 'Cinzel', serif; color: #4A90E2; }
+        p { font-size: 1.125rem; margin-bottom: 1rem; color: #5B8DB8; }
         .container { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
-        .navbar { background: rgba(255,255,255,0.95); border-bottom: 1px solid #E3F2FD; position: sticky; top: 0; z-index: 1000; }
-        .nav-container { padding: 1rem 2rem; display: flex; align-items: center; gap: 1rem; }
+
+        /* NAVBAR */
+        .navbar { background: rgba(255,255,255,0.97); border-bottom: 1px solid #E3F2FD; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(74,144,226,0.08); }
+        .nav-container { padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .nav-left { display: flex; align-items: center; gap: 1rem; }
         .logo-svg { width: 40px; height: 40px; }
-        .logo-text { font-family: 'Cinzel', serif; font-size: 1.75rem; font-weight: 700; letter-spacing: 0.2em; background: linear-gradient(135deg, #4A90E2, #7CB9E8, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero { text-align: center; padding: 6rem 2rem 3rem; }
-        .hero h1 { margin-bottom: 1rem; font-size: 2.5rem; }
-        .hero-subtitle { font-size: 1.25rem; font-style: italic; color: #7CB9E8; margin-bottom: 3rem; }
+        .logo-text { font-family: 'Cinzel', serif; font-size: 1.75rem; font-weight: 700; letter-spacing: 0.2em; background: linear-gradient(135deg, #4A90E2, #7CB9E8, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+        .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+        .nav-menu { display: flex; gap: 2rem; list-style: none; }
+        .nav-menu a { font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.12em; text-transform: uppercase; color: #2C5F8D; text-decoration: none; transition: color 0.2s; }
+        .nav-menu a:hover, .nav-menu a.active { color: #4A90E2; }
+        .lang-btn { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.1em; background: #E3F2FD; border: 1px solid #B8D8F0; color: #4A90E2; padding: 0.4rem 0.9rem; border-radius: 20px; cursor: pointer; transition: 0.2s; white-space: nowrap; }
+        .lang-btn:hover { background: #4A90E2; color: white; }
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; z-index: 1100; }
+        .burger span { display: block; width: 25px; height: 2px; background: #2C5F8D; border-radius: 2px; transition: 0.3s; }
+        .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger.open span:nth-child(2) { opacity: 0; }
+        .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* PAGE */
+        .hero { text-align: center; padding: 6rem 2rem 3rem; background: linear-gradient(135deg, #4A90E2, #7CB9E8); }
+        .hero h1 { color: white; font-size: clamp(1.75rem, 5vw, 3rem); margin-bottom: 1rem; }
+        .hero-subtitle { font-size: 1.25rem; font-style: italic; color: rgba(255,255,255,0.85); margin-bottom: 0; }
+        .lead { font-size: 1.35rem; color: #2C5F8D; line-height: 2; margin: 2rem 0; }
+        .quote { font-size: 1.4rem; font-style: italic; text-align: center; color: #4A90E2; margin: 3rem 0; padding: 2rem; border-left: 4px solid #4A90E2; background: #F8FBFF; border-radius: 0 12px 12px 0; }
         section { padding: 3rem 0; }
-        .lead { font-size: 1.35rem; color: #2C5F8D; line-height: 2; margin: 2rem 0; font-weight: 400; }
         .highlight-box { background: linear-gradient(135deg, #E3F2FD, rgba(255,215,0,0.1)); border: 2px solid #B8D8F0; border-radius: 16px; padding: 3rem; margin: 3rem 0; }
         .highlight-box h2 { text-align: center; margin-bottom: 1.5rem; }
-        .quote { font-size: 1.5rem; font-style: italic; text-align: center; color: #4A90E2; margin: 3rem 0; padding: 2rem; border-left: 4px solid #4A90E2; background: #F8FBFF; }
-        .steps { margin: 3rem 0; }
         .step { background: white; border: 1px solid #E3F2FD; border-radius: 12px; padding: 2rem; margin: 2rem 0; box-shadow: 0 2px 15px rgba(74,144,226,0.06); }
-        .step h3 { margin-bottom: 1rem; }
-        .religions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 3rem 0; }
+        .step h3 { margin-bottom: 1rem; font-size: 1.1rem; }
+        .religions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 3rem 0; }
         .religion-card { background: white; border: 1px solid #E3F2FD; border-radius: 12px; padding: 2rem; text-align: center; }
         .religion-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .religion-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
         .cta-final { background: linear-gradient(135deg, #4A90E2, #7CB9E8); color: white; border-radius: 24px; padding: 4rem 3rem; text-align: center; margin: 4rem 0; }
         .cta-final h2 { color: white; margin-bottom: 1.5rem; }
-        .btn { padding: 1rem 2.5rem; font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.15em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-block; transition: 0.3s; }
-        .btn-primary { background: white; color: #4A90E2; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,255,255,0.3); }
-        .btn-secondary { background: transparent; border: 2px solid white; color: white; }
-        ul { margin: 1rem 0 1rem 2rem; }
-        li { margin-bottom: 0.75rem; }
+        .btn { padding: 1rem 2.5rem; font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.15em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-block; transition: 0.3s; margin: 0.5rem; }
+        .btn-white { background: white; color: #4A90E2; }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,255,255,0.3); }
+        .btn-outline-white { background: transparent; border: 2px solid white; color: white; }
+        ul { margin: 1rem 0 1rem 2rem; color: #5B8DB8; }
+        ul li { margin-bottom: 0.75rem; font-size: 1.05rem; }
+
+        /* FOOTER */
+        .footer { background: linear-gradient(180deg, white 0%, #F8FBFF 100%); border-top: 2px solid #E3F2FD; padding: 4rem 0 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-bottom: 3rem; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 2rem 3rem; }
+        .footer-col h4 { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.15em; margin-bottom: 1.5rem; color: #4A90E2; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul li { margin-bottom: 0.75rem; }
+        .footer-col ul li a { color: #5B8DB8; text-decoration: none; font-size: 0.95rem; }
+        .disclaimer { background: #E3F2FD; border: 1px solid #B8D8F0; border-radius: 12px; padding: 1.5rem; margin: 0 2rem 1.5rem; font-size: 0.95rem; text-align: center; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        .disclaimer strong { color: #4A90E2; }
+
+        @media (max-width: 768px) {
+            .burger { display: flex; }
+            .nav-menu { display: none; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.98); justify-content: center; align-items: center; gap: 2.5rem; z-index: 1050; }
+            .nav-menu.open { display: flex; }
+            .nav-menu a { font-size: 1.25rem; }
+            .hero { padding: 4rem 1.5rem 2rem; }
+            .cta-final { padding: 2.5rem 1.5rem; }
+            .cta-final .btn { display: block; margin: 0.5rem auto; max-width: 250px; text-align: center; }
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <svg class="logo-svg" viewBox="0 0 300 300">
-                <g transform="translate(0,300) scale(0.1,-0.1)" fill="#FFD700">
-                    <path d="M1581 2621 c-12 -12 -21 -25 -21 -31 0 -16 -46 -12 -60 5 -18 21 -47 19 -60 -6 -11 -19 -13 -19 -29 -5 -24 22 -61 21 -61 -2 0 -16 11 -17 108 -17 90 0 111 3 126 18 21 21 40 22 56 2 7 -8 20 -15 30 -15 10 0 48 -13 84 -30 61 -27 66 -32 66 -60 0 -19 11 -46 27 -67 19 -25 29 -53 35 -100 8 -73 16 -87 64 -109 28 -14 34 -22 34 -49 0 -17 5 -47 11 -65 9 -24 9 -46 -1 -89 -18 -82 -28 -98 -79 -121 -87 -38 -96 -45 -99 -72 -2 -20 10 -41 54 -89 72 -82 119 -152 178 -265 41 -81 52 -94 96 -118 105 -57 125 -112 95 -261 -10 -49 -91 -161 -147 -205 -29 -22 -60 -46 -68 -53 -19 -17 -80 -38 -90 -32 -5 3 -11 1 -14 -4 -4 -5 -18 -8 -34 -6 -15 1 -30 -2 -34 -9 -6 -8 -12 -8 -26 1 -15 9 -22 9 -32 0 -10 -9 -11 -9 -5 2 6 11 -1 12 -34 6 -28 -5 -41 -3 -41 5 0 6 -5 8 -12 4 -6 -4 -16 -1 -22 7 -6 8 -32 23 -57 32 -61 23 -124 78 -170 149 -44 69 -67 140 -72 226 -5 84 -20 100 -79 83 -30 -9 -59 -30 -95 -67 -76 -78 -116 -69 -105 23 6 52 -16 83 -58 83 -39 0 -82 43 -74 74 5 19 -3 34 -36 70 -37 40 -42 50 -36 77 6 31 -20 83 -51 102 -19 11 -16 46 4 54 15 6 15 7 -3 13 -33 12 -54 0 -54 -32 0 -21 12 -40 45 -72 33 -33 41 -45 30 -50 -9 -3 -15 -18 -15 -35 0 -22 11 -39 44 -68 38 -34 43 -42 38 -71 -3 -25 1 -39 18 -57 23 -24 104 -50 122 -39 8 5 9 0 3 -17 -19 -59 -17 -107 4 -128 12 -12 31 -21 44 -21 33 0 90 42 112 84 11 21 27 36 38 36 10 0 31 7 46 15 l29 14 1 -77 c2 -279 260 -496 536 -452 201 32 358 187 395 388 15 84 1 131 -54 187 -24 23 -58 48 -77 54 -29 9 -40 22 -69 83 -50 104 -118 204 -190 281 -62 67 -72 97 -32 97 31 0 119 49 137 77 11 16 15 37 12 57 -4 25 -1 35 14 44 20 13 26 47 9 57 -5 3 -10 17 -10 31 0 13 -4 24 -10 24 -6 0 -7 18 -4 44 6 38 4 46 -15 55 -11 7 -21 9 -21 6 0 -3 -13 1 -30 10 -27 14 -30 20 -30 68 0 61 -29 130 -60 147 -16 9 -19 15 -11 23 15 15 14 52 -2 65 -7 6 -34 16 -60 23 -28 7 -60 24 -77 40 l-29 29 -3 -27 -3 -28 -15 30 c-19 37 -43 42 -69 16z"/>
-                </g>
-            </svg>
-            <a href="index.html" style="text-decoration: none;"><span class="logo-text">BINAEL</span></a>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-left">
+            <svg class="logo-svg" viewBox="0 0 300 300"><g transform="translate(0,300) scale(0.1,-0.1)" fill="#FFD700"><path d="M1581 2621 c-12 -12 -21 -25 -21 -31 0 -16 -46 -12 -60 5 -18 21 -47 19 -60 -6 -11 -19 -13 -19 -29 -5 -24 22 -61 21 -61 -2 0 -16 11 -17 108 -17 90 0 111 3 126 18 21 21 40 22 56 2 7 -8 20 -15 30 -15 10 0 48 -13 84 -30 61 -27 66 -32 66 -60 0 -19 11 -46 27 -67 19 -25 29 -53 35 -100 8 -73 16 -87 64 -109 28 -14 34 -22 34 -49 0 -17 5 -47 11 -65 9 -24 9 -46 -1 -89 -18 -82 -28 -98 -79 -121 -87 -38 -96 -45 -99 -72 -2 -20 10 -41 54 -89 72 -82 119 -152 178 -265 41 -81 52 -94 96 -118 105 -57 125 -112 95 -261 -10 -49 -91 -161 -147 -205 -29 -22 -60 -46 -68 -53 -19 -17 -80 -38 -90 -32 -5 3 -11 1 -14 -4 -4 -5 -18 -8 -34 -6 -15 1 -30 -2 -34 -9 -6 -8 -12 -8 -26 1 -15 9 -22 9 -32 0 -10 -9 -11 -9 -5 2 6 11 -1 12 -34 6 -28 -5 -41 -3 -41 5 0 6 -5 8 -12 4 -6 -4 -16 -1 -22 7 -6 8 -32 23 -57 32 -61 23 -124 78 -170 149 -44 69 -67 140 -72 226 -5 84 -20 100 -79 83 -30 -9 -59 -30 -95 -67 -76 -78 -116 -69 -105 23 6 52 -16 83 -58 83 -39 0 -82 43 -74 74 5 19 -3 34 -36 70 -37 40 -42 50 -36 77 6 31 -20 83 -51 102 -19 11 -16 46 4 54 15 6 15 7 -3 13 -33 12 -54 0 -54 -32 0 -21 12 -40 45 -72 33 -33 41 -45 30 -50 -9 -3 -15 -18 -15 -35 0 -22 11 -39 44 -68 38 -34 43 -42 38 -71 -3 -25 1 -39 18 -57 23 -24 104 -50 122 -39 8 5 9 0 3 -17 -19 -59 -17 -107 4 -128 12 -12 31 -21 44 -21 33 0 90 42 112 84 11 21 27 36 38 36 10 0 31 7 46 15 l29 14 1 -77 c2 -279 260 -496 536 -452 201 32 358 187 395 388 15 84 1 131 -54 187 -24 23 -58 48 -77 54 -29 9 -40 22 -69 83 -50 104 -118 204 -190 281 -62 67 -72 97 -32 97 31 0 119 49 137 77 11 16 15 37 12 57 -4 25 -1 35 14 44 20 13 26 47 9 57 -5 3 -10 17 -10 31 0 13 -4 24 -10 24 -6 0 -7 18 -4 44 6 38 4 46 -15 55 -11 7 -21 9 -21 6 0 -3 -13 1 -30 10 -27 14 -30 20 -30 68 0 61 -29 130 -60 147 -16 9 -19 15 -11 23 15 15 14 52 -2 65 -7 6 -34 16 -60 23 -28 7 -60 24 -77 40 l-29 29 -3 -27 -3 -28 -15 30 c-19 37 -43 42 -69 16z"/></g></svg>
+            <a href="index.html" class="logo-text">BINAEL</a>
         </div>
-    </nav>
-
-    <div class="hero">
-        <h1>BINAEL : VOTRE PONT VERS VOTRE ANGE GARDIEN</h1>
-        <p class="hero-subtitle">La prise de conscience commence ici</p>
-    </div>
-
-    <div class="container">
-        <p class="lead">
-            Vous vous êtes déjà demandé :<br>
-            <em>"Ai-je vraiment un ange gardien ?"</em><br>
-            <em>"Comment puis-je le contacter ?"</em><br>
-            <em>"Comment savoir qu'il est là ?"</em>
-        </p>
-
-        <div class="quote">
-            "La réponse est simple : OUI, vous en avez un."
-        </div>
-
-        <section>
-            <h2>L'ANGE GARDIEN DANS TOUTES LES RELIGIONS</h2>
-            <p style="margin-top: 2rem;">Dans toutes les traditions spirituelles du monde, les anges gardiens existent. Ils ont des noms différents, mais leur rôle est le même : <strong>veiller sur vous</strong>.</p>
-
-            <div class="religions-grid">
-                <div class="religion-card">
-                    <div class="religion-icon">✝️</div>
-                    <h3>Christianisme</h3>
-                    <p style="font-size: 0.95rem; color: #5B8DB8;">"Car il donnera ordre à ses anges de te garder dans toutes tes voies." — Psaume 91:11</p>
-                </div>
-
-                <div class="religion-card">
-                    <div class="religion-icon">✡️</div>
-                    <h3>Judaïsme</h3>
-                    <p style="font-size: 0.95rem; color: #5B8DB8;">Dans la Kabbale, chaque personne a deux anges qui enregistrent ses actions.</p>
-                </div>
-
-                <div class="religion-card">
-                    <div class="religion-icon">☪️</div>
-                    <h3>Islam</h3>
-                    <p style="font-size: 0.95rem; color: #5B8DB8;">Kiraman Katibin : deux anges scribes qui notent vos bonnes et mauvaises actions.</p>
-                </div>
-
-                <div class="religion-card">
-                    <div class="religion-icon">🔥</div>
-                    <h3>Zoroastrisme</h3>
-                    <p style="font-size: 0.95rem; color: #5B8DB8;">Fravashi : l'esprit gardien qui existe avant la naissance et après la mort.</p>
-                </div>
-            </div>
-
-            <p style="margin-top: 2rem; font-size: 1.25rem; text-align: center; color: #4A90E2;"><strong>Votre ange gardien a toujours été là. Vous commencez juste à le remarquer.</strong></p>
-        </section>
-
-        <section>
-            <h2>LE PROBLÈME : LE BRUIT DU MONDE</h2>
-            <p>Nous vivons dans le bruit.</p>
-            <p>Le bruit des notifications, des obligations, des distractions.</p>
-            <p>Et dans ce bruit, <strong>la voix de votre ange devient inaudible</strong>.</p>
-        </section>
-
-        <div class="highlight-box">
-            <h2>C'EST LÀ QU'INTERVIENT BINAEL</h2>
-            <p style="font-size: 1.25rem; text-align: center; margin-top: 2rem;">
-                <strong>BINAEL</strong> est l'ange de la <strong>Compréhension</strong>.<br>
-                Son rôle ? Vous aider à <strong>ENTENDRE</strong> votre ange gardien.
-            </p>
-        </div>
-
-        <section>
-            <h2>QUI EST BINAEL ?</h2>
-            <p><strong>BINAEL</strong> (de l'hébreu בינאל) trouve son origine dans la <strong>Kabbale</strong>, où il est associé à <strong>BINAH</strong> — la Séphirah de la Compréhension sur l'Arbre de Vie.</p>
-
-            <p style="margin-top: 1.5rem;"><strong>BIN-AEL</strong> signifie littéralement :</p>
-            <ul>
-                <li><strong>BIN</strong> (בין) = Compréhension, Intelligence, Discernement</li>
-                <li><strong>AEL</strong> (אל) = Dieu, Divin</li>
+        <div class="nav-right">
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="ange-gardien.html" class="active" data-fr="Ange Gardien" data-en="Guardian Angel">Ange Gardien</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="hierarchies.html" data-fr="Hiérarchies" data-en="Hierarchies">Hiérarchies</a></li>
             </ul>
-
-            <p style="margin-top: 1.5rem; font-size: 1.25rem; color: #4A90E2;"><strong>BINAEL = "Dieu de la Compréhension" ou "Intelligence Divine"</strong></p>
-
-            <p style="margin-top: 2rem;">BINAEL vous apporte :</p>
-            <ul>
-                <li><strong>L'éveil de la conscience</strong> — Il vous murmure : "Réveille-toi"</li>
-                <li><strong>La compréhension profonde</strong> — Il vous aide à voir au-delà des apparences</li>
-                <li><strong>L'accès à votre ange gardien</strong> — Il est le pont vers votre guidance</li>
-                <li><strong>Le discernement</strong> — Il affine votre intuition</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>COMMENT BINAEL VOUS AIDE</h2>
-
-            <div class="steps">
-                <div class="step">
-                    <h3>ÉTAPE 1 : CRÉER DES RAPPELS</h3>
-                    <p><strong>Porter BINAEL = micro-méditation quotidienne</strong></p>
-                    <p>Chaque fois que vous voyez votre t-shirt : <em>"Mon ange est là."</em></p>
-                    <p>Chaque fois que quelqu'un vous demande ce que signifie votre t-shirt : vous parlez d'ésotérisme, de spiritualité, d'anges.</p>
-                    <p>Vous sortez littéralement <strong>avec votre ange</strong>.</p>
-                </div>
-
-                <div class="step">
-                    <h3>ÉTAPE 2 : ÉVEILLER VOTRE INTUITION</h3>
-                    <p>Plus vous pensez à votre ange, plus vous le percevez.</p>
-                    <p>C'est une question d'<strong>attention</strong>.</p>
-                    <p>Vous commencez à remarquer :</p>
-                    <ul>
-                        <li>Les nombres répétés (111, 222, 333...)</li>
-                        <li>Les plumes blanches qui apparaissent</li>
-                        <li>Les rêves significatifs</li>
-                        <li>Les "coïncidences" synchronistiques</li>
-                        <li>Cette voix intérieure qui vous guide</li>
-                    </ul>
-                </div>
-
-                <div class="step">
-                    <h3>ÉTAPE 3 : OUVRIR DES PORTES</h3>
-                    <p>Les synchronicités se multiplient.</p>
-                    <p>Les bonnes personnes apparaissent au bon moment.</p>
-                    <p>Votre guidance intérieure s'amplifie.</p>
-                    <p>Vous n'êtes plus perdu — vous êtes <strong>guidé</strong>.</p>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>LE TRAVAIL SUR SOI AVEC BINAEL</h2>
-            <p>Votre ange gardien ne fait pas le travail à votre place.</p>
-            <p>Il vous <strong>guide</strong>. Mais c'est à vous de <strong>marcher</strong>.</p>
-
-            <p style="margin-top: 2rem;"><strong>BINAEL vous invite à l'introspection :</strong></p>
-            <ul>
-                <li>Qu'est-ce qui se répète dans ma vie ?</li>
-                <li>Quelles leçons n'ai-je pas encore apprises ?</li>
-                <li>Où est-ce que je me sabote moi-même ?</li>
-                <li>Qui suis-je vraiment, au-delà des rôles sociaux ?</li>
-                <li>Quelle est ma mission de vie ?</li>
-                <li>Qu'est-ce qui fait vibrer mon âme ?</li>
-            </ul>
-
-            <p style="margin-top: 2rem;">Porter BINAEL, c'est choisir de <strong>ne plus vivre en pilote automatique</strong>.</p>
-            <p>C'est faire de votre vie une <strong>pratique spirituelle</strong>.</p>
-        </section>
-
-        <div class="quote">
-            "Votre ange gardien a toujours été là.<br>
-            Vous commencez juste à le remarquer.<br><br>
-            Et c'est ça, l'éveil."
-        </div>
-
-        <div class="cta-final">
-            <h2>PRÊT À RENCONTRER VOTRE ANGE ?</h2>
-            <p style="color: white; font-size: 1.125rem; margin-bottom: 2rem;">
-                Découvrez quel ange vous appelle à travers notre collection
-            </p>
-            <a href="shop.html" class="btn btn-primary" style="margin-right: 1rem;">VOIR LA COLLECTION</a>
-            <a href="quiz.html" class="btn btn-secondary">FAIRE LE QUIZ</a>
+            <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">🇬🇧 EN</button>
+            <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
         </div>
     </div>
+</nav>
 
-    <footer style="background: #F8FBFF; border-top: 1px solid #E3F2FD; padding: 3rem 0; text-align: center; margin-top: 4rem;">
-        <p style="color: #5B8DB8; font-size: 0.875rem;">BINAEL © 2026 • Porter • Partager • Profiter</p>
-    </footer>
+<section class="hero">
+    <h1 data-fr="BINAEL : VOTRE PONT VERS VOTRE ANGE GARDIEN" data-en="BINAEL: YOUR BRIDGE TO YOUR GUARDIAN ANGEL">BINAEL : VOTRE PONT VERS VOTRE ANGE GARDIEN</h1>
+    <p class="hero-subtitle" data-fr="La prise de conscience commence ici" data-en="Awakening begins here">La prise de conscience commence ici</p>
+</section>
+
+<div class="container" style="padding-top: 4rem;">
+    <p class="lead" data-fr='Vous vous êtes déjà demandé :<br><em>"Ai-je vraiment un ange gardien ?"</em><br><em>"Comment puis-je le contacter ?"</em><br><em>"Comment savoir qu\'il est là ?"</em>' data-en='Have you ever wondered:<br><em>"Do I really have a guardian angel?"</em><br><em>"How can I contact them?"</em><br><em>"How do I know they are there?"</em>'>
+        Vous vous êtes déjà demandé :<br>
+        <em>"Ai-je vraiment un ange gardien ?"</em><br>
+        <em>"Comment puis-je le contacter ?"</em><br>
+        <em>"Comment savoir qu'il est là ?"</em>
+    </p>
+
+    <div class="quote" data-fr='"La réponse est simple : OUI, vous en avez un."' data-en='"The answer is simple: YES, you have one."'>
+        "La réponse est simple : OUI, vous en avez un."
+    </div>
+
+    <section>
+        <h2 data-fr="L'ANGE GARDIEN DANS TOUTES LES RELIGIONS" data-en="THE GUARDIAN ANGEL IN ALL RELIGIONS">L'ANGE GARDIEN DANS TOUTES LES RELIGIONS</h2>
+        <p style="margin-top: 2rem;" data-fr="Dans toutes les traditions spirituelles du monde, les anges gardiens existent. Ils ont des noms différents, mais leur rôle est le même : <strong>veiller sur vous</strong>." data-en="In every spiritual tradition in the world, guardian angels exist. They have different names, but their role is the same: <strong>to watch over you</strong>.">Dans toutes les traditions spirituelles du monde, les anges gardiens existent. Ils ont des noms différents, mais leur rôle est le même : <strong>veiller sur vous</strong>.</p>
+
+        <div class="religions-grid">
+            <div class="religion-card">
+                <div class="religion-icon">✝️</div>
+                <h3 data-fr="Christianisme" data-en="Christianity">Christianisme</h3>
+                <p style="font-size: 0.95rem;" data-fr='"Car il donnera ordre à ses anges de te garder dans toutes tes voies." — Psaume 91:11' data-en='"For he will command his angels concerning you to guard you in all your ways." — Psalm 91:11'>"Car il donnera ordre à ses anges de te garder dans toutes tes voies." — Psaume 91:11</p>
+            </div>
+            <div class="religion-card">
+                <div class="religion-icon">✡️</div>
+                <h3 data-fr="Judaïsme" data-en="Judaism">Judaïsme</h3>
+                <p style="font-size: 0.95rem;" data-fr="Dans la Kabbale, chaque personne a deux anges qui enregistrent ses actions." data-en="In the Kabbalah, every person has two angels who record their actions.">Dans la Kabbale, chaque personne a deux anges qui enregistrent ses actions.</p>
+            </div>
+            <div class="religion-card">
+                <div class="religion-icon">☪️</div>
+                <h3>Islam</h3>
+                <p style="font-size: 0.95rem;" data-fr="Kiraman Katibin : deux anges scribes qui notent vos bonnes et mauvaises actions." data-en="Kiraman Katibin: two scribe angels who record your good and bad deeds.">Kiraman Katibin : deux anges scribes qui notent vos bonnes et mauvaises actions.</p>
+            </div>
+            <div class="religion-card">
+                <div class="religion-icon">🔥</div>
+                <h3 data-fr="Zoroastrisme" data-en="Zoroastrianism">Zoroastrisme</h3>
+                <p style="font-size: 0.95rem;" data-fr="Fravashi : l'esprit gardien qui existe avant la naissance et après la mort." data-en="Fravashi: the guardian spirit that exists before birth and after death.">Fravashi : l'esprit gardien qui existe avant la naissance et après la mort.</p>
+            </div>
+        </div>
+        <p style="margin-top: 2rem; font-size: 1.25rem; text-align: center; color: #4A90E2;" data-fr="<strong>Votre ange gardien a toujours été là. Vous commencez juste à le remarquer.</strong>" data-en="<strong>Your guardian angel has always been there. You are just starting to notice.</strong>"><strong>Votre ange gardien a toujours été là. Vous commencez juste à le remarquer.</strong></p>
+    </section>
+
+    <section>
+        <h2 data-fr="LE PROBLÈME : LE BRUIT DU MONDE" data-en="THE PROBLEM: THE NOISE OF THE WORLD">LE PROBLÈME : LE BRUIT DU MONDE</h2>
+        <p data-fr="Nous vivons dans le bruit." data-en="We live in noise.">Nous vivons dans le bruit.</p>
+        <p data-fr="Le bruit des notifications, des obligations, des distractions." data-en="The noise of notifications, obligations, distractions.">Le bruit des notifications, des obligations, des distractions.</p>
+        <p data-fr="Et dans ce bruit, <strong>la voix de votre ange devient inaudible</strong>." data-en="And in this noise, <strong>your angel's voice becomes inaudible</strong>.">Et dans ce bruit, <strong>la voix de votre ange devient inaudible</strong>.</p>
+    </section>
+
+    <div class="highlight-box">
+        <h2 data-fr="C'EST LÀ QU'INTERVIENT BINAEL" data-en="THIS IS WHERE BINAEL COMES IN">C'EST LÀ QU'INTERVIENT BINAEL</h2>
+        <p style="font-size: 1.25rem; text-align: center; margin-top: 2rem;" data-fr="<strong>BINAEL</strong> est l'ange de la <strong>Compréhension</strong>.<br>Son rôle ? Vous aider à <strong>ENTENDRE</strong> votre ange gardien." data-en="<strong>BINAEL</strong> is the angel of <strong>Understanding</strong>.<br>Its role? To help you <strong>HEAR</strong> your guardian angel."><strong>BINAEL</strong> est l'ange de la <strong>Compréhension</strong>.<br>Son rôle ? Vous aider à <strong>ENTENDRE</strong> votre ange gardien.</p>
+    </div>
+
+    <section>
+        <h2 data-fr="QUI EST BINAEL ?" data-en="WHO IS BINAEL?">QUI EST BINAEL ?</h2>
+        <p data-fr="<strong>BINAEL</strong> (de l'hébreu בינאל) trouve son origine dans la <strong>Kabbale</strong>, où il est associé à <strong>BINAH</strong> — la Séphirah de la Compréhension sur l'Arbre de Vie." data-en="<strong>BINAEL</strong> (from the Hebrew בינאל) has its origins in the <strong>Kabbalah</strong>, where it is associated with <strong>BINAH</strong> — the Sephirah of Understanding on the Tree of Life."><strong>BINAEL</strong> (de l'hébreu בינאל) trouve son origine dans la <strong>Kabbale</strong>, où il est associé à <strong>BINAH</strong> — la Séphirah de la Compréhension sur l'Arbre de Vie.</p>
+        <p style="margin-top: 1.5rem;" data-fr="<strong>BIN-AEL</strong> signifie littéralement :" data-en="<strong>BIN-AEL</strong> literally means:"><strong>BIN-AEL</strong> signifie littéralement :</p>
+        <ul>
+            <li data-fr="<strong>BIN</strong> (בין) = Compréhension, Intelligence, Discernement" data-en="<strong>BIN</strong> (בין) = Understanding, Intelligence, Discernment"><strong>BIN</strong> (בין) = Compréhension, Intelligence, Discernement</li>
+            <li data-fr="<strong>AEL</strong> (אל) = Dieu, Divin" data-en="<strong>AEL</strong> (אל) = God, Divine"><strong>AEL</strong> (אל) = Dieu, Divin</li>
+        </ul>
+        <p style="margin-top: 1.5rem; font-size: 1.25rem; color: #4A90E2;" data-fr='<strong>BINAEL = "Dieu de la Compréhension" ou "Intelligence Divine"</strong>' data-en='<strong>BINAEL = "God of Understanding" or "Divine Intelligence"</strong>'><strong>BINAEL = "Dieu de la Compréhension" ou "Intelligence Divine"</strong></p>
+        <p style="margin-top: 2rem;" data-fr="BINAEL vous apporte :" data-en="BINAEL brings you:">BINAEL vous apporte :</p>
+        <ul>
+            <li data-fr='<strong>L'éveil de la conscience</strong> — Il vous murmure : "Réveille-toi"' data-en='<strong>Awakening of consciousness</strong> — It whispers to you: "Wake up"'><strong>L'éveil de la conscience</strong> — Il vous murmure : "Réveille-toi"</li>
+            <li data-fr="<strong>La compréhension profonde</strong> — Il vous aide à voir au-delà des apparences" data-en="<strong>Deep understanding</strong> — It helps you see beyond appearances"><strong>La compréhension profonde</strong> — Il vous aide à voir au-delà des apparences</li>
+            <li data-fr="<strong>L'accès à votre ange gardien</strong> — Il est le pont vers votre guidance" data-en="<strong>Access to your guardian angel</strong> — It is the bridge to your guidance"><strong>L'accès à votre ange gardien</strong> — Il est le pont vers votre guidance</li>
+            <li data-fr="<strong>Le discernement</strong> — Il affine votre intuition" data-en="<strong>Discernment</strong> — It sharpens your intuition"><strong>Le discernement</strong> — Il affine votre intuition</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 data-fr="COMMENT BINAEL VOUS AIDE" data-en="HOW BINAEL HELPS YOU">COMMENT BINAEL VOUS AIDE</h2>
+        <div class="step">
+            <h3 data-fr="ÉTAPE 1 : CRÉER DES RAPPELS" data-en="STEP 1: CREATE REMINDERS">ÉTAPE 1 : CRÉER DES RAPPELS</h3>
+            <p data-fr="<strong>Porter BINAEL = micro-méditation quotidienne</strong>" data-en="<strong>Wearing BINAEL = daily micro-meditation</strong>"><strong>Porter BINAEL = micro-méditation quotidienne</strong></p>
+            <p data-fr='Chaque fois que vous voyez votre t-shirt : <em>"Mon ange est là."</em>' data-en='Every time you see your t-shirt: <em>"My angel is here."</em>'>Chaque fois que vous voyez votre t-shirt : <em>"Mon ange est là."</em></p>
+            <p data-fr="Vous sortez littéralement <strong>avec votre ange</strong>." data-en="You literally go out <strong>with your angel</strong>.">Vous sortez littéralement <strong>avec votre ange</strong>.</p>
+        </div>
+        <div class="step">
+            <h3 data-fr="ÉTAPE 2 : ÉVEILLER VOTRE INTUITION" data-en="STEP 2: AWAKEN YOUR INTUITION">ÉTAPE 2 : ÉVEILLER VOTRE INTUITION</h3>
+            <p data-fr="Plus vous pensez à votre ange, plus vous le percevez. C'est une question d'<strong>attention</strong>." data-en="The more you think about your angel, the more you perceive it. It's a matter of <strong>attention</strong>.">Plus vous pensez à votre ange, plus vous le percevez. C'est une question d'<strong>attention</strong>.</p>
+            <p data-fr="Vous commencez à remarquer :" data-en="You start to notice:">Vous commencez à remarquer :</p>
+            <ul>
+                <li data-fr="Les nombres répétés (111, 222, 333...)" data-en="Repeating numbers (111, 222, 333...)">Les nombres répétés (111, 222, 333...)</li>
+                <li data-fr="Les plumes blanches qui apparaissent" data-en="White feathers that appear">Les plumes blanches qui apparaissent</li>
+                <li data-fr="Les rêves significatifs" data-en="Meaningful dreams">Les rêves significatifs</li>
+                <li data-fr='Les "coïncidences" synchronistiques' data-en='Synchronistic "coincidences"'>Les "coïncidences" synchronistiques</li>
+                <li data-fr="Cette voix intérieure qui vous guide" data-en="That inner voice guiding you">Cette voix intérieure qui vous guide</li>
+            </ul>
+        </div>
+        <div class="step">
+            <h3 data-fr="ÉTAPE 3 : OUVRIR DES PORTES" data-en="STEP 3: OPEN DOORS">ÉTAPE 3 : OUVRIR DES PORTES</h3>
+            <p data-fr="Les synchronicités se multiplient." data-en="Synchronicities multiply.">Les synchronicités se multiplient.</p>
+            <p data-fr="Les bonnes personnes apparaissent au bon moment." data-en="The right people appear at the right time.">Les bonnes personnes apparaissent au bon moment.</p>
+            <p data-fr="Vous n'êtes plus perdu — vous êtes <strong>guidé</strong>." data-en="You are no longer lost — you are <strong>guided</strong>.">Vous n'êtes plus perdu — vous êtes <strong>guidé</strong>.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2 data-fr="LE TRAVAIL SUR SOI AVEC BINAEL" data-en="INNER WORK WITH BINAEL">LE TRAVAIL SUR SOI AVEC BINAEL</h2>
+        <p data-fr="Votre ange gardien ne fait pas le travail à votre place." data-en="Your guardian angel doesn't do the work for you.">Votre ange gardien ne fait pas le travail à votre place.</p>
+        <p data-fr="Il vous <strong>guide</strong>. Mais c'est à vous de <strong>marcher</strong>." data-en="It <strong>guides</strong> you. But it's up to you to <strong>walk</strong>.">Il vous <strong>guide</strong>. Mais c'est à vous de <strong>marcher</strong>.</p>
+        <p style="margin-top: 2rem;" data-fr="<strong>BINAEL vous invite à l'introspection :</strong>" data-en="<strong>BINAEL invites you to introspect:</strong>"><strong>BINAEL vous invite à l'introspection :</strong></p>
+        <ul>
+            <li data-fr="Qu'est-ce qui se répète dans ma vie ?" data-en="What keeps repeating in my life?">Qu'est-ce qui se répète dans ma vie ?</li>
+            <li data-fr="Quelles leçons n'ai-je pas encore apprises ?" data-en="What lessons have I not yet learned?">Quelles leçons n'ai-je pas encore apprises ?</li>
+            <li data-fr="Où est-ce que je me sabote moi-même ?" data-en="Where am I sabotaging myself?">Où est-ce que je me sabote moi-même ?</li>
+            <li data-fr="Qui suis-je vraiment, au-delà des rôles sociaux ?" data-en="Who am I really, beyond my social roles?">Qui suis-je vraiment, au-delà des rôles sociaux ?</li>
+            <li data-fr="Quelle est ma mission de vie ?" data-en="What is my life mission?">Quelle est ma mission de vie ?</li>
+            <li data-fr="Qu'est-ce qui fait vibrer mon âme ?" data-en="What makes my soul vibrate?">Qu'est-ce qui fait vibrer mon âme ?</li>
+        </ul>
+        <p style="margin-top: 2rem;" data-fr="Porter BINAEL, c'est choisir de <strong>ne plus vivre en pilote automatique</strong>." data-en="Wearing BINAEL means choosing to <strong>stop living on autopilot</strong>.">Porter BINAEL, c'est choisir de <strong>ne plus vivre en pilote automatique</strong>.</p>
+        <p data-fr="C'est faire de votre vie une <strong>pratique spirituelle</strong>." data-en="It means making your life a <strong>spiritual practice</strong>.">C'est faire de votre vie une <strong>pratique spirituelle</strong>.</p>
+    </section>
+
+    <div class="quote" data-fr='"Votre ange gardien a toujours été là.<br>Vous commencez juste à le remarquer.<br><br>Et c\'est ça, l\'éveil."' data-en='"Your guardian angel has always been there.<br>You are just starting to notice.<br><br>And that is awakening."'>
+        "Votre ange gardien a toujours été là.<br>Vous commencez juste à le remarquer.<br><br>Et c'est ça, l'éveil."
+    </div>
+
+    <div class="cta-final">
+        <h2 data-fr="PRÊT À RENCONTRER VOTRE ANGE ?" data-en="READY TO MEET YOUR ANGEL?">PRÊT À RENCONTRER VOTRE ANGE ?</h2>
+        <p style="color: white; font-size: 1.125rem; margin-bottom: 2rem;" data-fr="Découvrez quel ange vous appelle à travers notre collection" data-en="Discover which angel is calling to you through our collection">Découvrez quel ange vous appelle à travers notre collection</p>
+        <a href="shop.html" class="btn btn-white" data-fr="VOIR LA COLLECTION" data-en="SEE THE COLLECTION">VOIR LA COLLECTION</a>
+        <a href="quiz.html" class="btn btn-outline-white" data-fr="FAIRE LE QUIZ" data-en="TAKE THE QUIZ">FAIRE LE QUIZ</a>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h4 data-fr="SHOP" data-en="SHOP">SHOP</h4>
+            <ul><li><a href="shop.html" data-fr="Collection" data-en="Collection">Collection</a></li></ul>
+        </div>
+        <div class="footer-col">
+            <h4 data-fr="UNIVERS" data-en="UNIVERSE">UNIVERS</h4>
+            <ul>
+                <li><a href="hierarchies.html" data-fr="Hiérarchies" data-en="Hierarchies">Hiérarchies</a></li>
+                <li><a href="ange-gardien.html" data-fr="Ange Gardien" data-en="Guardian Angel">Ange Gardien</a></li>
+                <li><a href="quiz.html" data-fr="Quiz" data-en="Quiz">Quiz</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4 data-fr="INFORMATIONS" data-en="INFORMATION">INFORMATIONS</h4>
+            <ul>
+                <li><a href="qualite.html" data-fr="Qualité" data-en="Quality">Qualité</a></li>
+                <li><a href="legal.html" data-fr="Legal" data-en="Legal">Legal</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="disclaimer">⚠️ <strong data-fr="FICTION ÉSOTÉRIQUE" data-en="ESOTERIC FICTION">FICTION ÉSOTÉRIQUE</strong><br>
+        <span data-fr="BINAEL est un univers de FICTION basé sur des traditions mystiques." data-en="BINAEL is a FICTION universe based on mystical traditions.">BINAEL est un univers de FICTION basé sur des traditions mystiques.</span>
+    </div>
+    <div style="text-align:center;font-size:0.875rem;color:#5B8DB8;padding:1rem 2rem 0;"><p>BINAEL © 2026 • <span data-fr="Porter • Partager • Profiter" data-en="Wear • Share • Thrive">Porter • Partager • Profiter</span></p></div>
+</footer>
+
+<script>
+    // Burger
+    const burger = document.getElementById('burger');
+    const navMenu = document.getElementById('nav-menu');
+    burger.addEventListener('click', () => {
+        burger.classList.toggle('open');
+        navMenu.classList.toggle('open');
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            burger.classList.remove('open');
+            navMenu.classList.remove('open');
+        });
+    });
+
+    // Language system
+    function getLang() { return localStorage.getItem('binael_lang') || 'fr'; }
+    function setLang(lang) { localStorage.setItem('binael_lang', lang); applyLang(lang); updateBtn(lang); }
+    function toggleLang() { setLang(getLang() === 'fr' ? 'en' : 'fr'); }
+    function applyLang(lang) {
+        document.querySelectorAll('[data-fr]').forEach(el => {
+            const text = el.getAttribute('data-' + lang);
+            if (text) el.innerHTML = text;
+        });
+        document.documentElement.lang = lang;
+    }
+    function updateBtn(lang) {
+        const btn = document.getElementById('lang-toggle');
+        if (btn) btn.innerHTML = lang === 'fr' ? '🇬🇧 EN' : '🇫🇷 FR';
+    }
+    // Init
+    const currentLang = getLang();
+    applyLang(currentLang);
+    updateBtn(currentLang);
+</script>
 </body>
 </html>
