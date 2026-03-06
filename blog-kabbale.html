@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'ARBRE DE VIE ET LA KABBALE | BINAEL</title>
+    <meta name="description" content="Introduction à la Kabbale et à l'Arbre de Vie. Les 10 Séphiroth expliqués et leur lien avec les anges et BINAEL.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cormorant Garamond', serif; background: linear-gradient(180deg, #FFF 0%, #F8FBFF 50%, #F0F7FF 100%); background-attachment: fixed; color: #2C5F8D; line-height: 1.8; }
+        h1, h2, h3 { font-family: 'Cinzel', serif; color: #4A90E2; }
+        h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin: 2.5rem 0 1rem; }
+        h3 { font-size: 1.25rem; margin: 2rem 0 0.75rem; color: #2C5F8D; }
+        p { font-size: 1.125rem; margin-bottom: 1.25rem; color: #5B8DB8; line-height: 1.9; }
+        ul, ol { margin: 1rem 0 1.5rem 2rem; color: #5B8DB8; font-size: 1.05rem; }
+        ul li, ol li { margin-bottom: 0.6rem; line-height: 1.7; }
+        strong { color: #2C5F8D; }
+        em { color: #7CB9E8; font-style: italic; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .article-container { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
+        .btn { display: inline-block; padding: 0.875rem 2rem; font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 50px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+        .btn-primary { background: linear-gradient(135deg, #4A90E2, #7CB9E8); color: white; box-shadow: 0 4px 20px rgba(74,144,226,0.3); }
+        .btn-primary:hover { transform: translateY(-2px); }
+        .btn-outline { background: white; border: 2px solid #4A90E2; color: #4A90E2; }
+
+        /* NAVBAR */
+        .navbar { background: rgba(255,255,255,0.97); border-bottom: 1px solid #E3F2FD; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(74,144,226,0.08); }
+        .nav-container { padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .nav-left { display: flex; align-items: center; gap: 1rem; }
+        .logo-text { font-family: 'Cinzel', serif; font-size: 1.75rem; font-weight: 700; letter-spacing: 0.2em; background: linear-gradient(135deg, #4A90E2, #7CB9E8, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+        .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+        .nav-menu { display: flex; gap: 2rem; list-style: none; }
+        .nav-menu a { font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.12em; text-transform: uppercase; color: #2C5F8D; text-decoration: none; transition: color 0.2s; }
+        .nav-menu a:hover, .nav-menu a.active { color: #4A90E2; }
+        .lang-btn { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.1em; background: #E3F2FD; border: 1px solid #B8D8F0; color: #4A90E2; padding: 0.4rem 0.9rem; border-radius: 20px; cursor: pointer; transition: 0.2s; white-space: nowrap; }
+        .lang-btn:hover { background: #4A90E2; color: white; }
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; z-index: 1100; }
+        .burger span { display: block; width: 25px; height: 2px; background: #2C5F8D; border-radius: 2px; transition: 0.3s; }
+        .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger.open span:nth-child(2) { opacity: 0; }
+        .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ARTICLE HEADER */
+        .article-header { background: linear-gradient(135deg, #4A3F8A, #7C83CB); padding: 5rem 2rem 4rem; text-align: center; }
+        .article-header h1 { color: white; font-size: clamp(1.75rem, 5vw, 3.5rem); margin-bottom: 1rem; line-height: 1.2; }
+        .article-subtitle { color: rgba(255,255,255,0.85); font-size: 1.2rem; font-style: italic; margin: 0 0 2rem; }
+        .article-meta { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+        .meta-item { color: rgba(255,255,255,0.8); font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; }
+        .article-category { display: inline-block; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); color: white; font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.12em; padding: 0.4rem 1rem; border-radius: 20px; margin-bottom: 1.5rem; }
+
+        /* ARTICLE BODY */
+        .article-body { padding: 4rem 0 6rem; }
+        .lead-paragraph { font-size: 1.35rem; color: #2C5F8D; line-height: 1.9; margin-bottom: 2rem; padding: 2rem; background: linear-gradient(135deg, #F0F7FF, #E8F4FF); border-left: 4px solid #4A90E2; border-radius: 0 12px 12px 0; }
+        .highlight-box { background: linear-gradient(135deg, #E3F2FD, rgba(255,215,0,0.08)); border: 2px solid #B8D8F0; border-radius: 16px; padding: 2rem 2.5rem; margin: 2.5rem 0; }
+        .highlight-box h3 { margin-top: 0; }
+        .quote-block { font-size: 1.4rem; font-style: italic; text-align: center; color: #4A90E2; margin: 3rem 0; padding: 2rem 3rem; border-top: 2px solid #E3F2FD; border-bottom: 2px solid #E3F2FD; background: #F8FBFF; }
+        .section-icon { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .mini-card { background: white; border: 1px solid #E3F2FD; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(74,144,226,0.06); }
+        .mini-card .card-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .mini-card h4 { font-family: 'Cinzel', serif; font-size: 0.95rem; color: #4A90E2; margin-bottom: 0.5rem; }
+        .mini-card p { font-size: 0.95rem; margin: 0; }
+        .number-highlight { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #FFD700; font-weight: 700; }
+        .divider { text-align: center; color: #B8D8F0; margin: 3rem 0; font-size: 1.5rem; letter-spacing: 1rem; }
+
+        /* CTA */
+        .article-cta { background: linear-gradient(135deg, #4A90E2, #7CB9E8); border-radius: 20px; padding: 3.5rem 2.5rem; text-align: center; margin: 4rem 0 0; }
+        .article-cta h2 { color: white; margin-bottom: 1rem; }
+        .article-cta p { color: rgba(255,255,255,0.9); margin-bottom: 2rem; }
+        .article-cta .btn-white { background: white; color: #4A90E2; margin: 0.5rem; }
+        .article-cta .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,255,255,0.3); }
+
+        /* RELATED */
+        .related-section { padding: 4rem 0; background: #F8FBFF; border-top: 1px solid #E3F2FD; }
+        .related-section h2 { text-align: center; margin-bottom: 2.5rem; font-size: 1.5rem; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+        .related-card { background: white; border: 1px solid #E3F2FD; border-radius: 12px; padding: 1.5rem; text-decoration: none; transition: 0.3s; display: block; }
+        .related-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(74,144,226,0.1); }
+        .related-card .rc-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .related-card h4 { font-family: 'Cinzel', serif; font-size: 0.9rem; color: #4A90E2; margin-bottom: 0.5rem; line-height: 1.3; }
+        .related-card p { font-size: 0.9rem; color: #7CB9E8; margin: 0; }
+
+        /* FOOTER */
+        .footer { background: linear-gradient(180deg, white 0%, #F8FBFF 100%); border-top: 2px solid #E3F2FD; padding: 4rem 0 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2.5rem; margin-bottom: 2.5rem; }
+        .footer-col h4 { font-family: 'Cinzel', serif; font-size: 0.95rem; letter-spacing: 0.15em; margin-bottom: 1.25rem; color: #4A90E2; }
+        .footer-col ul { list-style: none; padding: 0; }
+        .footer-col ul li { margin-bottom: 0.6rem; }
+        .footer-col ul li a { color: #5B8DB8; text-decoration: none; font-size: 0.9rem; }
+        .disclaimer { background: #E3F2FD; border: 1px solid #B8D8F0; border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem; font-size: 0.9rem; text-align: center; }
+        .disclaimer strong { color: #4A90E2; }
+
+        @media (max-width: 768px) {
+            .burger { display: flex; }
+            .nav-menu { display: none; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.98); justify-content: center; align-items: center; gap: 2.5rem; z-index: 1050; }
+            .nav-menu.open { display: flex; }
+            .nav-menu a { font-size: 1.25rem; }
+            .article-header { padding: 3.5rem 1.5rem 3rem; }
+            .article-cta { padding: 2.5rem 1.5rem; }
+            .quote-block { padding: 1.5rem; }
+            .card-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-left">
+            <a href="index.html" class="logo-text">BINAEL</a>
+        </div>
+        <div class="nav-right">
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="ange-gardien.html" data-fr="Ange Gardien" data-en="Guardian Angel">Ange Gardien</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="hierarchies.html" data-fr="Hiérarchies" data-en="Hierarchies">Hiérarchies</a></li>
+            </ul>
+            <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">🇬🇧 EN</button>
+            <button class="burger" id="burger"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+</nav>
+
+<header class="article-header">
+    <div class="article-container">
+        <span class="article-category" data-fr="Spiritualité" data-en="Spirituality">Spiritualité</span>
+        <h1 data-fr="L'ARBRE DE VIE ET LA KABBALE" data-en="THE TREE OF LIFE AND KABBALAH">L'ARBRE DE VIE ET LA KABBALE</h1>
+        <p class="article-subtitle" data-fr="La carte complète de la réalité spirituelle — et le lien avec BINAEL" data-en="The complete map of spiritual reality — and the connection to BINAEL">La carte complète de la réalité spirituelle — et le lien avec BINAEL</p>
+        <div class="article-meta">
+            <span class="meta-item">🪽 BINAEL</span>
+            <span class="meta-item" data-fr="9 min de lecture" data-en="9 min read">9 min de lecture</span>
+            <span class="meta-item">2026</span>
+        </div>
+    </div>
+</header>
+
+<div class="article-body">
+    <div class="article-container">
+        <p class="lead-paragraph" data-fr="L'Arbre de Vie est la carte la plus complète de la réalité spirituelle jamais créée par l'esprit humain. En 10 sphères et 22 chemins, il décrit la création de l'univers, la nature de Dieu, et le chemin de retour vers la Source. Voici une introduction accessible à ce système millénaire." data-en="The Tree of Life is the most complete map of spiritual reality ever created by the human mind. In 10 spheres and 22 paths, it describes the creation of the universe, the nature of God, and the path of return to the Source. Here is an accessible introduction to this millennial system.">L'Arbre de Vie est la carte la plus complète de la réalité spirituelle jamais créée par l'esprit humain. En 10 sphères et 22 chemins, il décrit la création de l'univers, la nature de Dieu, et le chemin de retour vers la Source. Voici une introduction accessible à ce système millénaire.</p>
+
+        <h2 data-fr="📜 QU'EST-CE QUE LA KABBALE ?" data-en="📜 WHAT IS KABBALAH?">📜 QU'EST-CE QUE LA KABBALE ?</h2>
+        <p data-fr="La Kabbale (de l'hébreu <em>qabbalah</em>, 'ce qui est reçu') est la tradition mystique du judaïsme. Elle cherche à comprendre la nature de Dieu, de l'univers, et de l'âme humaine. Ses textes fondamentaux — le Sefer Yetzirah (IIe siècle) et le Zohar (XIIIe siècle) — ont influencé le christianisme, l'islam soufi, et la philosophie hermétique occidentale." data-en="Kabbalah (from the Hebrew <em>qabbalah</em>, 'that which is received') is the mystical tradition of Judaism. It seeks to understand the nature of God, the universe, and the human soul. Its foundational texts — the Sefer Yetzirah (2nd century) and the Zohar (13th century) — have influenced Christianity, Sufi Islam, and Western Hermetic philosophy.">La Kabbale (de l'hébreu <em>qabbalah</em>, 'ce qui est reçu') est la tradition mystique du judaïsme. Elle cherche à comprendre la nature de Dieu, de l'univers, et de l'âme humaine. Ses textes fondamentaux — le Sefer Yetzirah (IIe siècle) et le Zohar (XIIIe siècle) — ont influencé le christianisme, l'islam soufi, et la philosophie hermétique occidentale.</p>
+
+        <h2 data-fr="🌳 L'ARBRE DE VIE : LES 10 SÉPHIROTH" data-en="🌳 THE TREE OF LIFE: THE 10 SEPHIROTH">🌳 L'ARBRE DE VIE : LES 10 SÉPHIROTH</h2>
+        <p data-fr="Les 10 Séphiroth sont 10 attributs ou émanations divines, organisées en trois colonnes et trois triades — d'une façon qui n'est pas sans rappeler les 9 hiérarchies angéliques." data-en="The 10 Sephiroth are 10 divine attributes or emanations, organised in three columns and three triads — in a way that echoes the 9 angelic hierarchies.">Les 10 Séphiroth sont 10 attributs ou émanations divines, organisées en trois colonnes et trois triades — d'une façon qui n'est pas sans rappeler les 9 hiérarchies angéliques.</p>
+
+        <div class="card-grid">
+            <div class="mini-card"><div class="card-icon">✨</div><h4>Kether</h4><p data-fr="La Couronne — le point originel, l'unité absolue, avant toute manifestation." data-en="The Crown — the originating point, absolute unity, before any manifestation.">La Couronne — le point originel, l'unité absolue, avant toute manifestation.</p></div>
+            <div class="mini-card"><div class="card-icon">🧠</div><h4>Chokmah</h4><p data-fr="La Sagesse — la force pure, l'influx primordial, le Père cosmique." data-en="Wisdom — pure force, the primordial influx, the cosmic Father.">La Sagesse — la force pure, l'influx primordial, le Père cosmique.</p></div>
+            <div class="mini-card"><div class="card-icon">🫁</div><h4>Binah</h4><p data-fr="La Compréhension — la forme, la Mère cosmique. C'est ici que BINAEL trouve sa racine." data-en="Understanding — form, the cosmic Mother. This is where BINAEL finds its root.">La Compréhension — la forme, la Mère cosmique. C'est ici que BINAEL trouve sa racine.</p></div>
+            <div class="mini-card"><div class="card-icon">❤️</div><h4>Chesed</h4><p data-fr="La Grâce — amour, bienveillance, expansion divine." data-en="Grace — love, benevolence, divine expansion.">La Grâce — amour, bienveillance, expansion divine.</p></div>
+            <div class="mini-card"><div class="card-icon">⚔️</div><h4>Geburah</h4><p data-fr="La Force — rigueur, justice, limitation nécessaire." data-en="Strength — rigour, justice, necessary limitation.">La Force — rigueur, justice, limitation nécessaire.</p></div>
+            <div class="mini-card"><div class="card-icon">🌟</div><h4>Tiphareth</h4><p data-fr="La Beauté — le centre de l'Arbre, le Christ cosmique, l'harmonie parfaite." data-en="Beauty — the centre of the Tree, the cosmic Christ, perfect harmony.">La Beauté — le centre de l'Arbre, le Christ cosmique, l'harmonie parfaite.</p></div>
+            <div class="mini-card"><div class="card-icon">🏆</div><h4>Netzach</h4><p data-fr="La Victoire — désir, émotion, instinct, force naturelle." data-en="Victory — desire, emotion, instinct, natural force.">La Victoire — désir, émotion, instinct, force naturelle.</p></div>
+            <div class="mini-card"><div class="card-icon">🧿</div><h4>Hod</h4><p data-fr="La Splendeur — intellect, communication, magie." data-en="Splendour — intellect, communication, magic.">La Splendeur — intellect, communication, magie.</p></div>
+            <div class="mini-card"><div class="card-icon">🌙</div><h4>Yesod</h4><p data-fr="Le Fondement — l'inconscient, les rêves, le monde astral." data-en="The Foundation — the unconscious, dreams, the astral world.">Le Fondement — l'inconscient, les rêves, le monde astral.</p></div>
+            <div class="mini-card"><div class="card-icon">🌍</div><h4>Malkuth</h4><p data-fr="Le Royaume — la Terre, la matière, le monde physique manifeste." data-en="The Kingdom — Earth, matter, the manifested physical world.">Le Royaume — la Terre, la matière, le monde physique manifeste.</p></div>
+        </div>
+
+        <div class="quote-block" data-fr='"En haut comme en bas, en bas comme en haut — pour accomplir le miracle de l'unité." — La Table d'Émeraude' data-en='"As above, so below; as below, so above — to accomplish the miracle of the one thing." — The Emerald Tablet'>"En haut comme en bas, en bas comme en haut — pour accomplir le miracle de l'unité." — La Table d'Émeraude</div>
+
+        <h2 data-fr="👼 LES ANGES ET LES SÉPHIROTH" data-en="👼 ANGELS AND THE SEPHIROTH">👼 LES ANGES ET LES SÉPHIROTH</h2>
+        <p data-fr="Chaque Séphirah est gardée par un ordre angélique spécifique. Kether par les Hayoth HaQodesh (les Vivants Saints). Chokmah par les Ophanim (les Roues). Binah par les Aralim (les Trônes). Les anges ne sont pas séparés de la Kabbale — ils en sont les gardiens et les messagers." data-en="Each Sephirah is guarded by a specific angelic order. Kether by the Hayoth HaQodesh (the Holy Living Ones). Chokmah by the Ophanim (the Wheels). Binah by the Aralim (the Thrones). Angels are not separate from Kabbalah — they are its guardians and messengers.">Chaque Séphirah est gardée par un ordre angélique spécifique. Kether par les Hayoth HaQodesh (les Vivants Saints). Chokmah par les Ophanim (les Roues). Binah par les Aralim (les Trônes). Les anges ne sont pas séparés de la Kabbale — ils en sont les gardiens et les messagers.</p>
+
+        <h2 data-fr="🪽 BINAEL & BINAH" data-en="🪽 BINAEL & BINAH">🪽 BINAEL & BINAH</h2>
+        <p data-fr="Le nom BINAEL vient directement de Binah, la troisième Séphirah. Binah est la grande Mère, le principe de Compréhension — non pas la sagesse abstraite de Chokmah, mais la compréhension incarnée, structurée, qui donne forme aux idées. <strong>BINAEL est l'ange de cette compréhension</strong> — celui qui vous aide à saisir le sens profond de votre existence." data-en="The name BINAEL comes directly from Binah, the third Sephirah. Binah is the great Mother, the principle of Understanding — not the abstract wisdom of Chokmah, but the incarnated, structured understanding that gives form to ideas. <strong>BINAEL is the angel of this understanding</strong> — the one who helps you grasp the deep meaning of your existence.">Le nom BINAEL vient directement de Binah, la troisième Séphirah. Binah est la grande Mère, le principe de Compréhension — non pas la sagesse abstraite de Chokmah, mais la compréhension incarnée, structurée, qui donne forme aux idées. <strong>BINAEL est l'ange de cette compréhension</strong> — celui qui vous aide à saisir le sens profond de votre existence.</p>
+
+        <div class="highlight-box">
+            <h3 data-fr="📚 POUR ALLER PLUS LOIN" data-en="📚 TO GO FURTHER">📚 POUR ALLER PLUS LOIN</h3>
+            <ul>
+                <li data-fr="<em>Sefer Yetzirah</em> — Le livre de la Création (IIe siècle)" data-en="<em>Sefer Yetzirah</em> — The Book of Formation (2nd century)"><em>Sefer Yetzirah</em> — Le livre de la Création (IIe siècle)</li>
+                <li data-fr="<em>Le Zohar</em> — Moïse de Léon (XIIIe siècle)" data-en="<em>The Zohar</em> — Moses de León (13th century)"><em>Le Zohar</em> — Moïse de Léon (XIIIe siècle)</li>
+                <li data-fr="<em>L'arbre de Vie</em> — Israel Regardie" data-en="<em>The Tree of Life</em> — Israel Regardie"><em>L'arbre de Vie</em> — Israel Regardie</li>
+                <li data-fr="<em>Kabbale et Symbolisme</em> — Gershom Scholem" data-en="<em>Kabbalah and Symbolism</em> — Gershom Scholem"><em>Kabbale et Symbolisme</em> — Gershom Scholem</li>
+            </ul>
+        </div>
+
+        <div class="article-cta">
+            <h2 data-fr="EXPLOREZ BINAH" data-en="EXPLORE BINAH">EXPLOREZ BINAH</h2>
+            <p data-fr="BINAEL, l'ange de Compréhension — votre guide vers l'éveil" data-en="BINAEL, the angel of Understanding — your guide to awakening">BINAEL, l'ange de Compréhension — votre guide vers l'éveil</p>
+            <a href="shop.html" class="btn btn-white" data-fr="VOIR LA COLLECTION" data-en="SEE THE COLLECTION">VOIR LA COLLECTION</a>
+            <a href="quiz.html" class="btn btn-white" data-fr="FAIRE LE QUIZ" data-en="TAKE THE QUIZ">FAIRE LE QUIZ</a>
+        </div>
+    </div>
+</div>
+
+<section class="related-section">
+    <div class="container">
+        <h2 data-fr="ARTICLES CONNEXES" data-en="RELATED ARTICLES">ARTICLES CONNEXES</h2>
+        <div class="related-grid">
+        <a href="blog-hierarchies.html" class="related-card">
+            <div class="rc-icon">🏛️</div>
+            <h4 data-fr="Les 9 Hiérarchies" data-en="The 9 Hierarchies">Les 9 Hiérarchies</h4>
+            <p data-fr="Les anges dans la tradition" data-en="Angels in tradition">Les anges dans la tradition</p>
+        </a>
+        <a href="blog-anges-dechus.html" class="related-card">
+            <div class="rc-icon">🖤</div>
+            <h4 data-fr="Les Anges Déchus" data-en="Fallen Angels">Les Anges Déchus</h4>
+            <p data-fr="Mythe ou réalité ?" data-en="Myth or reality?">Mythe ou réalité ?</p>
+        </a>
+        <a href="ange-gardien.html" class="related-card">
+            <div class="rc-icon">🪽</div>
+            <h4 data-fr="Qui est BINAEL ?" data-en="Who is BINAEL?">Qui est BINAEL ?</h4>
+            <p data-fr="L'ange de Binah" data-en="The angel of Binah">L'ange de Binah</p>
+        </a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col"><h4>Shop</h4><ul><li><a href="shop.html" data-fr="Collection" data-en="Collection">Collection</a></li></ul></div>
+            <div class="footer-col"><h4 data-fr="Univers" data-en="Universe">Univers</h4><ul>
+                <li><a href="hierarchies.html" data-fr="Hiérarchies" data-en="Hierarchies">Hiérarchies</a></li>
+                <li><a href="ange-gardien.html" data-fr="Ange Gardien" data-en="Guardian Angel">Ange Gardien</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul></div>
+            <div class="footer-col"><h4 data-fr="Informations" data-en="Information">Informations</h4><ul>
+                <li><a href="qualite.html" data-fr="Qualité" data-en="Quality">Qualité</a></li>
+                <li><a href="legal.html">Legal</a></li>
+            </ul></div>
+        </div>
+        <div class="disclaimer">⚠️ <strong data-fr="FICTION ÉSOTÉRIQUE" data-en="ESOTERIC FICTION">FICTION ÉSOTÉRIQUE</strong> — <span data-fr="BINAEL est un univers de FICTION basé sur des traditions mystiques." data-en="BINAEL is a FICTION universe based on mystical traditions.">BINAEL est un univers de FICTION basé sur des traditions mystiques.</span></div>
+        <p style="text-align:center;font-size:0.875rem;color:#5B8DB8;">BINAEL © 2026 • <span data-fr="Porter • Partager • Profiter" data-en="Wear • Share • Thrive">Porter • Partager • Profiter</span></p>
+    </div>
+</footer>
+
+<script>
+    const burger = document.getElementById('burger');
+    const navMenu = document.getElementById('nav-menu');
+    burger.addEventListener('click', () => { burger.classList.toggle('open'); navMenu.classList.toggle('open'); });
+    navMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { burger.classList.remove('open'); navMenu.classList.remove('open'); }));
+
+    function getLang() { return localStorage.getItem('binael_lang') || 'fr'; }
+    function setLang(lang) { localStorage.setItem('binael_lang', lang); applyLang(lang); updateBtn(lang); }
+    function toggleLang() { setLang(getLang() === 'fr' ? 'en' : 'fr'); }
+    function applyLang(lang) {
+        document.querySelectorAll('[data-fr]').forEach(el => {
+            const t = el.getAttribute('data-' + lang);
+            if (t) el.innerHTML = t;
+        });
+        document.documentElement.lang = lang;
+    }
+    function updateBtn(lang) {
+        const b = document.getElementById('lang-toggle');
+        if (b) b.innerHTML = lang === 'fr' ? '🇬🇧 EN' : '🇫🇷 FR';
+    }
+    const _l = getLang(); applyLang(_l); updateBtn(_l);
+</script>
+</body>
+</html>

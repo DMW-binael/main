@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STREETWEAR & SPIRITUALITÉ : POURQUOI ÇA MARCHE | BINAEL</title>
+    <meta name="description" content="Pourquoi le streetwear ésotérique est un mouvement spirituel profond. Psychologie du vêtement symbolique et vision BINAEL.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cormorant Garamond', serif; background: linear-gradient(180deg, #FFF 0%, #F8FBFF 50%, #F0F7FF 100%); background-attachment: fixed; color: #2C5F8D; line-height: 1.8; }
+        h1, h2, h3 { font-family: 'Cinzel', serif; color: #4A90E2; }
+        h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin: 2.5rem 0 1rem; }
+        h3 { font-size: 1.25rem; margin: 2rem 0 0.75rem; color: #2C5F8D; }
+        p { font-size: 1.125rem; margin-bottom: 1.25rem; color: #5B8DB8; line-height: 1.9; }
+        ul, ol { margin: 1rem 0 1.5rem 2rem; color: #5B8DB8; font-size: 1.05rem; }
+        ul li, ol li { margin-bottom: 0.6rem; line-height: 1.7; }
+        strong { color: #2C5F8D; }
+        em { color: #7CB9E8; font-style: italic; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .article-container { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
+        .btn { display: inline-block; padding: 0.875rem 2rem; font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 50px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+        .btn-primary { background: linear-gradient(135deg, #4A90E2, #7CB9E8); color: white; box-shadow: 0 4px 20px rgba(74,144,226,0.3); }
+        .btn-primary:hover { transform: translateY(-2px); }
+        .btn-outline { background: white; border: 2px solid #4A90E2; color: #4A90E2; }
+
+        /* NAVBAR */
+        .navbar { background: rgba(255,255,255,0.97); border-bottom: 1px solid #E3F2FD; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(74,144,226,0.08); }
+        .nav-container { padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .nav-left { display: flex; align-items: center; gap: 1rem; }
+        .logo-text { font-family: 'Cinzel', serif; font-size: 1.75rem; font-weight: 700; letter-spacing: 0.2em; background: linear-gradient(135deg, #4A90E2, #7CB9E8, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+        .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+        .nav-menu { display: flex; gap: 2rem; list-style: none; }
+        .nav-menu a { font-family: 'Cinzel', serif; font-size: 0.875rem; letter-spacing: 0.12em; text-transform: uppercase; color: #2C5F8D; text-decoration: none; transition: color 0.2s; }
+        .nav-menu a:hover, .nav-menu a.active { color: #4A90E2; }
+        .lang-btn { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.1em; background: #E3F2FD; border: 1px solid #B8D8F0; color: #4A90E2; padding: 0.4rem 0.9rem; border-radius: 20px; cursor: pointer; transition: 0.2s; white-space: nowrap; }
+        .lang-btn:hover { background: #4A90E2; color: white; }
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; z-index: 1100; }
+        .burger span { display: block; width: 25px; height: 2px; background: #2C5F8D; border-radius: 2px; transition: 0.3s; }
+        .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger.open span:nth-child(2) { opacity: 0; }
+        .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ARTICLE HEADER */
+        .article-header { background: linear-gradient(135deg, #2C5F8D, #4A90E2); padding: 5rem 2rem 4rem; text-align: center; }
+        .article-header h1 { color: white; font-size: clamp(1.75rem, 5vw, 3.5rem); margin-bottom: 1rem; line-height: 1.2; }
+        .article-subtitle { color: rgba(255,255,255,0.85); font-size: 1.2rem; font-style: italic; margin: 0 0 2rem; }
+        .article-meta { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+        .meta-item { color: rgba(255,255,255,0.8); font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; }
+        .article-category { display: inline-block; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); color: white; font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.12em; padding: 0.4rem 1rem; border-radius: 20px; margin-bottom: 1.5rem; }
+
+        /* ARTICLE BODY */
+        .article-body { padding: 4rem 0 6rem; }
+        .lead-paragraph { font-size: 1.35rem; color: #2C5F8D; line-height: 1.9; margin-bottom: 2rem; padding: 2rem; background: linear-gradient(135deg, #F0F7FF, #E8F4FF); border-left: 4px solid #4A90E2; border-radius: 0 12px 12px 0; }
+        .highlight-box { background: linear-gradient(135deg, #E3F2FD, rgba(255,215,0,0.08)); border: 2px solid #B8D8F0; border-radius: 16px; padding: 2rem 2.5rem; margin: 2.5rem 0; }
+        .highlight-box h3 { margin-top: 0; }
+        .quote-block { font-size: 1.4rem; font-style: italic; text-align: center; color: #4A90E2; margin: 3rem 0; padding: 2rem 3rem; border-top: 2px solid #E3F2FD; border-bottom: 2px solid #E3F2FD; background: #F8FBFF; }
+        .section-icon { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .mini-card { background: white; border: 1px solid #E3F2FD; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(74,144,226,0.06); }
+        .mini-card .card-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .mini-card h4 { font-family: 'Cinzel', serif; font-size: 0.95rem; color: #4A90E2; margin-bottom: 0.5rem; }
+        .mini-card p { font-size: 0.95rem; margin: 0; }
+        .number-highlight { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #FFD700; font-weight: 700; }
+        .divider { text-align: center; color: #B8D8F0; margin: 3rem 0; font-size: 1.5rem; letter-spacing: 1rem; }
+
+        /* CTA */
+        .article-cta { background: linear-gradient(135deg, #4A90E2, #7CB9E8); border-radius: 20px; padding: 3.5rem 2.5rem; text-align: center; margin: 4rem 0 0; }
+        .article-cta h2 { color: white; margin-bottom: 1rem; }
+        .article-cta p { color: rgba(255,255,255,0.9); margin-bottom: 2rem; }
+        .article-cta .btn-white { background: white; color: #4A90E2; margin: 0.5rem; }
+        .article-cta .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,255,255,0.3); }
+
+        /* RELATED */
+        .related-section { padding: 4rem 0; background: #F8FBFF; border-top: 1px solid #E3F2FD; }
+        .related-section h2 { text-align: center; margin-bottom: 2.5rem; font-size: 1.5rem; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+        .related-card { background: white; border: 1px solid #E3F2FD; border-radius: 12px; padding: 1.5rem; text-decoration: none; transition: 0.3s; display: block; }
+        .related-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(74,144,226,0.1); }
+        .related-card .rc-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .related-card h4 { font-family: 'Cinzel', serif; font-size: 0.9rem; color: #4A90E2; margin-bottom: 0.5rem; line-height: 1.3; }
+        .related-card p { font-size: 0.9rem; color: #7CB9E8; margin: 0; }
+
+        /* FOOTER */
+        .footer { background: linear-gradient(180deg, white 0%, #F8FBFF 100%); border-top: 2px solid #E3F2FD; padding: 4rem 0 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2.5rem; margin-bottom: 2.5rem; }
+        .footer-col h4 { font-family: 'Cinzel', serif; font-size: 0.95rem; letter-spacing: 0.15em; margin-bottom: 1.25rem; color: #4A90E2; }
+        .footer-col ul { list-style: none; padding: 0; }
+        .footer-col ul li { margin-bottom: 0.6rem; }
+        .footer-col ul li a { color: #5B8DB8; text-decoration: none; font-size: 0.9rem; }
+        .disclaimer { background: #E3F2FD; border: 1px solid #B8D8F0; border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem; font-size: 0.9rem; text-align: center; }
+        .disclaimer strong { color: #4A90E2; }
+
+        @media (max-width: 768px) {
+            .burger { display: flex; }
+            .nav-menu { display: none; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.98); justify-content: center; align-items: center; gap: 2.5rem; z-index: 1050; }
+            .nav-menu.open { display: flex; }
+            .nav-menu a { font-size: 1.25rem; }
+            .article-header { padding: 3.5rem 1.5rem 3rem; }
+            .article-cta { padding: 2.5rem 1.5rem; }
+            .quote-block { padding: 1.5rem; }
+            .card-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-left">
+            <a href="index.html" class="logo-text">BINAEL</a>
+        </div>
+        <div class="nav-right">
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="ange-gardien.html" data-fr="Ange Gardien" data-en="Guardian Angel">Ange Gardien</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="hierarchies.html" data-fr="Hiérarchies" data-en="Hierarchies">Hiérarchies</a></li>
+            </ul>
+            <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">🇬🇧 EN</button>
+            <button class="burger" id="burger"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+</nav>
+
+<header class="article-header">
+    <div class="article-container">
+        <span class="article-category" data-fr="Style" data-en="Style">Style</span>
+        <h1 data-fr="STREETWEAR & SPIRITUALITÉ : POURQUOI ÇA MARCHE" data-en="STREETWEAR & SPIRITUALITY: WHY IT WORKS">STREETWEAR & SPIRITUALITÉ : POURQUOI ÇA MARCHE</h1>
+        <p class="article-subtitle" data-fr="La psychologie du symbole porté — du temple à la rue" data-en="The psychology of the worn symbol — from temple to street">La psychologie du symbole porté — du temple à la rue</p>
+        <div class="article-meta">
+            <span class="meta-item">🪽 BINAEL</span>
+            <span class="meta-item" data-fr="5 min de lecture" data-en="5 min read">5 min de lecture</span>
+            <span class="meta-item">2026</span>
+        </div>
+    </div>
+</header>
+
+<div class="article-body">
+    <div class="article-container">
+        <p class="lead-paragraph" data-fr="Un t-shirt avec un ange. Un hoodie avec un symbole kabbalistique. De la géométrie sacrée sur une casquette. Le streetwear ésotérique est-il une tendance superficielle ou un mouvement spirituel profond ? La réponse est plus nuancée — et plus fascinante — que vous ne le pensez." data-en="A t-shirt with an angel. A hoodie with a Kabbalistic symbol. Sacred geometry on a cap. Is esoteric streetwear a superficial trend or a deep spiritual movement? The answer is more nuanced — and more fascinating — than you think.">Un t-shirt avec un ange. Un hoodie avec un symbole kabbalistique. De la géométrie sacrée sur une casquette. Le streetwear ésotérique est-il une tendance superficielle ou un mouvement spirituel profond ? La réponse est plus nuancée — et plus fascinante — que vous ne le pensez.</p>
+
+        <h2 data-fr="👕 LE VÊTEMENT A TOUJOURS ÉTÉ SPIRITUEL" data-en="👕 CLOTHING HAS ALWAYS BEEN SPIRITUAL">👕 LE VÊTEMENT A TOUJOURS ÉTÉ SPIRITUEL</h2>
+        <p data-fr="Avant d'être mode, le vêtement était sacré. La robe du prêtre, le voile de la nonne, la kippa du rabbin, le turban du sikh — chaque tradition spirituelle a ses vêtements sacrés. Porter un symbole spirituel est l'un des actes humains les plus anciens. Ce n'est pas une invention du XXIe siècle." data-en="Before being fashion, clothing was sacred. The priest's robe, the nun's veil, the rabbi's kippa, the Sikh's turban — every spiritual tradition has its sacred garments. Wearing a spiritual symbol is one of the oldest human acts. It is not an invention of the 21st century.">Avant d'être mode, le vêtement était sacré. La robe du prêtre, le voile de la nonne, la kippa du rabbin, le turban du sikh — chaque tradition spirituelle a ses vêtements sacrés. Porter un symbole spirituel est l'un des actes humains les plus anciens. Ce n'est pas une invention du XXIe siècle.</p>
+
+        <h2 data-fr="🔄 LA DÉSACRALISATION DU SACRÉ — ET SON RETOUR" data-en="🔄 THE DESACRALISATION OF THE SACRED — AND ITS RETURN">🔄 LA DÉSACRALISATION DU SACRÉ — ET SON RETOUR</h2>
+        <p data-fr="La modernité a séparé le spirituel du quotidien. La religion est allée dans les temples. La mode est allée dans les boutiques. Deux mondes étanches. Mais quelque chose change. La génération Z et les millennials cherchent une spiritualité incarnée — pas enfermée dans un bâtiment, mais vécue dans le corps, dans les rues, dans les choix quotidiens." data-en="Modernity separated the spiritual from the everyday. Religion went into temples. Fashion went into shops. Two sealed worlds. But something is changing. Generation Z and millennials seek an embodied spirituality — not locked in a building, but lived in the body, in the streets, in daily choices.">La modernité a séparé le spirituel du quotidien. La religion est allée dans les temples. La mode est allée dans les boutiques. Deux mondes étanches. Mais quelque chose change. La génération Z et les millennials cherchent une spiritualité incarnée — pas enfermée dans un bâtiment, mais vécue dans le corps, dans les rues, dans les choix quotidiens.</p>
+
+        <div class="quote-block" data-fr='"Le corps est le temple de l'âme. Alors pourquoi ne pas décorer le temple ?"' data-en='"The body is the temple of the soul. So why not decorate the temple?"'>"Le corps est le temple de l'âme. Alors pourquoi ne pas décorer le temple ?"</div>
+
+        <h2 data-fr="🧠 LA PSYCHOLOGIE DU SYMBOLE PORTÉ" data-en="🧠 THE PSYCHOLOGY OF THE WORN SYMBOL">🧠 LA PSYCHOLOGIE DU SYMBOLE PORTÉ</h2>
+        <p data-fr="Des études en psychologie cognitive montrent que ce que nous portons influence notre cognition — un phénomène appelé 'embodied cognition'. Porter une blouse de médecin rend plus attentif. Porter une tenue de sport motive à bouger. Porter un symbole spirituel ancre une intention dans le corps." data-en="Studies in cognitive psychology show that what we wear influences our cognition — a phenomenon called 'embodied cognition'. Wearing a doctor's coat makes one more attentive. Wearing sportswear motivates movement. Wearing a spiritual symbol anchors an intention in the body.">Des études en psychologie cognitive montrent que ce que nous portons influence notre cognition — un phénomène appelé 'embodied cognition'. Porter une blouse de médecin rend plus attentif. Porter une tenue de sport motive à bouger. Porter un symbole spirituel ancre une intention dans le corps.</p>
+
+        <div class="card-grid">
+            <div class="mini-card"><div class="card-icon">🪞</div><h4 data-fr="Identité" data-en="Identity">Identité</h4><p data-fr="Ce que je porte dit qui je suis — et me rappelle qui je veux être." data-en="What I wear says who I am — and reminds me who I want to be.">Ce que je porte dit qui je suis — et me rappelle qui je veux être.</p></div>
+            <div class="mini-card"><div class="card-icon">🧲</div><h4 data-fr="Attraction" data-en="Attraction">Attraction</h4><p data-fr="Un symbole partagé crée un lien immédiat entre inconnus." data-en="A shared symbol creates an immediate bond between strangers.">Un symbole partagé crée un lien immédiat entre inconnus.</p></div>
+            <div class="mini-card"><div class="card-icon">🔔</div><h4 data-fr="Rappel" data-en="Reminder">Rappel</h4><p data-fr="Chaque regard sur le t-shirt est une micro-méditation." data-en="Every glance at the t-shirt is a micro-meditation.">Chaque regard sur le t-shirt est une micro-méditation.</p></div>
+            <div class="mini-card"><div class="card-icon">🌍</div><h4 data-fr="Mission" data-en="Mission">Mission</h4><p data-fr="Porter un message, c'est devenir un ambassadeur de cette idée." data-en="Wearing a message means becoming an ambassador for that idea.">Porter un message, c'est devenir un ambassadeur de cette idée.</p></div>
+        </div>
+
+        <h2 data-fr="🌊 LE MOUVEMENT GLOBAL DU STREETWEAR ÉSOTÉRIQUE" data-en="🌊 THE GLOBAL ESOTERIC STREETWEAR MOVEMENT">🌊 LE MOUVEMENT GLOBAL DU STREETWEAR ÉSOTÉRIQUE</h2>
+        <p data-fr="De New York à Tokyo, de Lagos à Paris, un mouvement se dessine. Des jeunes qui méditent et qui font du skateboard. Des créateurs qui mêlent sigils kabbalistiques et coupes streetwear. Des tatouages d'œil d'Horus sur des bras couverts de tatouages tribaux. La spiritualité sort des temples et entre dans la rue." data-en="From New York to Tokyo, from Lagos to Paris, a movement is taking shape. Young people who meditate and skateboard. Designers who blend Kabbalistic sigils with streetwear cuts. Eye of Horus tattoos on arms covered in tribal tattoos. Spirituality is leaving the temples and entering the street.">De New York à Tokyo, de Lagos à Paris, un mouvement se dessine. Des jeunes qui méditent et qui font du skateboard. Des créateurs qui mêlent sigils kabbalistiques et coupes streetwear. Des tatouages d'œil d'Horus sur des bras couverts de tatouages tribaux. La spiritualité sort des temples et entre dans la rue.</p>
+
+        <h2 data-fr="🪽 LA VISION BINAEL" data-en="🪽 THE BINAEL VISION">🪽 LA VISION BINAEL</h2>
+        <p data-fr="BINAEL n'est pas une marque de mode qui a mis des anges sur ses t-shirts. BINAEL est une marque de spiritualité qui a choisi le streetwear comme medium. La différence est fondamentale. Chaque design est une porte — vers une hiérarchie angélique, vers un aspect de soi, vers une question existentielle." data-en="BINAEL is not a fashion brand that put angels on t-shirts. BINAEL is a spirituality brand that chose streetwear as its medium. The difference is fundamental. Each design is a door — to an angelic hierarchy, to an aspect of oneself, to an existential question.">BINAEL n'est pas une marque de mode qui a mis des anges sur ses t-shirts. BINAEL est une marque de spiritualité qui a choisi le streetwear comme medium. La différence est fondamentale. Chaque design est une porte — vers une hiérarchie angélique, vers un aspect de soi, vers une question existentielle.</p>
+        <p data-fr="<strong>Porter BINAEL, c'est porter une intention. C'est dire au monde — et à soi-même — qu'on choisit l'éveil.</strong>" data-en="<strong>Wearing BINAEL is wearing an intention. It is saying to the world — and to oneself — that you choose awakening.</strong>"><strong>Porter BINAEL, c'est porter une intention. C'est dire au monde — et à soi-même — qu'on choisit l'éveil.</strong></p>
+
+        <div class="article-cta">
+            <h2 data-fr="REJOIGNEZ LE MOUVEMENT" data-en="JOIN THE MOVEMENT">REJOIGNEZ LE MOUVEMENT</h2>
+            <p data-fr="Portez votre éveil — voir la collection" data-en="Wear your awakening — see the collection">Portez votre éveil — voir la collection</p>
+            <a href="shop.html" class="btn btn-white" data-fr="VOIR LA COLLECTION" data-en="SEE THE COLLECTION">VOIR LA COLLECTION</a>
+            <a href="quiz.html" class="btn btn-white" data-fr="FAIRE LE QUIZ" data-en="TAKE THE QUIZ">FAIRE LE QUIZ</a>
+        </div>
+    </div>
+</div>
+
+<section class="related-section">
+    <div class="container">
+        <h2 data-fr="ARTICLES CONNEXES" data-en="RELATED ARTICLES">ARTICLES CONNEXES</h2>
+        <div class="related-grid">
+        <a href="ange-gardien.html" class="related-card">
+            <div class="rc-icon">🪽</div>
+            <h4 data-fr="Qui est BINAEL ?" data-en="Who is BINAEL?">Qui est BINAEL ?</h4>
+            <p data-fr="La vision derrière la marque" data-en="The vision behind the brand">La vision derrière la marque</p>
+        </a>
+        <a href="blog-hierarchies.html" class="related-card">
+            <div class="rc-icon">🏛️</div>
+            <h4 data-fr="Les 9 Hiérarchies" data-en="The 9 Hierarchies">Les 9 Hiérarchies</h4>
+            <p data-fr="Les designs et leur signification" data-en="The designs and their meaning">Les designs et leur signification</p>
+        </a>
+        <a href="blog-meditation.html" class="related-card">
+            <div class="rc-icon">🧘</div>
+            <h4 data-fr="Méditer avec BINAEL" data-en="Meditating with BINAEL">Méditer avec BINAEL</h4>
+            <p data-fr="Le t-shirt comme rappel" data-en="The t-shirt as reminder">Le t-shirt comme rappel</p>
+        </a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col"><h4>Shop</h4><ul><li><a href="shop.html" data-fr="Collection" data-en="Collection">Collection</a></li></ul></div>
+            <div class="footer-col"><h4 data-fr="Univers" data-en="Universe">Univers</h4><ul>
+                <li><a href="hierarchies.html" data-fr="Hiérarchies" data-en="Hierarchies">Hiérarchies</a></li>
+                <li><a href="ange-gardien.html" data-fr="Ange Gardien" data-en="Guardian Angel">Ange Gardien</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul></div>
+            <div class="footer-col"><h4 data-fr="Informations" data-en="Information">Informations</h4><ul>
+                <li><a href="qualite.html" data-fr="Qualité" data-en="Quality">Qualité</a></li>
+                <li><a href="legal.html">Legal</a></li>
+            </ul></div>
+        </div>
+        <div class="disclaimer">⚠️ <strong data-fr="FICTION ÉSOTÉRIQUE" data-en="ESOTERIC FICTION">FICTION ÉSOTÉRIQUE</strong> — <span data-fr="BINAEL est un univers de FICTION basé sur des traditions mystiques." data-en="BINAEL is a FICTION universe based on mystical traditions.">BINAEL est un univers de FICTION basé sur des traditions mystiques.</span></div>
+        <p style="text-align:center;font-size:0.875rem;color:#5B8DB8;">BINAEL © 2026 • <span data-fr="Porter • Partager • Profiter" data-en="Wear • Share • Thrive">Porter • Partager • Profiter</span></p>
+    </div>
+</footer>
+
+<script>
+    const burger = document.getElementById('burger');
+    const navMenu = document.getElementById('nav-menu');
+    burger.addEventListener('click', () => { burger.classList.toggle('open'); navMenu.classList.toggle('open'); });
+    navMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { burger.classList.remove('open'); navMenu.classList.remove('open'); }));
+
+    function getLang() { return localStorage.getItem('binael_lang') || 'fr'; }
+    function setLang(lang) { localStorage.setItem('binael_lang', lang); applyLang(lang); updateBtn(lang); }
+    function toggleLang() { setLang(getLang() === 'fr' ? 'en' : 'fr'); }
+    function applyLang(lang) {
+        document.querySelectorAll('[data-fr]').forEach(el => {
+            const t = el.getAttribute('data-' + lang);
+            if (t) el.innerHTML = t;
+        });
+        document.documentElement.lang = lang;
+    }
+    function updateBtn(lang) {
+        const b = document.getElementById('lang-toggle');
+        if (b) b.innerHTML = lang === 'fr' ? '🇬🇧 EN' : '🇫🇷 FR';
+    }
+    const _l = getLang(); applyLang(_l); updateBtn(_l);
+</script>
+</body>
+</html>
